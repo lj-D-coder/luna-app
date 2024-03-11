@@ -16,7 +16,7 @@ export default function Hero() {
       <div className="hidden md:flex">
       <HeroSlider
         height="90vh"
-        className="absolute -z-10 top-0 h-full w-full"
+        className="relative -z-10 top-0 h-full w-full"
         autoplay
         controller={{
           initialSlide: 1,
@@ -76,7 +76,7 @@ export default function Hero() {
       <div className="md:hidden">
       <HeroSlider
         height="50vh"
-        className="absolute -z-10 top-0 h-full w-full"
+        className="relative -z-10 top-0 h-full w-full"
         autoplay
         controller={{
           initialSlide: 1,

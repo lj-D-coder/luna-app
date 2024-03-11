@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
-import { cn } from "@/app/utils/cn";
+import { cn } from "../utils/cn";
 import Image from "next/image";
 
 type Card = {

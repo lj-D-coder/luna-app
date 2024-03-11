@@ -5,7 +5,7 @@ import hamburger from "../assets/images/hamburger.svg";
 
 const Navbar = () => {
   return (
-    <nav className="h-[auto] bg-gray-100 bg-no-repeat bg-cover opacity-70">
+    <nav className="absolute w-full h-[auto] bg-gray-100 bg-no-repeat bg-cover opacity-70">
     {/* </nav><nav className="h-[auto] bg-[url(./assets/images/nav-bg.svg)] bg-[100% 100%] bg-no-repeat bg-cover opacity-70">
     <nav className="h-[auto] lg:h-[250px] bg-[url(./assets/images/nav-bg.svg)] bg-[100% 100%] lg:bg-[url(./assets/images/nav-bg-big.svg)] bg-no-repeat bg-cover lg:bg-contain"> */}
       <div className="container mx-auto px-4 py-2">
