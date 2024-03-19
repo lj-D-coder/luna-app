@@ -1,23 +1,28 @@
-import React from 'react'
-import ServicesCard from './ServicesCard'
+import React from "react";
+import ServicesCard from "./ServicesCard";
+import { Lamp } from "../Lamp";
 
 const Services = () => {
   return (
-    <div className="w-full bg-slate-900 pb-10">
-    <div className="grid grid-cols-2 md:grid-cols-4 mx-5 md:mx-40 gap-10 my-20">
-              <div className="col-span-2 md:col-span-4">
-                  <h1 className='text-5xl text-white tracking-widest pt-10 text-center'>
-                      SERVICE SECTION
-                  </h1>
-                  <p className='text-xl text-white mt-5 tracking-[.25em] text-center'>Hi the is the sub heading section of services</p>
+    <>
+    <Lamp />
+    <div className="container mx-auto min-h-[500px] bg-transparent">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-20 pt-20 mx-10">
+        <div className="col-span-2 md:col-span-4">
+          <h1 className="text-5xl text-white tracking-widest pt-10 text-center">SERVICE SECTION</h1>
+          <p className="text-xl text-white mt-5 tracking-[.25em] text-center">
+            Hi the is the sub heading section of services
+          </p><br />
+        </div>
+          {Array.from({ length: 4 }).map((_, index) => (
+            <div className="w-auto hover:scale-105 ease-in duration-300">
+              <ServicesCard />
+            </div>
+          ))};
+        </div>
       </div>
-      <div className='h-[200px] w-[200px]'><ServicesCard/></div>
-        <div className='h-[200px] w-[200px]'><ServicesCard /></div>
-        <div className='h-[200px] w-[200px]'><ServicesCard /></div>
-        <div className='h-[200px] w-[200px]'><ServicesCard /></div>
-    </div>
-  </div>
-  )
-}
+      </>  
+  );
+};
 
-export default Services
+export default Services;
