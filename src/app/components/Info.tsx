@@ -32,8 +32,8 @@ const Info = () => {
     <>
      {/* <div className="w-full h-[80px] bg-slate-950 -mt-[40px]"></div>   To add a to margin */}
       <div className="container mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-4 mx-auto gap-20 p-20">
-          <div className="col-span-2 md:col-span-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 mx-auto gap-20 p-20">
+          <div className="col-span-1 md:col-span-4">
             <h1 className="text-5xl text-slate-800 tracking-widest pt-10 text-center">INFO SECTION</h1>
             <p className="text-xl text-slate-500 mt-5 tracking-[.25em] text-center">
               Hi the is the sub heading section of Info

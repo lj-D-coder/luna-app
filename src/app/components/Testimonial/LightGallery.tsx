@@ -1,29 +1,11 @@
 "use client"
-import React, { Component } from 'react';
-import { render } from 'react-dom';
+import React from 'react';
 import './lightGallery.module.css';
 
 import LightGallery from 'lightgallery/react';
-import { LightGallerySettings } from 'lightgallery/lg-settings';
 import lgZoom from 'lightgallery/plugins/zoom';
 import lgVideo from 'lightgallery/plugins/video';
 
-
-
-
-
-// interface AppProps {}
-// interface AppState {
-//   settings: LightGallerySettings;
-// }
-
-// class App extends Component<AppProps, AppState> {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       name: 'React',
-//     };
-//   }
 
 const Testimony = () => {
   return (

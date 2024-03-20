@@ -17,7 +17,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
         </label>
         <div className="relative w-full md:w-3/6">
           <input
-            className="block w-full h-[50px] rounded-full border-2 border-green-200 border-x-blue-200 py-[9px] pl-10 text-base outline-2 placeholder:text-gray-200 bg-white bg-opacity-50"
+            className="block w-full h-[50px] rounded-full border-2 border-green-200 border-x-blue-200 py-[9px] pl-10 text-base outline-2 placeholder:text-gray-200 bg-white bg-opacity-50  focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
             placeholder={placeholder}
             onChange={(e) => {
               handleSearch(e.target.value);
@@ -25,10 +25,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
           />
           <MagnifyingGlassIcon className="absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-100 peer-focus:text-gray-200" />
           <div className="absolute z-10 right-4 top-1/2 h-[18px] w-[18px] -translate-y-1/2">
-          <Image
-              src={target}
-              alt="target-icon"
-          />
+            <Image src={target} alt="target-icon" />
           </div>
           <div className="absolute right-2 top-1/2 -translate-y-1/2">
             <button
@@ -39,7 +36,6 @@ export default function Search({ placeholder }: { placeholder: string }) {
             >
               Set my location
             </button>
-            
           </div>
         </div>
       </div>

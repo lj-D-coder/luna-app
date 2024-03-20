@@ -6,7 +6,7 @@ const Services = () => {
   return (
     <>
     <Lamp />
-    <div className="container mx-auto min-h-[500px] bg-transparent">
+    <div className="w-full md:container md:mx-auto min-h-[500px] bg-transparent">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-20 pt-20 mx-10">
         <div className="col-span-2 md:col-span-4">
           <h1 className="text-5xl text-white tracking-widest pt-10 text-center">SERVICE SECTION</h1>
@@ -15,7 +15,7 @@ const Services = () => {
           </p><br />
         </div>
           {Array.from({ length: 4 }).map((_, index) => (
-            <div className="w-auto hover:scale-105 ease-in duration-300">
+            <div key={index} className="w-auto hover:scale-105 ease-in duration-300">
               <ServicesCard />
             </div>
           ))};
