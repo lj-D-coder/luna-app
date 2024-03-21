@@ -1,6 +1,7 @@
 @import url("https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/css/lightgallery.css");
 @import url("https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/css/lg-zoom.css");
 @import url("https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/css/lg-video.css");
+
 h1,
 p {
   font-family: Lato;
@@ -11,3 +12,9 @@ body {
 .gallery-item {
   margin: 5px;
 }
+
+
+
+/* @import url("./lightgallery.css");
+@import url("./lg-zoom.css");
+@import url("./lg-video.css"); */
