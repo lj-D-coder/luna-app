@@ -51,7 +51,7 @@ export default function Testimony() {
 
   return (
     <>
-      <div className="w-full mx-auto md:px-20 pb-10 bg-slate-100">
+      <div className="w-full h-auto mx-auto md:px-20 pb-10 bg-slate-100">
         <div className="grid grid-cols-12 pt-10 md:hidden">
           <div className="col-span-12">
             <h1 className="text-xl text-center font-bold tracking-widest">TESTIMONIES</h1>
@@ -60,7 +60,7 @@ export default function Testimony() {
         </div>
         <div className="grid grid-cols-12 md:gap-2">
           <div className="hidden col-span-12 md:col-span-1 mt-2 md:mt-5 md:flex justify-center items-center">
-            <div className="flex flex-col space-y-1 md:mx-5 md:pl-12 text-center text-2xl font-bold">
+            <div className="flex flex-col space-y-1 md:ml-14 md:p-5 text-center text-2xl font-bold bg-black text-white">
               <span>T</span>
               <span>E</span>
               <span>S</span>
