@@ -22,9 +22,9 @@ const Navbar = () => {
           </div>
           <div className="hidden md:flex space-x-4">
             {/* Add your navigation links here */}
-            <a href="#" className="text-black hover:text-gray-300">Home</a>
+            {/* <a href="#" className="text-black hover:text-gray-300">Home</a>
             <a href="#" className="text-black hover:text-gray-300">About</a>
-            <a href="#" className="text-black hover:text-gray-300">Services</a>
+            <a href="#" className="text-black hover:text-gray-300">Services</a> */}
             {/* ... more links */}
           </div>
           <div className="md:hidden">

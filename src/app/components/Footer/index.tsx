@@ -1,14 +1,14 @@
-"use client";
+"use client"
 import { useAnimation, useMotionValue } from "framer-motion";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { GoogleGeminiEffect } from "../ui/google-gemini-effect";
 import Link from "next/link";
-
 
 const currentYear = new Date().getFullYear();
 
 export default function GoogleGeminiEffectDemo() {
   const controls = useAnimation();
+  const footerRef = useRef(null);
   const pathLengthFirst = useMotionValue(0);
   const pathLengthSecond = useMotionValue(0);
   const pathLengthThird = useMotionValue(0);
@@ -16,14 +16,30 @@ export default function GoogleGeminiEffectDemo() {
   const pathLengthFifth = useMotionValue(0);
 
   useEffect(() => {
-    controls.start({
-      pathLengthFirst: [0, 1],
-      pathLengthSecond: [0, 1],
-      pathLengthThird: [0, 1],
-      pathLengthFourth: [0, 1],
-      pathLengthFifth: [0, 1],
-      transition: { duration: 2, yoyo: Infinity },
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          controls.start({
+            pathLengthFirst: [0, 1],
+            pathLengthSecond: [0, 1],
+            pathLengthThird: [0, 1],
+            pathLengthFourth: [0, 1],
+            pathLengthFifth: [0, 1],
+            transition: { duration: 2, yoyo: Infinity },
+          });
+        }
+      });
     });
+
+    if (footerRef.current) {
+      observer.observe(footerRef.current);
+    }
+
+    return () => {
+      if (footerRef.current) {
+        observer.unobserve(footerRef.current);
+      }
+    };
   }, [controls]);
 
   return (

@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 // import "swiper/css/navigation";
 import "./css/swipers.css";
-import { Navigation, Autoplay, EffectCoverflow, Pagination } from "swiper/modules";
+import {Parallax, Navigation, Autoplay, EffectCoverflow, Pagination } from "swiper/modules";
 import { Swiper as SwiperClass } from "swiper";
 import TestimonyCard from "./testimonyCard";
 import TestimonyVideo from "./videoCard";
@@ -87,6 +87,7 @@ export default function Testimony() {
                 }}
                 loop={false}
                 // navigation={navigation}
+                parallax={true}
                 rewind={true}
                 effect={"coverflow"}
                 grabCursor={true}
