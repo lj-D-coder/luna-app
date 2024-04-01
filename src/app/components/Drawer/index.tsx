@@ -2,9 +2,14 @@
 import React, { useState } from 'react';
 import { Button, Drawer } from 'antd';
 import BookingCalender from "./calender"
+import type { Dayjs } from "dayjs";
+import dayjs from "dayjs";
+import FormComponent from "./form"
 
 const App: React.FC = () => {
   const [open, setOpen] = useState(false);
+  const [selectedDate, setSelectedDate] = useState<Dayjs>(dayjs());
+  const [selectedTime, setSelectedTime] = useState<string | null>(null);
 
   const showDrawer = () => {
     setOpen(true);
@@ -20,7 +25,8 @@ const App: React.FC = () => {
         Book Now
       </Button>
       <Drawer title="Basic Drawer" onClose={onClose} open={open}>
-        <BookingCalender/>
+        <BookingCalender open={open} setSelectedDate={setSelectedDate} setSelectedTime={setSelectedTime} />
+        <FormComponent selectedDate={selectedDate} selectedTime={selectedTime} />
       </Drawer>
     </>
   );
