@@ -10,6 +10,8 @@ const App: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Dayjs>(dayjs());
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
+  const [next, setNext] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const showDrawer = () => {
     setOpen(true);
@@ -17,7 +19,10 @@ const App: React.FC = () => {
 
   const onClose = () => {
     setOpen(false);
+    setSuccess(false);
   };
+
+  
 
   return (
     <>
@@ -25,8 +30,8 @@ const App: React.FC = () => {
         Book Now
       </Button>
       <Drawer title="Basic Drawer" onClose={onClose} open={open}>
-        <BookingCalender open={open} setSelectedDate={setSelectedDate} setSelectedTime={setSelectedTime} />
-        <FormComponent selectedDate={selectedDate} selectedTime={selectedTime} />
+        {!success && <BookingCalender open={open} next={next} setNext={setNext} setSelectedDate={setSelectedDate} setSelectedTime={setSelectedTime} />}
+        {next && <FormComponent success={success} setSuccess={setSuccess} selectedDate={selectedDate} selectedTime={selectedTime} />}
       </Drawer>
     </>
   );
