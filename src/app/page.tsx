@@ -13,15 +13,15 @@ import Faq from "./components/Faq";
 export default function Home() {
   return (
     <>
-      <Drawer/>
+      <Drawer />
       <Navbar />
-      {/* <IconGrid/> */}
+      <IconGrid />
       <Hero />
       {/* <Services /> */}
-      {/* <Info /> */}
+      <Info />
       <Testimony />
-      <Faq/>
-      <Footer/>
+      <Faq />
+      <Footer />
     </>
   );
 }
