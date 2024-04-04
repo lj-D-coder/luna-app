@@ -1,6 +1,6 @@
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
-import Services from "./components/Services";
+// import Services from "./components/Services";
 import Info from "./components/Info";
 import Testimony from "./components/Testimonial";
 import Footer from "./components/Footer"
@@ -12,7 +12,7 @@ export default function Home() {
       <Drawer/>
       <Navbar />
       <Hero />
-      <Services />
+      {/* <Services /> */}
       <Info />
       <Testimony />
       <Footer/>

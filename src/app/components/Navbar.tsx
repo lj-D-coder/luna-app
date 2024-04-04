@@ -2,10 +2,11 @@
 import Image from "next/image";
 import logo from "../assets/images/logo.svg";
 import hamburger from "../assets/images/hamburger.svg";
+import Search from "./Search";
 
 const Navbar = () => {
   return (
-    <nav className="absolute z-10 w-full h-[auto] bg-gray-100 bg-no-repeat bg-cover opacity-70">
+    <nav className="absolute z-10 w-full h-[auto] bg-gray-900 bg-no-repeat bg-cover opacity-70">
     {/* </nav><nav className="h-[auto] bg-[url(./assets/images/nav-bg.svg)] bg-[100% 100%] bg-no-repeat bg-cover opacity-70">
     <nav className="h-[auto] lg:h-[250px] bg-[url(./assets/images/nav-bg.svg)] bg-[100% 100%] lg:bg-[url(./assets/images/nav-bg-big.svg)] bg-no-repeat bg-cover lg:bg-contain"> */}
       <div className="container mx-auto px-4 py-2">
@@ -18,8 +19,9 @@ const Navbar = () => {
               height={23}
               className="mr-2"
             />
-            <div className="text-black font-semibold text-lg">Luna Nanna</div>
+            <div className="text-white font-semibold text-lg">Luna Nanna</div>
           </div>
+          <Search placeholder="Search for area, street name, landmark..." />
           <div className="hidden md:flex space-x-4">
             {/* Add your navigation links here */}
             {/* <a href="#" className="text-black hover:text-gray-300">Home</a>

@@ -3,7 +3,6 @@ import "hero-slider/dist/index.css";
 import HeroSlider, { ButtonsNav, MenuNav, Overlay, Slide } from "hero-slider";
 import Wrapper from "./Wrapper";
 import Title from "./Title";
-import Search from "./Search";
 
 const bogliasco = "https://d222mnpmkyzhbp.cloudfront.net/prod/assets/static/home/hero-v1.webp";
 const casWash = "https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?q=80&w=3431&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D%203431w";
@@ -15,7 +14,7 @@ export default function Hero() {
       <>
       <div className="hidden md:flex">
       <HeroSlider
-        height="100vh"
+        height="60vh"
         className="top-0 h-full w-full"
         autoplay
         controller={{
@@ -67,8 +66,6 @@ export default function Hero() {
             backgroundImageSrc: craterRock,
           }}
         />
-
-        <Search placeholder="Search for area, street name, landmark..." />
         {/* <MenuNav /> */}
         <ButtonsNav/>
       </HeroSlider>
@@ -127,8 +124,6 @@ export default function Hero() {
             backgroundImageSrc: craterRock,
           }}
         />
-
-        <Search placeholder="Search for area, street name, landmark..." />
         {/* <MenuNav /> */}
         <ButtonsNav/>
       </HeroSlider>
