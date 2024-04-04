@@ -6,12 +6,14 @@ import Testimony from "./components/Testimonial";
 import Footer from "./components/Footer"
 import Faq from "./components/faq"
 import Drawer from "./components/Drawer"
+import IconGrid from "./components/IconGrid"
 
 export default function Home() {
   return (
     <>
       <Drawer/>
       <Navbar />
+      <IconGrid/>
       <Hero />
       {/* <Services /> */}
       <Info />
