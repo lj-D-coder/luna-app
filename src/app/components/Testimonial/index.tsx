@@ -51,8 +51,8 @@ export default function Testimony() {
 
   return (
     <>
-      <div className="w-full h-auto mx-auto md:px-20 pb-10 bg-slate-100">
-        <div className="grid grid-cols-12 pt-10 md:hidden">
+      <div className="w-full h-auto mx-auto md:p-24 bg-slate-100">
+        <div className="grid grid-cols-12 md:hidden">
           <div className="col-span-12">
             <h1 className="text-xl text-center font-bold tracking-widest">TESTIMONIES</h1>
             <p className="text-lg mt-1 tracking-[.15em] text-center">What Our Clients Say.</p>
