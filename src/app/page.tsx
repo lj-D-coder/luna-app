@@ -4,9 +4,11 @@ import Navbar from "./components/Navbar";
 import Info from "./components/Info";
 import Testimony from "./components/Testimonial";
 import Footer from "./components/Footer"
-import Faq from "./components/faq"
 import Drawer from "./components/Drawer"
 import IconGrid from "./components/IconGrid"
+import Faq from "./components/Faq";
+
+
 
 export default function Home() {
   return (

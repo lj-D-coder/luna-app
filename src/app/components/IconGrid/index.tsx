@@ -44,10 +44,10 @@ const heroBanner = [
   },
 ];
 
-const Info = () => {
+const IconGrid = () => {
   return (
     <>
-      <div className="w-full absolute flex items-center justify-center h-screen z-10">
+      <div className="w-full h-screen absolute flex items-center justify-center z-10">
         <div className="flex space-x-80">
           <div className="w-25% mx-auto  flex-wrap opacity-80 bg-slate-400 rounded">
             <div className="flex flex-wrap">
@@ -90,4 +90,4 @@ const Info = () => {
   );
 };
 
-export default Info;
+export default IconGrid;

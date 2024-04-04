@@ -3,22 +3,12 @@ import { cn } from "@/lib/utils/cn";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/app/components/ui/card";
 import Image from "next/image";
 
-const infos = [
+const banner = [
   {
     title: "Top rated professionals",
     description: "Our professionals are reliable & well-trained, with an average rating of 4.78 out of 5!",
-    url: "https://ui.aceternity.com/_next/image?url=%2Fjordans.webp&w=828&q=75"
-  },
-  {
-    title: "Same-day availability",
-    description: "Book in less than 60 seconds, and even select same-day slots.",
-    url: "https://ui.aceternity.com/_next/image?url=%2Fjordans.webp&w=828&q=75",
-  },
-  {
-    title: "value for money services",
-    description: "Our professionals are equipped with the best tools and our services .",
-      url: "https://ui.aceternity.com/_next/image?url=%2Fjordans.webp&w=828&q=75",
-  },
+    url: ""
+  },  
 ];
 
 
@@ -26,7 +16,7 @@ const Info = () => {
   return (
     <>
      {/* <div className="w-full h-[80px] bg-slate-950 -mt-[40px]"></div>   To add a to margin */}
-      <div className="container mx-auto h-auto">
+      <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 mx-auto gap-20 p-20">
           <div className="col-span-1 md:col-span-4">
             <h1 className="text-5xl text-slate-800 tracking-widest pt-10 text-center">INFO SECTION</h1>
@@ -35,13 +25,13 @@ const Info = () => {
             </p>
           </div>
           <div className="row-span-3 md:row-span-3 flex gap-5">
-          {infos.map((info, index) => (
+          {banner.map((file, index) => (
             <div key={index} >
-              <Card className={cn("w-[400px] h-[220px] card-hover-effects")}>
+              <Card className={cn("w-[80%] h-[200px] card-hover-effects")}>
                 <CardContent className="grid gap-4">
-                  <div className=" flex justify-center space-x-4 rounded-md p-4">
+                  <div className="flex justify-center space-x-4 rounded-md p-4">
                       {/* <Image
-                        src={info.url}
+                        src={file.url}
                         alt="jordans"
                         height="150"
                         width="150"
@@ -50,8 +40,8 @@ const Info = () => {
                   </div>
                 </CardContent>
                 {/* <CardHeader>
-                  <CardTitle className="text-center">{info.title}</CardTitle>
-                  <CardDescription className="pt-5 text-center">{info.description}</CardDescription>
+                  <CardTitle className="text-center">{file.title}</CardTitle>
+                  <CardDescription className="pt-5 text-center">{file.description}</CardDescription>
                 </CardHeader> */}
               </Card>
             </div>

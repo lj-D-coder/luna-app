@@ -3,44 +3,9 @@ import { useAnimation, useMotionValue } from "framer-motion";
 import React, { useEffect, useRef } from "react";
 import { GoogleGeminiEffect } from "../ui/google-gemini-effect";
 import Link from "next/link";
+import { Flex } from "antd";
 
 const currentYear = new Date().getFullYear();
-
-export default function GoogleGeminiEffectDemo() {
-  const controls = useAnimation();
-  const footerRef = useRef(null);
-  const pathLengthFirst = useMotionValue(0);
-  const pathLengthSecond = useMotionValue(0);
-  const pathLengthThird = useMotionValue(0);
-  const pathLengthFourth = useMotionValue(0);
-  const pathLengthFifth = useMotionValue(0);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          controls.start({
-            pathLengthFirst: [0, 1],
-            pathLengthSecond: [0, 1],
-            pathLengthThird: [0, 1],
-            pathLengthFourth: [0, 1],
-            pathLengthFifth: [0, 1],
-            transition: { duration: 2, yoyo: Infinity },
-          });
-        }
-      });
-    });
-
-    if (footerRef.current) {
-      observer.observe(footerRef.current);
-    }
-
-    return () => {
-      if (footerRef.current) {
-        observer.unobserve(footerRef.current);
-      }
-    };
-  }, [controls]);
 
 const infos = [
   {
@@ -120,10 +85,11 @@ const infos = [
   },
 ];
 
+const Footer = () => { 
   return (
     <div>
-      <div  className="w-full bg-black p-[20px]">
-        <div style={{ display: "flex", flexWrap: "wrap", marginTop: "10px" }}>
+      <div  className="w-full bg-black p-10">
+        <div className="flex flex-wrap mt-2">
           {infos.map((info, index) => (
             <span
               key={index}
@@ -140,8 +106,10 @@ const infos = [
             </span>
           ))}
         </div>
-        <p className="mt-20[px] text-white">© {currentYear} Lunananna All rights reserved.</p>
+        <p className="mt-20 text-white">© {currentYear} Lunananna All rights reserved.</p>
       </div>
     </div>
-  );
+  )
 }
+  
+export default Footer
