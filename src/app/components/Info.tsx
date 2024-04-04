@@ -19,11 +19,6 @@ const infos = [
     description: "Our professionals are equipped with the best tools and our services .",
       url: "https://ui.aceternity.com/_next/image?url=%2Fjordans.webp&w=828&q=75",
   },
-  {
-    title: "Super app.",
-    description: "Being a Super app means we’ve got the widest range of home services, so we’ve got you covered!",
-    url: "https://ui.aceternity.com/_next/image?url=%2Fjordans.webp&w=828&q=75",
-  },
 ];
 
 
@@ -39,27 +34,29 @@ const Info = () => {
               Hi the is the sub heading section of Info
             </p>
           </div>
+          <div className="row-span-3 md:row-span-3 flex gap-5">
           {infos.map((info, index) => (
-            <div key={index}>
-              <Card className={cn("w-[250px] h-[350px] card-hover-effects")}>
+            <div key={index} >
+              <Card className={cn("w-[400px] h-[220px] card-hover-effects")}>
                 <CardContent className="grid gap-4">
                   <div className=" flex justify-center space-x-4 rounded-md p-4">
-                      <Image
+                      {/* <Image
                         src={info.url}
                         alt="jordans"
                         height="150"
                         width="150"
                         className="object-contain"
-                      />
+                      /> */}
                   </div>
                 </CardContent>
-                <CardHeader>
+                {/* <CardHeader>
                   <CardTitle className="text-center">{info.title}</CardTitle>
                   <CardDescription className="pt-5 text-center">{info.description}</CardDescription>
-                </CardHeader>
+                </CardHeader> */}
               </Card>
             </div>
           ))}
+          </div>
         </div>
       </div>
     </>
