@@ -15,10 +15,10 @@ export default function Home() {
     <>
       <Drawer/>
       <Navbar />
-      <IconGrid/>
+      {/* <IconGrid/> */}
       <Hero />
       {/* <Services /> */}
-      <Info />
+      {/* <Info /> */}
       <Testimony />
       <Faq/>
       <Footer/>
