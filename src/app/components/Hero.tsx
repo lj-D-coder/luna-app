@@ -20,7 +20,7 @@ export default function Hero() {
           autoplay
           controller={{
             initialSlide: 1,
-            slidingDuration: 500,
+            slidingDuration: 100,
             slidingDelay: 100,
             onSliding: (nextSlide: number) => console.debug("onSliding(nextSlide): ", nextSlide),
           }}
@@ -33,6 +33,9 @@ export default function Hero() {
               errors: true,
             },
           }}
+          accessibility={
+            {shouldDisplayButtons:false}
+          }
         >
           <Overlay>
             <Wrapper>
@@ -69,64 +72,6 @@ export default function Hero() {
           />
           {/* <MenuNav /> */}
           {/* <ButtonsNav/> */}
-        </HeroSlider>
-      </div>
-      <div className="md:hidden">
-        <HeroSlider
-          height="100vh"
-          className="top-0 h-full w-full"
-          autoplay
-          controller={{
-            initialSlide: 1,
-            slidingDuration: 500,
-            slidingDelay: 100,
-            onSliding: (nextSlide: number) => console.debug("onSliding(nextSlide): ", nextSlide),
-          }}
-          settings={{
-            debug: {
-              verbose: true,
-              info: true,
-              debug: true,
-              warnings: true,
-              errors: true,
-            },
-          }}
-        >
-          <Overlay>
-            <Wrapper>
-              <Title></Title>
-            </Wrapper>
-          </Overlay>
-
-          <Slide
-            label="Giau Pass - Italy"
-            background={{
-              backgroundImageSrc: giauPass,
-            }}
-          />
-
-          <Slide
-            label="Home cleaning - Dust Free"
-            background={{
-              backgroundImageSrc: bogliasco,
-            }}
-          />
-
-          <Slide
-            label="Car Wash - Service "
-            background={{
-              backgroundImageSrc: casWash,
-            }}
-          />
-
-          <Slide
-            label="Crater Rock, OR - United States"
-            background={{
-              backgroundImageSrc: craterRock,
-            }}
-          />
-          {/* <MenuNav /> */}
-          <ButtonsNav />
         </HeroSlider>
       </div>
     </>
