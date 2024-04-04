@@ -56,7 +56,7 @@ const IconGrid = () => {
         <div className="flex flex-wrap">
           <div className="grid grid-cols-1 md:grid-cols-3 mx-auto gap-10 p-10">
             {icons.map((icon, index) => (
-              <div key={index} className="col-span-1 md:col-span-1 flex-col">
+              <div key={index} className="col-span-1 md:col-span-1 flex-col hover:text-blue-400">
                 <div className={cn("w-[100px] h-[100px] card-hover-effects border-none shadow-none")}>
                   <Image
                     src={icon.url}
