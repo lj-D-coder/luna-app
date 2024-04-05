@@ -1,5 +1,3 @@
-import check from "./check.svg";
-import brainwaveSymbol from "./brainwave-symbol.svg";
 import carwash from "./car.svg";
 import carservice from "./car_service.svg"
 import accleaning from './ac_cleaning.svg'
