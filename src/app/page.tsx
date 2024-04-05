@@ -8,7 +8,7 @@ import Drawer from "./components/Drawer"
 import IconGrid from "./components/IconGrid"
 import Faq from "./components/Faq";
 import Banner from "./components/Banner";
-
+import AppLink from "./components/AppLink";
 
 
 
@@ -18,11 +18,10 @@ export default function Home() {
       <Drawer />
       <Navbar />
       <IconGrid />
-      {/* <Services /> */}
       <Info />
       <Banner />
-      {/* <ProductCard/> */}
       <Testimony />
+      <AppLink />
       <Faq />
       <Footer />
     </>

@@ -111,13 +111,23 @@ const Footer = () => {
         </div>
 
         {/* <!-- Copyright --> */}
-        <div className=" p-6 text-center bg-neutral-700 flex justify-center items-center">
-          <span>© {currentYear}</span>
-
-          <a className="font-semibold  text-neutral-400" href="https://lunnananna.com/">
-            {"\u00A0"} Lunananna All rights reserved.
-          </a>
+        <div className="flex flex-row justify-between  p-6">
+          <div className="col-span-3 md:col-span-1 left-2">
+            <div className="flex justify-center space-x-4">
+              <a href="#" className="text-neutral-400 hover:text-white">Contact Us</a>
+              <a href="#" className="text-neutral-400 hover:text-white">About Us</a>
+              <a href="#" className="text-neutral-400 hover:text-white">Terms and Conditions</a>
+              <a href="#" className="text-neutral-400 hover:text-white">Refund Policy</a>
+            </div>
+          </div>
+          <div className="text-center flex justify-center items-center">
+            <span>© {currentYear}</span>
+            <a className="font-semibold  text-neutral-400" href="https://lunnananna.com/">
+              {"\u00A0"} Lunananna All rights reserved.
+            </a>
+          </div>
         </div>
+
       </div>
 
       {/* <div className="h-full flex justify-center items-center">

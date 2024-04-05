@@ -18,10 +18,10 @@ const faqs = [
     "question": "Why should I use Redux with React.js?",
     "answer": "Redux is a predictable state container for JavaScript apps that helps you write applications that behave consistently, run in different environments (client, server, and native), and are easy to test."
   }
-  
+
 ];
 
-const FAQ = () => {
+const Faq = () => {
   const [isRotated, setIsRotated] = useState<boolean[]>(new Array(faqs.length).fill(false));
 
   const toggleRotation = (index: number) => {
@@ -56,16 +56,15 @@ const FAQ = () => {
                     <span className={`ml-auto h-5 w-5 shrink-0 ${isRotated[index] ? 'rotate-180' : ''} fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-[#8FAEE0] dark:group-[[data-te-collapse-collapsed]]:fill-[#eee]`}>
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
                         <path
-                          fill-rule="evenodd"
+                          fillRule="evenodd"
                           d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
                         />
                       </svg>
                     </span>
                   </button>
                   <div
-                    className={`faq-answer px-5 text-neutral-500 transition-all duration-500 ease-in-out overflow-hidden ${
-                      index === expandedIndex ? "max-h-screen" : "max-h-0"
-                    }`}
+                    className={`faq-answer px-5 text-neutral-500 transition-all duration-500 ease-in-out overflow-hidden ${index === expandedIndex ? "max-h-screen" : "max-h-0"
+                      }`}
                   >
                     {faq.answer}
                   </div>
@@ -79,4 +78,4 @@ const FAQ = () => {
   );
 };
 
-export default FAQ;
+export default Faq;
