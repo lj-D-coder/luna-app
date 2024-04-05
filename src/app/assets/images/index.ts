@@ -7,6 +7,13 @@ import homecleaning from './home_cleaning.svg'
 import sofaCleaning from './sofa_cleaning.svg'
 import phoneRepair from './phone_repair.svg'
 import sidebanner from './sidebanner.png'
+import carwashimg from './carwash.png'
+import carserviceimg from './carservicing.png'
+import accleaningimg from './accleaning.png'
+import homecleaningimg from './homecleaning.png'
+import sofacleaningimg from './sofawash.png'
+import phonerepairimg from './phonerepair.png'
+
 
 
 export {
@@ -16,5 +23,11 @@ export {
     homecleaning,
     sofaCleaning,
     phoneRepair,
-    sidebanner
+    sidebanner,
+    carwashimg,
+    carserviceimg,
+    accleaningimg,
+    homecleaningimg,
+    sofacleaningimg,
+    phonerepairimg
 };

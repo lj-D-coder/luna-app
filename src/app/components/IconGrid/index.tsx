@@ -1,9 +1,12 @@
 import React from "react";
 import { cn } from "@/lib/utils/cn";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/app/components/ui/card";
-import { carwash, accleaning, carservice, homecleaning, phoneRepair, sofaCleaning, sidebanner } from "@/app/assets/images";
+import { carwash, accleaning, carservice, homecleaning, phoneRepair, sofaCleaning, sidebanner, carwashimg, sofacleaningimg } from "@/app/assets/images";
 import Image from "next/image";
 import { url } from "inspector";
+import HeroSlider from "hero-slider/dist/HeroSlider";
+import Hero from "../Hero";
+import Search from "../Search";
 
 
 const icons = [
@@ -43,47 +46,49 @@ const heroBanner = [
   {
     title: "Super app.",
     description: "Being a Super app means we’ve got the widest range of home services, so we’ve got you covered!",
-    url: sidebanner,
+    url: sofacleaningimg,
   },
 ];
 
 const IconGrid = () => {
   return (
     <>
-      {/* <div className="w-full h-screen absolute flex items-center justify-center z-10"> */}
-      {/* <div className="space-x-80"> */}
-      <div className="w-30% h-auto left-20 absolute mt-[15%] z-10 flex-wrap bg-white opacity-90 rounded">
-        <div className="flex flex-wrap">
-          <div className="grid grid-cols-1 md:grid-cols-3 mx-auto gap-10 p-10">
-            {icons.map((icon, index) => (
-              <div key={index} className="col-span-1 md:col-span-1 flex-col hover:text-blue-400">
-                <div className={cn("w-[100px] h-[100px] card-hover-effects border-none shadow-none")}>
-                  <Image
-                    src={icon.url}
-                    alt="car wash"
-                    layout="fill"
-                  />
+      <Search placeholder="Search for area, street name, landmark..." />
+      <div className="w-full h-screen items-center flex z-10 bg-white">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 space-x-5">
+          <div className="w-[450px] h-[300px] left-20 ml-[15%] mt-[25%]">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mx-auto"> {/* Added gap-4 for spacing */}
+              {icons.map((icon, index) => (
+                <div key={index} className="col-span-1 md:col-span-1 flex flex-col items-center hover:text-blue-400"> {/* Added items-center */}
+                  <div className={cn("w-[100px] h-[100px] card-hover-effects border-none shadow-none")}>
+                    <Image
+                      src={icon.url}
+                      alt="car wash"
+                      layout="fill"
+                    />
+                  </div>
+                  <div className="text-center mt-2">{icon.title}</div> {/* Added text-center class */}
                 </div>
-                <div className="text-center mt-2">{icon.title}</div>
+              ))}
+            </div>
+          </div>
+
+
+          <div className="mt-[13%] opacity-80 rounded">
+            <div className="flex ">
+              <div className="grid grid-cols-1 md:grid-cols-1">
+                {heroBanner.map((banner, index) => (
+                  <div key={index} className="col-span-1 md:col-span-1">
+                    <div className={cn("w-[700px] h-[400px] card-hover-effects")}>
+                      <Hero />
+                      {/* <Image src={banner.url} alt="jordans" layout="fill" className="object-cover rounded-xl" /> */}
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
-      </div>
-      <div className="w-25% h-auto absolute z-10 mt-[13%] float-right flex-wrap right-20 opacity-80 rounded">
-        <div className="flex ">
-          <div className="grid grid-cols-1 md:grid-cols-1">
-            {heroBanner.map((banner, index) => (
-              <div key={index} className="col-span-1 md:col-span-1">
-                <div className={cn("w-[700px] h-[450px] card-hover-effects")}>
-                  <Image src={banner.url} alt="jordans" layout="fill" className="object-cover rounded-xl" />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-        {/* </div> */}
-        {/* </div> */}
       </div>
     </>
   );

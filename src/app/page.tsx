@@ -18,7 +18,7 @@ export default function Home() {
       <Drawer />
       <Navbar />
       <IconGrid />
-      <Hero />
+      {/* <Hero /> */}
       {/* <Services /> */}
       <Info />
       <Banner />
