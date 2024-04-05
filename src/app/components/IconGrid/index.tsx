@@ -74,7 +74,7 @@ const IconGrid = () => {
           </div>
 
 
-          <div className="mt-[13%] opacity-80 rounded">
+          <div className="mt-[13%] rounded">
             <div className="flex ">
               <div className="grid grid-cols-1 md:grid-cols-1">
                 {heroBanner.map((banner, index) => (

@@ -17,7 +17,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
         </label>
         <div className="relative w-full md:w-3/6">
           <input
-            className="block w-full h-[50px] rounded-full border-2 border-green-200 border-x-blue-200 py-[9px] pl-10 text-base outline-2 placeholder:text-gray-200 bg-white bg-opacity-50  focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+            className="block w-full h-[50px] rounded-full border-2 border-blue-500 py-[9px] pl-10 text-base outline-2 placeholder:text-gray-200 bg-white bg-opacity-50  focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
             placeholder={placeholder}
             onChange={(e) => {
               handleSearch(e.target.value);

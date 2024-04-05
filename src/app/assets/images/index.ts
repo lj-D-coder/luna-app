@@ -11,8 +11,9 @@ import carwashimg from './carwash.png'
 import carserviceimg from './carservicing.png'
 import accleaningimg from './accleaning.png'
 import homecleaningimg from './homecleaning.png'
-import sofacleaningimg from './sofawash.png'
+import sofacleaningimg from './sofacleaning.png'
 import phonerepairimg from './phonerepair.png'
+import curve from './LunaNanna.svg'
 
 
 
@@ -29,5 +30,6 @@ export {
     accleaningimg,
     homecleaningimg,
     sofacleaningimg,
-    phonerepairimg
+    phonerepairimg,
+    curve
 };
