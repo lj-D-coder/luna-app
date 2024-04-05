@@ -8,7 +8,7 @@ import Drawer from "./components/Drawer"
 import IconGrid from "./components/IconGrid"
 import Faq from "./components/Faq";
 import Banner from "./components/Banner";
-import ProductCard from "./components/ProductCard";
+
 
 
 
@@ -18,7 +18,6 @@ export default function Home() {
       <Drawer />
       <Navbar />
       <IconGrid />
-      {/* <Hero /> */}
       {/* <Services /> */}
       <Info />
       <Banner />
