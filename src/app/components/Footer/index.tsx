@@ -85,7 +85,7 @@ const infos = [
 const Footer = () => {
   return (
     <>
-      <div className="text-center  bg-neutral-800 text-neutral-200">
+      <div className="text-center  bg-black text-neutral-200">
         <Socials />
 
         <div className="mx-6 pt-8 pb-4 text-center">
@@ -111,7 +111,7 @@ const Footer = () => {
         </div>
 
         {/* <!-- Copyright --> */}
-        <div className="flex flex-row justify-between  p-6">
+        <div className="flex flex-col md:flex-row justify-between p-10 md:p-6">
           <div className="col-span-3 md:col-span-1 left-2">
             <div className="flex justify-center space-x-4">
               <a href="#" className="text-neutral-400 hover:text-white">Contact Us</a>
@@ -120,7 +120,7 @@ const Footer = () => {
               <a href="#" className="text-neutral-400 hover:text-white">Refund Policy</a>
             </div>
           </div>
-          <div className="text-center flex justify-center items-center">
+          <div className="text-center flex justify-center items-center mb-2">
             <span>© {currentYear}</span>
             <a className="font-semibold  text-neutral-400" href="https://lunnananna.com/">
               {"\u00A0"} Lunananna All rights reserved.
