@@ -3,7 +3,8 @@ import "hero-slider/dist/index.css";
 import HeroSlider, { ButtonsNav, MenuNav, Overlay, Slide } from "hero-slider";
 import Wrapper from "./Wrapper";
 import Title from "./Title";
-import { carwashimg, carserviceimg, accleaningimg, homecleaningimg, sofacleaningimg, phonerepairimg } from '../assets/images/index'
+import { carwashimg, carserviceimg, accleaningimg, homecleaningimg, sofacleaningimg, phonerepairimg } from '../assets/images/index';
+import { useEffect, useState } from 'react';
 
 // const bogliasco = "https://d222mnpmkyzhbp.cloudfront.net/prod/assets/static/home/hero-v1.webp";
 // const casWash =
@@ -45,12 +46,28 @@ const bannerImages = [
   },
 ];
 
-export default function Hero() {
+
+const Hero: React.FC = () => {
+  const [height, setHeight] = useState<string>('30vh');
+
+  useEffect(() => {
+    const updateHeight = () => {
+      setHeight(window.innerWidth >= 768 ? '50vh' : '30vh');
+    };
+
+    updateHeight();
+    window.addEventListener('resize', updateHeight);
+
+    return () => {
+      window.removeEventListener('resize', updateHeight);
+    };
+  }, []);
+
   return (
     <>
       <div className="flex">
         <HeroSlider
-          height="30vh"
+           height={height}
           className="top-0 h-full w-full"
           style={{
             borderRadius: "10px"
@@ -98,3 +115,5 @@ export default function Hero() {
     </>
   );
 }
+
+export default Hero;
