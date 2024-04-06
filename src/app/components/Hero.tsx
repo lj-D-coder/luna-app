@@ -52,7 +52,7 @@ const Hero: React.FC = () => {
 
   useEffect(() => {
     const updateHeight = () => {
-      setHeight(window.innerWidth >= 768 ? '50vh' : '30vh');
+      setHeight(window.innerWidth >= 768 ? '70vh' : '30vh');
     };
 
     updateHeight();
@@ -67,7 +67,7 @@ const Hero: React.FC = () => {
     <>
       <div className="flex">
         <HeroSlider
-           height={height}
+          height={height}
           className="top-0 h-full w-full"
           style={{
             borderRadius: "10px"
@@ -76,7 +76,7 @@ const Hero: React.FC = () => {
           controller={{
             initialSlide: 1,
             slidingDuration: 100,
-            slidingDelay: 100,
+            slidingDelay: 10,
             onSliding: (nextSlide: number) => console.debug("onSliding(nextSlide): ", nextSlide),
           }}
           settings={{
@@ -109,7 +109,7 @@ const Hero: React.FC = () => {
             </div>
           ))}
           {/* <MenuNav /> */}
-          <ButtonsNav/>
+          <ButtonsNav />
         </HeroSlider>
       </div>
     </>
