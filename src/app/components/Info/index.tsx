@@ -23,7 +23,6 @@ const infos = [
 ];
 
 export default function Info() {
-
   const swiperRef = useRef<SwiperClass | null>(null);
   return (
     <>

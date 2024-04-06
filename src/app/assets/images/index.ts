@@ -12,6 +12,10 @@ import homecleaningimg from './homecleaning.png'
 import sofacleaningimg from './sofacleaning.png'
 import phonerepairimg from './phonerepair.png'
 import curve from './LunaNanna.svg'
+import lunnaLogo from '@/app/assets/images/Luna_Naanna_logo.png'
+import lunnaLogo2 from '@/app/assets/images/Luna_Naanna_logo2.png'
+import logoblack from '@/app/assets/images/logoblack.jpeg'
+import logoblacktransparent from '@/app/assets/images/logobgblacktr.png'
 
 
 
@@ -29,5 +33,9 @@ export {
     homecleaningimg,
     sofacleaningimg,
     phonerepairimg,
-    curve
+    curve,
+    lunnaLogo,
+    lunnaLogo2,
+    logoblack,
+    logoblacktransparent
 };
