@@ -112,8 +112,8 @@ export default function Testimony() {
                 {testimonies.map((testimony, index) => (
                   <SwiperSlide key={index} onClick={() => swiperRef.current && swiperRef.current.slideTo(index)}>
                     <div className="w-full mx-auto">
-                      <div className="grid grid-cols-12 md:gap-0">
-                        <div className="col-span-12 md:col-span-3 p-0 md:pl-4">
+                      <div className="grid grid-cols-12">
+                        <div className="col-span-12 md:col-span-3 pl-0 md:pl-4 flex flex-col md:flex-none items-center md:items-start justify-center">
                           <TestimonyCard testimony={testimony} />
                         </div>
                         <div className="col-span-12 md:col-span-8 pl-2 md:p-10 mt-0 md:-mt-10 ml-0 md:ml-10">
