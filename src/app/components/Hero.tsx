@@ -48,9 +48,9 @@ const bannerImages = [
 export default function Hero() {
   return (
     <>
-      <div className="hidden md:flex">
+      <div className="flex">
         <HeroSlider
-          height="55vh"
+          height="30vh"
           className="top-0 h-full w-full"
           style={{
             borderRadius: "10px"

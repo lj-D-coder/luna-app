@@ -10,3 +10,15 @@
     }
   }
   
+
+  .heroSlider {
+    border-radius: 10px;
+    height: 30vh;
+  }
+  
+  @media (min-width: 768px) {
+    .heroSlider {
+      height: 50vh;
+    }
+  }
+  
