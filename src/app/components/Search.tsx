@@ -17,13 +17,13 @@ export default function Search({ placeholder }: { placeholder: string }) {
         </label>
         <div className="relative w-full md:w-3/6">
           <input
-            className="block w-full h-[50px] rounded-full border-2 border-blue-500 py-[9px] pl-10 text-base outline-2 placeholder:text-gray-200 bg-white bg-opacity-50  focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+            className="block w-full h-[50px] rounded-full border-2 border-blue-500 py-[9px] pl-10 text-base outline-2 placeholder:text-gray-300 bg-white bg-opacity-80  focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
             placeholder={placeholder}
             onChange={(e) => {
               handleSearch(e.target.value);
             }}
           />
-          <MagnifyingGlassIcon className="absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-100 peer-focus:text-gray-200" />
+          <MagnifyingGlassIcon className="absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-600 peer-focus:text-gray-200" />
           <div className="absolute z-10 right-4 top-1/2 h-[18px] w-[18px] -translate-y-1/2">
             <Image src={target} alt="target-icon" />
           </div>

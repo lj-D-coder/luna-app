@@ -92,7 +92,7 @@ export default function Hero() {
             </div>
           ))}
           {/* <MenuNav /> */}
-          {/* <ButtonsNav/> */}
+          <ButtonsNav/>
         </HeroSlider>
       </div>
     </>
