@@ -9,6 +9,7 @@ import IconGrid from "./components/IconGrid"
 import Faq from "./components/Faq";
 import Banner from "./components/Banner";
 import AppLink from "./components/AppLink";
+import HowItWorks from "./components/HowItWorks";
 
 
 
@@ -22,7 +23,7 @@ export default function Home() {
       <Banner />
       <Testimony />
       <AppLink />
-      <Faq />
+      <HowItWorks />
       <Footer />
     </>
   );

@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 // import "swiper/css/navigation";
 import "./css/swipers.css";
-import {Parallax, Navigation, Autoplay, EffectCoverflow, Pagination } from "swiper/modules";
+import { Parallax, Navigation, Autoplay, EffectCoverflow, Pagination } from "swiper/modules";
 import { Swiper as SwiperClass } from "swiper";
 import TestimonyCard from "./testimonyCard";
 import TestimonyVideo from "./videoCard";
@@ -54,7 +54,7 @@ export default function Testimony() {
       <div className="w-full h-auto mx-auto md:p-24 bg-slate-100">
         <div className="grid grid-cols-12 md:hidden">
           <div className="col-span-12">
-            <h1 className="text-xl text-center font-bold tracking-widest">TESTIMONIES</h1>
+            <h1 className="text-xl text-center font-bold tracking-widest mt-3">TESTIMONIES</h1>
             <p className="text-lg mt-1 tracking-[.15em] text-center">What Our Clients Say.</p>
           </div>
         </div>
@@ -113,7 +113,6 @@ export default function Testimony() {
                         <div className="col-span-12 md:col-span-4 flex flex-col items-center justify-center">
                           <TestimonyCard testimony={testimony} />
                         </div>
-
                         <div className="col-span-12 md:col-span-8 p-0 md:p-8">
                           <TestimonyVideo testimony={testimony} />
                         </div>

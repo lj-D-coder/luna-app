@@ -28,6 +28,9 @@ export default function Info() {
   return (
     <>
       <div className="w-full mx-auto p-5 md:p-10 bg-white">
+        <div className="text-center mb-4">
+          <h3 className="text-4xl font-bold">Offers on top service</h3>
+        </div>
         <div className="flex flex-col md:flex-row justify-center items-center">
           {infos.map((info, index) => (
             <div className="w-[98%] md:w-[28%] h-[200px] card-hover-effects m-5">
