@@ -9,25 +9,15 @@ import Socials from "./Footer/Socials";
 const Navbar = () => {
   return (
     <nav className="absolute z-10 w-full h-[auto] bg-no-repeat bg-cover">
-      {/* </nav><nav className="h-[auto] bg-[url(./assets/images/nav-bg.svg)] bg-[100% 100%] bg-no-repeat bg-cover opacity-70">
-    <nav className="h-[auto] lg:h-[250px] bg-[url(./assets/images/nav-bg.svg)] bg-[100% 100%] lg:bg-[url(./assets/images/nav-bg-big.svg)] bg-no-repeat bg-cover lg:bg-contain"> */}
       <div className="container mx-auto px-1 py-2">
         <div className="flex items-center justify-between md:h-[50px]">
           <div className="flex items-cente pt-1">
-            <Image
-              src={logoblacktransparent}
-              alt="Logo"
-              width={140}
-              height={100}
-              className="mr-2"
-            />
+            <Image src={logoblacktransparent} alt="Logo" width={140} height={100} className="mr-2" />
             {/* <div className="text-white font-semibold text-lg">Luna Nanna</div> */}
           </div>
 
-
           <div className="hidden md:flex space-x-4">
             {/* Add your navigation links here */}
-
 
             <div className="flex justify-center items-center">
               <div className="mr-3">
@@ -53,8 +43,10 @@ const Navbar = () => {
                 </svg>
               </a>
               <a href="#!" className="text-neutral-200 mr-3">
-                <img className="h-6 w-6" src="https://res.cloudinary.com/dwwmpwo9b/image/upload/v1712404187/insta-removebg-preview_wtqsjg.png">
-                </img>
+                <img
+                  className="h-6 w-6"
+                  src="https://res.cloudinary.com/dwwmpwo9b/image/upload/v1712404187/insta-removebg-preview_wtqsjg.png"
+                ></img>
               </a>
             </div>
             {/* <a href="#" className="text-black hover:text-gray-300">Home</a>
@@ -63,13 +55,7 @@ const Navbar = () => {
             {/* ... more links */}
           </div>
           <div className="md:hidden">
-            <Image
-              src={hamburger}
-              alt="Hamburger"
-              width={20}
-              height={12}
-              className="cursor-pointer"
-            />
+            <Image src={hamburger} alt="Hamburger" width={20} height={12} className="cursor-pointer" />
           </div>
         </div>
       </div>

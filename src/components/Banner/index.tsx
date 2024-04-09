@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import Link from 'next/link';
-import { homecleaningimg } from '@/app/assets/images/index'
+import Link from "next/link";
+import { homecleaningimg } from "@/assets/images/index";
 
 const banner = [
   {
@@ -17,7 +17,14 @@ const Banner = () => {
       <div className="bg-white w-full rounded-lg overflow-hidden transition duration-300">
         <div className="relative card-hover-effects">
           <Link href="/your-desired-path">
-            <Image src="https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template/w_1232,dpr_1,fl_progressive:steep,q_auto:low,f_auto,c_limit/images/growth/luminosity/1698216851653-cc8265.jpeg" alt="banner image" layout="responsive" width={1232} height={692} objectFit="cover" />
+            <Image
+              src="https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template/w_1232,dpr_1,fl_progressive:steep,q_auto:low,f_auto,c_limit/images/growth/luminosity/1698216851653-cc8265.jpeg"
+              alt="banner image"
+              layout="responsive"
+              width={1232}
+              height={692}
+              objectFit="cover"
+            />
           </Link>
         </div>
       </div>
