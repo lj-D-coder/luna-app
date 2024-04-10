@@ -1,7 +1,6 @@
 "use client";
 import { FunctionComponent, useEffect, useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
-
 import { CurrencyFormatter } from "./CurrencyFormatter";
 import { Loader } from "./Loader";
 
@@ -56,45 +55,43 @@ export const Products: FunctionComponent = () => {
     }));
   };
 
-  const isInCart = (productId: number): boolean => Object.keys(cart || {}).includes(productId.toString());
+  const isInCart = (productId: number): boolean =>
+    Object.keys(cart || {}).includes(productId.toString());
 
   if (error) {
-    return <h3 className="">An error occurred when fetching data. Please check the API and try again.</h3>;
+    return <h3>An error occurred when fetching data. Please check the API and try again.</h3>;
   }
 
   if (isLoading) {
     return (
-      <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-        <Loader />;
+      <div className="flex justify-center items-center h-screen">
+        <Loader />
       </div>
-    )
-    
+    );
   }
 
   return (
-    <section className="p-4 mt-32">
-      <h1>Products</h1>
-
-      <div className="flex flex-wrap justify-between">
+    <section className="container mx-auto p-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {products.map((product) => (
-          <div className="xs:flex-1 sm:flex-1/2 md:flex-1/3 mb-20 text-center" key={product.id}>
-            <img className="max-w-12 h-auto m-2.5" src={product.thumbnail} alt={product.title} />
-            <h3>{product.title}</h3>
-            <p>
-              Price: <CurrencyFormatter amount={product.price} />
-            </p>
-            <button
-              className={`p-2 bg-blue-500 text-white rounded ${
-                isInCart(product.id) ? "bg-gray-300 cursor-not-allowed" : ""
-              }`}
-              disabled={isInCart(product.id)}
-              onClick={() => addToCart(product)}
-            >
-              Add to Cart
-            </button>
+          <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden">
+            <img className="w-full h-48 object-cover" src={product.thumbnail} alt={product.title} />
+            <div className="p-4">
+              <h3 className="text-xl font-semibold mb-2 truncate">{product.title}</h3>
+              <p className="text-gray-600 mb-4">
+                Price: <CurrencyFormatter amount={product.price} />
+              </p>
+              <button
+                className={`w-full py-2 px-4 bg-black text-white rounded ${isInCart(product.id) ? "bg-gray-300 cursor-not-allowed" : ""} hover:bg-gray-700 transition duration-300`}
+                disabled={isInCart(product.id)}
+                onClick={() => addToCart(product)}
+              >
+                {isInCart(product.id) ? "In Cart" : "Add to Cart"}
+              </button>
+            </div>
           </div>
         ))}
       </div>
-    </section>
+    </section >
   );
 };

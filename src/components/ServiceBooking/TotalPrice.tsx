@@ -7,7 +7,7 @@ interface Props {
 
 export const TotalPrice: FunctionComponent<Props> = ({ amount }) => {
   return (
-    <div className='border-t text-right border-black'>
+    <div className='border-t mt-2 text-right border-slate-500'>
       Total: <CurrencyFormatter amount={amount} />
     </div>
   )

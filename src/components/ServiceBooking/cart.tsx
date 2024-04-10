@@ -7,7 +7,6 @@ import { CartProps } from './products'
 import { TotalPrice } from './TotalPrice'
 import { usePathname } from 'next/navigation';
 
-
 export const Cart: FunctionComponent = () => {
 
   const handleCheckout = () => {
@@ -36,7 +35,7 @@ export const Cart: FunctionComponent = () => {
       if (updatedCart[productId]) {
         if (operation === 'increase') {
           updatedCart[productId] = { ...updatedCart[productId], quantity: updatedCart[productId].quantity + 1 }
-        } else {
+        } else if (operation === 'decrease' && updatedCart[productId].quantity > 1) {
           updatedCart[productId] = { ...updatedCart[productId], quantity: updatedCart[productId].quantity - 1 }
         }
       }
@@ -44,31 +43,38 @@ export const Cart: FunctionComponent = () => {
     })
   }
 
-
   const getProducts = () => Object.values(cart || {})
 
   const totalPrice = getProducts().reduce((accumulator, product) => accumulator + (product.price * product.quantity), 0)
 
   return (
-    <section className="p-4 mt-32">
-      <h1>Cart</h1>
+    <section className="p-4 mt-10 relative">
+      <h1 className="text-3xl font-semibold mb-8">Cart</h1>
 
-      <div className="flex flex-col">
+      <div className="grid grid-cols-1 gap-4">
         {getProducts().map(product => (
-          <div className="flex border-t border-l border-r border-dotted px-1 py-0.5 items-center" key={product.id}>
-            <img className='max-w-12 h-auto m-2.5' src={product.thumbnail} alt={product.title} />
-            <h3 className='text-blue-600 font-bold text-base leading-5 m-0.5 flex-grow'>{product.title}</h3>
-            <Quantifier
-              removeProductCallback={() => handleRemoveProduct(product.id)}
-              productId={product.id}
-              handleUpdateQuantity={handleUpdateQuantity} />
+          <div key={product.id} className="border rounded-lg overflow-hidden">
+            <div className="flex p-4 border-b">
+              <img className='w-20 h-20 object-cover mr-4' src={product.thumbnail} alt={product.title} />
+              <div className="flex-grow">
+                <h3 className='text-blue-600 font-bold text-lg mb-1'>{product.title}</h3>
+                <p className="text-gray-600">Price: ${product.price.toFixed(2)}</p>
+              </div>
+              <Quantifier
+                removeProductCallback={() => handleRemoveProduct(product.id)}
+                productId={product.id}
+                handleUpdateQuantity={handleUpdateQuantity} />
+            </div>
+            <div className="p-4">
+              <p className="text-gray-600">Total: <span className="font-semibold">${(product.price * product.quantity).toFixed(2)}</span></p>
+            </div>
           </div>
         ))}
       </div>
       <TotalPrice amount={totalPrice} />
       {totalPrice > 0 && (
-        <div className='mt-4 flex justify-center'>
-          <button onClick={handleCheckout} className='px-4 py-2 bg-blue-500 text-white rounded'>Checkout</button>
+        <div className='mt-6 flex justify-center'>
+          <button onClick={handleCheckout} className='px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600'>Checkout</button>
         </div>
       )}
     </section>
