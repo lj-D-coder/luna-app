@@ -34,7 +34,7 @@ export const Header: FunctionComponent = () => {
 
   return (
     <header
-      className={`w-full h-[100px] flex items-center justify-between z-10 ${isScrolled ? 'fixed top-0 left-0' : ''}`}>
+      className="w-full h-[100px] flex items-center justify-between z-10 top-0 left-0">
       {/* <div>
         <Link href="/">
           <Image src={logoblacktransparent} className="w-32 ml-20" alt="Shopping Cart Application" />
