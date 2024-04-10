@@ -6,7 +6,7 @@ import type { Dayjs } from "dayjs";
 import dayjs from "dayjs";
 import FormComponent from "./form"
 
-const App: React.FC = () => {
+const App: React.FC<{ cart: any; totalPrice: number }> = ({ cart, totalPrice }) =>  {
   const [open, setOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Dayjs>(dayjs());
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
