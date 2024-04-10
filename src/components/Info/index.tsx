@@ -32,8 +32,8 @@ export default function Info() {
         </div>
         <div className="flex flex-col md:flex-row justify-center items-center">
           {infos.map((info, index) => (
-            <div className="w-[98%] md:w-[28%] h-[200px] card-hover-effects m-5">
-              <Image src={info.url} alt="car wash" layout="fill" style={{ objectFit: "cover", borderRadius: 20 }} />
+            <div key={index} className="w-[98%] md:w-[28%] h-[200px] card-hover-effects m-5">
+              <Image src={info.url} alt="car wash" fill style={{ objectFit: "cover", borderRadius: 20 }} />
             </div>
           ))}
         </div>

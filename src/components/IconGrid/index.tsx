@@ -92,7 +92,7 @@ const IconGrid = () => {
                     )}
                   >
                     <Link href={`/${icon.categoryUrl}`}>
-                      <Image src={icon.url} alt="car wash" layout="fill" />
+                      <Image src={icon.url} alt="car wash" fill />
                     </Link>
                   </div>
                   <div className="text-center mt-2">{icon.title}</div> {/* Added text-center class */}
