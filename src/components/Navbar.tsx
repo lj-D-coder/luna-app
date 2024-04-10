@@ -8,7 +8,7 @@ import Socials from "./Footer/Socials";
 
 const Navbar = () => {
   return (
-    <nav className="absolute z-10 w-full h-[auto] bg-no-repeat bg-cover">
+    <nav className="absolute top-0 z-10 w-full h-[auto] bg-no-repeat bg-cover">
       <div className="container mx-auto px-1 py-2">
         <div className="flex items-center justify-between md:h-[50px]">
           <div className="flex items-cente pt-1">
