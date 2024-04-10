@@ -3,7 +3,7 @@ const HowItWorks = () => {
     {
       icon: (
         <svg
-          xmlns="http://www.w3.org/2000/svg"
+          xmlns="https://res.cloudinary.com/dwwmpwo9b/image/upload/v1712417471/1_nylqkl.svg"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth={1.5}
@@ -17,13 +17,13 @@ const HowItWorks = () => {
           />
         </svg>
       ),
-      title: "Fast Refresh",
+      title: "Select a service",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec congue, nisl eget molestie varius, enim ex faucibus purus.",
     },
     {
       icon: (
         <svg
-          xmlns="http://www.w3.org/2000/svg"
+          xmlns="https://res.cloudinary.com/dwwmpwo9b/image/upload/v1712417471/2_blqfck.svg"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth={1.5}
@@ -37,13 +37,13 @@ const HowItWorks = () => {
           />
         </svg>
       ),
-      title: "Analytics",
+      title: "Book a slot",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec congue, nisl eget molestie varius, enim ex faucibus purus.",
     },
     {
       icon: (
         <svg
-          xmlns="http://www.w3.org/2000/svg"
+          xmlns="https://res.cloudinary.com/dwwmpwo9b/image/upload/v1712417471/3_reefps.svg"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth={1.5}
@@ -57,7 +57,7 @@ const HowItWorks = () => {
           />
         </svg>
       ),
-      title: "Datacenter security",
+      title: "Door-step Care",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec congue, nisl eget molestie varius, enim ex faucibus purus.",
     },
   ];

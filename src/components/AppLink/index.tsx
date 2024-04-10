@@ -2,10 +2,14 @@ import React from 'react';
 
 function AppLink() {
     return (
-        // <div className="h-[300px] content-center bg-gradient-to-r from-blue-500 via-blue-300 via-white to-blue-500  text-white py-8">
-        <div
-        style={{ background: "linear-gradient(106.89deg, rgba(192, 132, 252, 0.11), rgba(14, 165, 233, 0.41), rgba(232, 121, 249, 0.26) 56.49%, rgba(79, 70, 229, 0.4))" }}
-            className="h-[300px] content-center text-slate-800 py-8">
+        <div style={{
+            background: "linear-gradient(106.89deg, rgba(192, 132, 252, 0.11), rgba(14, 165, 233, 0.41), rgba(232, 121, 249, 0.26) 56.49%, rgba(79, 70, 229, 0.4))",
+            display: "flex",
+            justifyContent: "center", // horizontally center
+            alignItems: "center", // vertically center
+            height: "300px",
+            color: "#2b2b2b", // Changed text color for better visibility
+        }}>
             <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
                 <div className="text-center md:text-left mb-10 md:mb-0">
                     <div className="text-2xl md:text-3xl lg:text-4xl">Download Our App Now!</div>
