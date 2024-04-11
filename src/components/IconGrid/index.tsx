@@ -20,13 +20,13 @@ const gridData = [
     title: "Car Wash",
     description: "Our professionals are reliable & well-trained, with an average rating of 4.78 out of 5!",
     icon: carwash,
-    categoryUrl: "car-wash",
+    category: "car-wash",
   },
   {
     title: "Car Servicing",
     description: "Book in less than 60 seconds, and even select same-day slots.",
     icon: carservice,
-    categoryUrl: "car-servicing",
+    category: "car-servicing",
   },
   {
     title: "Ac Cleaning",
