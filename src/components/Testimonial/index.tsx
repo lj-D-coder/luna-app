@@ -58,7 +58,7 @@ export default function Testimony() {
             <p className="text-lg md:text-4lg mt-2 md:mt-5 tracking-[.5em] text-center">What Our Clients Say?</p>
           </div>
         </div>
-          {/*
+        {/*
           <div className="grid grid-cols-12 md:gap-2">
            <div className="hidden col-span-12 md:col-span-1 mt-2 md:mt-5 md:flex justify-center items-center">
             <div className="flex flex-col space-y-1 md:ml-14 md:p-5 text-center text-2xl font-bold bg-black text-white">
@@ -77,55 +77,55 @@ export default function Testimony() {
           </div> 
           </div>
           */}
-          <div className="col-span-12 md:col-span-12 p-0 md:p-4">
-            <div className="h-auto pb-10 md:pb-0">
-              <Swiper
-                initialSlide={1}
-                onSwiper={(swiper) => {
-                  swiperRef.current = swiper;
-                }}
-                autoplay={{
-                  delay: 20000,
-                  disableOnInteraction: false,
-                }}
-                loop={false}
-                // navigation={navigation}
-                parallax={true}
-                rewind={true}
-                effect={"coverflow"}
-                grabCursor={true}
-                centeredSlides={true}
-                slidesPerView={"auto"}
-                coverflowEffect={{
-                  rotate: 50,
-                  stretch: 0,
-                  depth: 100,
-                  modifier: 1,
-                  slideShadows: true,
-                }}
-                pagination={{
-                  clickable: false,
-                }}
-                modules={[EffectCoverflow, Autoplay, Pagination, Navigation]}
-                className="mySwiper"
-              >
-                {testimonies.map((testimony, index) => (
-                  <SwiperSlide key={index} onClick={() => swiperRef.current && swiperRef.current.slideTo(index)}>
-                    <div className="w-full mx-auto">
-                      <div className="grid grid-cols-12">
-                        <div className="col-span-12 md:col-span-3 pl-0 md:pl-4 flex flex-col md:flex-none items-center md:items-start justify-center">
-                          <TestimonyCard testimony={testimony} />
-                        </div>
-                        <div className="col-span-12 md:col-span-8 pl-2 md:p-10 mt-0 md:-mt-10 ml-0 md:ml-10">
-                          <TestimonyVideo testimony={testimony} />
-                        </div>
+        <div className="col-span-12 md:col-span-12 p-0 md:p-4">
+          <div className="h-auto pb-10 md:pb-0">
+            <Swiper
+              initialSlide={1}
+              onSwiper={(swiper) => {
+                swiperRef.current = swiper;
+              }}
+              autoplay={{
+                delay: 20000,
+                disableOnInteraction: false,
+              }}
+              loop={false}
+              // navigation={navigation}
+              parallax={true}
+              rewind={true}
+              effect={"coverflow"}
+              grabCursor={true}
+              centeredSlides={true}
+              slidesPerView={"auto"}
+              coverflowEffect={{
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+              }}
+              pagination={{
+                clickable: false,
+              }}
+              modules={[EffectCoverflow, Autoplay, Pagination, Navigation]}
+              className="mySwiper"
+            >
+              {testimonies.map((testimony, index) => (
+                <SwiperSlide key={index} onClick={() => swiperRef.current && swiperRef.current.slideTo(index)}>
+                  <div className="w-full mx-auto">
+                    <div className="grid grid-cols-12">
+                      <div className="col-span-12 md:col-span-3 pl-0 md:pl-4 flex flex-col md:flex-none items-center md:items-start justify-center">
+                        <TestimonyCard testimony={testimony} />
+                      </div>
+                      <div className="col-span-12 md:col-span-8 pl-2 md:p-10 mt-0 md:-mt-10 ml-0 md:ml-10">
+                        <TestimonyVideo testimony={testimony} />
                       </div>
                     </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
+        </div>
       </div>
     </>
   );

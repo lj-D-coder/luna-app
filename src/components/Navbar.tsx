@@ -5,6 +5,7 @@ import hamburger from "../assets/images/hamburger.svg";
 import { logoblack, lunnaLogo2, logoblacktransparent } from "../assets/images/index";
 import Search from "./Search";
 import Socials from "./Footer/Socials";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
@@ -12,8 +13,9 @@ const Navbar = () => {
       <div className="container mx-auto px-1 py-2">
         <div className="flex items-center justify-between md:h-[50px]">
           <div className="flex items-cente pt-1">
+            <Link href="/">
             <Image src={logoblacktransparent} alt="Logo" width={140} height={100} className="mr-2" />
-            {/* <div className="text-white font-semibold text-lg">Luna Nanna</div> */}
+            </Link>
           </div>
 
           <div className="hidden md:flex space-x-4">

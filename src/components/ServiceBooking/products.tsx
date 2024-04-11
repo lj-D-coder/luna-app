@@ -55,19 +55,14 @@ export const Products: FunctionComponent = () => {
     }));
   };
 
-  const isInCart = (productId: number): boolean =>
-    Object.keys(cart || {}).includes(productId.toString());
+  const isInCart = (productId: number): boolean => Object.keys(cart || {}).includes(productId.toString());
 
   if (error) {
     return <h3>An error occurred when fetching data. Please check the API and try again.</h3>;
   }
 
   if (isLoading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <Loader />
-      </div>
-    );
+    return <Loader />;
   }
 
   return (
@@ -82,7 +77,9 @@ export const Products: FunctionComponent = () => {
                 Price: <CurrencyFormatter amount={product.price} />
               </p>
               <button
-                className={`w-full py-2 px-4 bg-black text-white rounded ${isInCart(product.id) ? "bg-gray-300 cursor-not-allowed" : ""} hover:bg-gray-700 transition duration-300`}
+                className={`w-full py-2 px-4 bg-black text-white rounded ${
+                  isInCart(product.id) ? "bg-gray-300 cursor-not-allowed" : ""
+                } hover:bg-gray-700 transition duration-300`}
                 disabled={isInCart(product.id)}
                 onClick={() => addToCart(product)}
               >
@@ -92,6 +89,6 @@ export const Products: FunctionComponent = () => {
           </div>
         ))}
       </div>
-    </section >
+    </section>
   );
 };

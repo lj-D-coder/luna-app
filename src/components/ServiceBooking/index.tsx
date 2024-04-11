@@ -2,6 +2,7 @@
 import { Header } from "./header";
 import { Cart } from "./cart";
 import { Products } from "./products";
+import Image from "next/image";
 // import Navbar from "../Navbar";
  
 export default function CartPage() {
@@ -16,13 +17,12 @@ export default function CartPage() {
         </div>
         <div className="col-span-12 md:col-span-3">
           <h1 className="text-3xl font-semibold mb-8 ml-5 mt-5">Services we offer!!</h1>
-          <div className="relative m-5">
-            <img
-              src="https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template/w_1232,dpr_1,fl_progressive:steep,q_auto:low,f_auto,c_limit/images/growth/luminosity/1698216851653-cc8265.jpeg" // Replace with your image URL
+            <Image
+              src="https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template/w_1232,dpr_1,fl_progressive:steep,q_auto:low,f_auto,c_limit/images/growth/luminosity/1698216851653-cc8265.jpeg"
               alt="Banner Image"
-              className="w-full h-[150px]"
+              width={300} height={200}
+              style={{ objectFit: "cover", overflow:"hidden"}}
             />
-          </div>
           <Cart />
         </div>
       </div>

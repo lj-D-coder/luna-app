@@ -20,10 +20,9 @@ const Banner = () => {
             <Image
               src="https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template/w_1232,dpr_1,fl_progressive:steep,q_auto:low,f_auto,c_limit/images/growth/luminosity/1698216851653-cc8265.jpeg"
               alt="banner image"
-              layout="responsive"
               width={1232}
               height={692}
-              style={{ objectFit: "cover" }}
+              style={{ objectFit: "cover", width: '100%', height: 'auto' }}
             />
           </Link>
         </div>

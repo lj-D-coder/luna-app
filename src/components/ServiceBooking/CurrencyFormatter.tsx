@@ -1,14 +1,14 @@
-import { FunctionComponent } from 'react'
+import { FunctionComponent } from "react";
 
 interface Props {
-  amount: number
+  amount: number;
 }
 
 export const CurrencyFormatter: FunctionComponent<Props> = ({ amount }) => {
-  const formattedAmount = amount.toLocaleString('en-IN', {
-    style: 'currency',
-    currency: 'INR'
-  })
+  const formattedAmount = amount.toLocaleString("en-IN", {
+    style: "currency",
+    currency: "INR",
+  });
 
-  return <span className='font-bold'>{formattedAmount}</span>
-}
+  return <span className="font-bold">{formattedAmount}</span>;
+};

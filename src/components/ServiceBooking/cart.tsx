@@ -6,13 +6,12 @@ import { Quantifier, Operation } from "./Quantifier";
 import { CartProps } from "./products";
 import { TotalPrice } from "./TotalPrice";
 import { usePathname } from "next/navigation";
-import { Button, Drawer } from 'antd';
+import { Button, Drawer } from "antd";
 
-import BookingCalender from "../Drawer/calender"
+import BookingCalender from "../Drawer/calender";
 import type { Dayjs } from "dayjs";
 import dayjs from "dayjs";
-import FormComponent from "../Drawer/form"
-
+import FormComponent from "../Drawer/form";
 
 export const Cart: FunctionComponent = () => {
   const [open, setOpen] = useState(false);
@@ -29,9 +28,7 @@ export const Cart: FunctionComponent = () => {
     console.log("Checkout clicked. Cart details:", cart);
     console.log(totalPrice);
     setOpen(true);
-    
   };
-
 
   const [cart, setCart] = useLocalStorageState<CartProps>("cart", {});
   const location = usePathname();
@@ -105,9 +102,24 @@ export const Cart: FunctionComponent = () => {
         </div>
       )}
 
-<Drawer title="Basic Drawer" onClose={onClose} open={open}>
-        {!success && <BookingCalender open={open} next={next} setNext={setNext} setSelectedDate={setSelectedDate} setSelectedTime={setSelectedTime} />}
-        {next && <FormComponent success={success} setSuccess={setSuccess} selectedDate={selectedDate} selectedTime={selectedTime} />}
+      <Drawer title="Basic Drawer" onClose={onClose} open={open}>
+        {!success && (
+          <BookingCalender
+            open={open}
+            next={next}
+            setNext={setNext}
+            setSelectedDate={setSelectedDate}
+            setSelectedTime={setSelectedTime}
+          />
+        )}
+        {next && (
+          <FormComponent
+            success={success}
+            setSuccess={setSuccess}
+            selectedDate={selectedDate}
+            selectedTime={selectedTime}
+          />
+        )}
       </Drawer>
     </section>
   );
