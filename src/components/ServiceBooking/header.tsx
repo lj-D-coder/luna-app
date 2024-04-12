@@ -1,18 +1,17 @@
-"use client"
-import { FunctionComponent, useEffect, useState } from 'react'
-import Link from 'next/link';
-import useLocalStorageState from 'use-local-storage-state'
-import Image from 'next/image';
+"use client";
+import { FunctionComponent, useEffect, useState } from "react";
+import Link from "next/link";
+import useLocalStorageState from "use-local-storage-state";
+import Image from "next/image";
 
-import logo from '@/assets/images/Luna_Naanna_logo.png'
-import { CartWidget } from './CartWidget'
-import { CartProps } from './products'
-import { logoblack, logoblacktransparent, lunnaLogo2 } from '@/assets/images';
-import Navbar from '../Navbar';
+import logo from "@/assets/images/Luna_Naanna_logo.png";
+import { CartWidget } from "./CartWidget";
+import { CartProps } from "../productBuying/products";
+import { logoblack, logoblacktransparent, lunnaLogo2 } from "@/assets/images";
+import Navbar from "../Navbar";
 
 export const Header: FunctionComponent = () => {
-
-  const [cart,] = useLocalStorageState<CartProps>('cart', {})
+  const [cart] = useLocalStorageState<CartProps>("cart", {});
   const [isScrolled, setIsScrolled] = useState(false);
 
   const handleScroll = () => {
@@ -24,17 +23,16 @@ export const Header: FunctionComponent = () => {
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
-  const productsCount: number = Object.keys(cart || {}).length
+  const productsCount: number = Object.keys(cart || {}).length;
 
   return (
-    <header
-      className="w-full h-[100px] flex items-center justify-between z-10 top-0 left-0">
+    <header className="w-full h-[100px] flex items-center justify-between z-10 top-0 left-0">
       {/* <div>
         <Link href="/">
           <Image src={logoblacktransparent} className="w-32 ml-20" alt="Shopping Cart Application" />
@@ -44,7 +42,7 @@ export const Header: FunctionComponent = () => {
         <CartWidget productsCount={productsCount} />
       </div> */}
 
-      <Navbar/>
+      <Navbar />
     </header>
-  )
-}
+  );
+};

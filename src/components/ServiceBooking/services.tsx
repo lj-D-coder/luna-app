@@ -3,25 +3,35 @@ import { FunctionComponent, useEffect, useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
 import { CurrencyFormatter } from "./CurrencyFormatter";
 import { Loader } from "./Loader";
+import { FC } from 'react';
 
-const API_URL = "https://dummyjson.com/products";
-
-export type Product = {
-  id: number;
+export type Service = {
+  _id: string;
   title: string;
   price: number;
   thumbnail: string;
   image: string;
-  quantity: number;
+  serviceCapacity: number;
 };
 
 export interface CartProps {
-  [productId: string]: Product;
+  [serviceId: string]: Service;
 }
 
-export const Products: FunctionComponent = () => {
+
+interface ServiceBookingProps {
+  categoryUrl: string;
+}
+
+export const Services: FC<ServiceBookingProps> = ({ categoryUrl }) => {
+
+  console.log("asasadsadasd")
+  console.log(categoryUrl)
+  const API_URL = `${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/services/${categoryUrl}`;
+  // console.log(test_URL);
+  // const API_URL = "https://dummyjson.com/services";
   const [isLoading, setIsLoading] = useState(true);
-  const [products, setProducts] = useState<Product[]>([]);
+  const [services, setServices] = useState<Service[]>([]);
   const [error, setError] = useState(false);
   const [cart, setCart] = useLocalStorageState<CartProps>("cart", {});
 
@@ -34,7 +44,7 @@ export const Products: FunctionComponent = () => {
       const response = await fetch(url);
       if (response.ok) {
         const data = await response.json();
-        setProducts(data.products);
+        setServices(data.services);
         setIsLoading(false);
       } else {
         setError(true);
@@ -46,16 +56,16 @@ export const Products: FunctionComponent = () => {
     }
   }
 
-  const addToCart = (product: Product): void => {
-    product.quantity = 1;
+  const addToCart = (service: Service): void => {
+    service.serviceCapacity = 1;
 
     setCart((prevCart) => ({
       ...prevCart,
-      [product.id]: product,
+      [service._id]: service,
     }));
   };
 
-  const isInCart = (productId: number): boolean => Object.keys(cart || {}).includes(productId.toString());
+  const isInCart = (serviceId: number): boolean => Object.keys(cart || {}).includes(serviceId.toString());
 
   if (error) {
     return <h3>An error occurred when fetching data. Please check the API and try again.</h3>;
@@ -68,23 +78,23 @@ export const Products: FunctionComponent = () => {
   return (
     <section className="container mx-auto p-8">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {products.map((product) => (
-          <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden">
-            <img className="w-full h-48 object-cover" src={product.thumbnail} alt={product.title} />
+        {services.map((service) => (
+          <div key={service._id} className="bg-white rounded-lg shadow-md overflow-hidden">
+            <img className="w-full h-48 object-cover" src={service.thumbnail} alt={service.title} />
             <div className="p-4">
-              <h3 className="text-xl font-semibold mb-2 truncate">{product.title}</h3>
+              <h3 className="text-xl font-semibold mb-2 truncate">{service.title}</h3>
               <p className="text-gray-600 mb-4">
-                Price: <CurrencyFormatter amount={product.price} />
+                Price: <CurrencyFormatter amount={service.price} />
               </p>
-              <button
+              {/* <button
                 className={`w-full py-2 px-4 bg-black text-white rounded ${
-                  isInCart(product.id) ? "bg-gray-300 cursor-not-allowed" : ""
+                  isInCart(service._id) ? "bg-gray-300 cursor-not-allowed" : ""
                 } hover:bg-gray-700 transition duration-300`}
-                disabled={isInCart(product.id)}
-                onClick={() => addToCart(product)}
+                disabled={isInCart(service._id)}
+                onClick={() => addToCart(service)}
               >
-                {isInCart(product.id) ? "In Cart" : "Add to Cart"}
-              </button>
+                {isInCart(service._id) ? "In Cart" : "Add to Cart"}
+              </button> */}
             </div>
           </div>
         ))}

@@ -1,17 +1,22 @@
-"use client";
-import { usePathname, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { FC } from 'react';
+import ServiceBooking  from "@/components/ServiceBooking"; 
 
-export default function Page() {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  console.log(pathname);
-  useEffect(() => {
-    const url = `${pathname}`;
-    console.log(url);
-    // You can now use the current URL
-    // ...
-  }, [pathname, searchParams]);
-
-  return null;
+interface categoryProps {
+  params: {
+    category: string;
+  };
 }
+
+const page: FC<categoryProps> = async ({ params }) => {
+  const categoryUrl = params.category 
+  console.log(categoryUrl)
+  
+  return (
+        <>
+          <ServiceBooking categoryUrl={categoryUrl}/>
+        </>
+      );
+};
+
+export default page;
+

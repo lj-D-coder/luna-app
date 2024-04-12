@@ -3,7 +3,7 @@ import { FunctionComponent, useEffect, useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
 
 import { Quantifier, Operation } from "./Quantifier";
-import { CartProps } from "./products";
+import { CartProps } from "../productBuying/products";
 import { TotalPrice } from "./TotalPrice";
 import { usePathname } from "next/navigation";
 import { Button, Drawer } from "antd";
