@@ -9,8 +9,18 @@
       @apply hover:-translate-y-1 hover:scale-[101%];
     }
   }
-  
 
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+ 
   .heroSlider {
     border-radius: 10px;
     height: 30vh;
