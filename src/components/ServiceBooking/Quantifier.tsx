@@ -44,29 +44,9 @@ export const Quantifier: FunctionComponent<Props> = ({ removeProductCallback, ha
           }
         `}
       </style>
-
-      <div className="flex items-center">
-        <input
-          type="button"
-          value="-"
-          className="bg-gray-200 font-bold text-xl h-7 w-7 p-0 relative hover:bg-gray-300 cursor-pointer"
-          onClick={reduce}
-        />
-        <input
-          type="number"
-          step="1"
-          max=""
-          value={value}
-          onChange={(e) => setValue(parseInt(e.target.value))}
-          className="no-spinner border box-border m-0 outline-none items-center p-2 w-10 h-7 text-center text-sm"
-        />
-        <input
-          type="button"
-          value="+"
-          className="bg-gray-200 font-bold text-xl h-7 w-7 p-0 relative hover:bg-gray-300 cursor-pointer"
-          onClick={increase}
-        />
-      </div>
+      <button className="text-gray-600 px-3 py-1 border-r" onClick={reduce}>-</button>
+      <input type="text" className="text-center w-10" value="1" />
+      <button className="text-gray-600 px-3 py-1 border-l" onClick={increase}>+</button>
     </>
   );
 };

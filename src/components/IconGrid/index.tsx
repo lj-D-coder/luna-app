@@ -18,37 +18,37 @@ import Link from "next/link";
 const gridData = [
   {
     title: "Car Wash",
-    description: "Our professionals are reliable & well-trained, with an average rating of 4.78 out of 5!",
+    description: "Car Wash",
     icon: carwash,
     category: "car-wash",
   },
   {
     title: "Car Servicing",
-    description: "Book in less than 60 seconds, and even select same-day slots.",
+    description: "Car Service",
     icon: carservice,
     category: "car-servicing",
   },
   {
     title: "Ac Cleaning",
-    description: "Our professionals are equipped with the best tools and our services .",
+    description: "Ac Cleaning",
     icon: accleaning,
     category: "ac-cleaning",
   },
   {
     title: "Home Cleaning",
-    description: "Being a Super app means we’ve got the widest range of home services, so we’ve got you covered!",
+    description: "Home Cleaning",
     icon: homecleaning,
     category: "home-cleaning",
   },
   {
     title: "Sofa Cleaning",
-    description: "Our professionals are equipped with the best tools and our services .",
+    description: "Sofa Cleaning",
     icon: sofaCleaning,
     category: "sofa-cleaning",
   },
   {
     title: "Phone Repair",
-    description: "Being a Super app means we’ve got the widest range of home services, so we’ve got you covered!",
+    description: "Phone Repair",
     icon: phoneRepair,
     category: "phone-repair",
   },
@@ -79,7 +79,7 @@ const IconGrid = () => {
                     )}
                   >
                     <Link href={`/${data.category}`}>
-                      <Image src={data.icon} alt="car wash" fill />
+                      <Image src={data.icon} alt={data.description} fill />
                     </Link>
                   </div>
                   <div className="text-center mt-2">{data.title}</div> {/* Added text-center class */}
@@ -93,7 +93,7 @@ const IconGrid = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div >
     </>
   );
 };
