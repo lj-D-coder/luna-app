@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils/cn";
 
 import {
@@ -14,48 +14,56 @@ import Image from "next/image";
 import Hero from "../Hero";
 import Search from "../Search";
 import Link from "next/link";
+import { Loader } from "./Loader";
+import { json } from "stream/consumers";
 
-const gridData = [
-  {
-    title: "Car Wash",
-    description: "Car Wash",
-    icon: carwash,
-    category: "car-wash",
-  },
-  {
-    title: "Car Servicing",
-    description: "Car Service",
-    icon: carservice,
-    category: "car-servicing",
-  },
-  {
-    title: "Ac Cleaning",
-    description: "Ac Cleaning",
-    icon: accleaning,
-    category: "ac-cleaning",
-  },
-  {
-    title: "Home Cleaning",
-    description: "Home Cleaning",
-    icon: homecleaning,
-    category: "home-cleaning",
-  },
-  {
-    title: "Sofa Cleaning",
-    description: "Sofa Cleaning",
-    icon: sofaCleaning,
-    category: "sofa-cleaning",
-  },
-  {
-    title: "Phone Repair",
-    description: "Phone Repair",
-    icon: phoneRepair,
-    category: "phone-repair",
-  },
-];
+export type Category = {
+  _id: string;
+  categoryName: string;
+  categoryLabel: string;
+  categoryId: number;
+  iconUrl: string;
+  subCategory: Array<string>
+};
 
 const IconGrid = () => {
+  const API_URL = `${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/category`;
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(false);
   const [specialIndices] = useState([1]);
+
+
+  useEffect(() => {
+    fetchData(API_URL);
+  }, []);
+
+  async function fetchData(url: string) {
+    try {
+      const response = await fetch(url);
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data)
+        setCategories(data.categoryItem);
+        setIsLoading(false);
+      } else {
+        setError(true);
+        setIsLoading(false);
+      }
+    } catch (error) {
+      setError(true);
+      setIsLoading(false);
+    }
+  }
+
+
+  if (error) {
+    return <h3>An error occurred when fetching data. Please check the API and try again.</h3>;
+  }
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <>
@@ -70,7 +78,7 @@ const IconGrid = () => {
         <div className="flex flex-col md:flex-row items-center md:justify-between px-10 pt-20">
           <div className="w-96 md:w-[600px] mt-40 md:mt-0 h-[300px] self-center">
             <div className="grid grid-cols-3 md:grid-cols-3 gap-4 mx-auto">
-              {gridData.map((data, index) => (
+              {categories.map((data, index) => (
                 <div key={index} className="col-span-1 md:col-span-1 flex flex-col items-center hover:text-white">
                   <div
                     className={cn(
@@ -78,11 +86,11 @@ const IconGrid = () => {
                       specialIndices.includes(index) && "w-24 h-24"
                     )}
                   >
-                    <Link href={`/${data.category}`}>
-                      <Image src={data.icon} alt={data.description} fill />
+                    <Link href={`/${data.categoryName}`}>
+                      <Image src={data.iconUrl} alt={data.categoryLabel} fill />
                     </Link>
                   </div>
-                  <div className="text-center mt-2">{data.title}</div> {/* Added text-center class */}
+                  <div className="text-center mt-2">{data.categoryLabel}</div> {/* Added text-center class */}
                 </div>
               ))}
             </div>

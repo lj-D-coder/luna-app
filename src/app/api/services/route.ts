@@ -13,7 +13,7 @@ export async function GET(req: any): Promise<NextResponse> {
     const services = await Service.find();
     return NextResponse.json({ services }, { status: 200 });
   } catch (error: any) {
-    console.error("Error caught", error); 
+    console.error("Error caught", error);
     return NextResponse.json({ message: "Error", error }, { status: 500 });
   }
 }

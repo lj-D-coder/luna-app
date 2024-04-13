@@ -14,8 +14,6 @@ interface ServiceBookingProps {
 const ServiceBooking: FC<ServiceBookingProps> = ({ categoryUrl }) => {
   return (
     <div style={{
-      height: "100vh",
-      background: "white",
     }}>
       <Header />
       <div className="grid grid-cols-12 gap-4 m-5">
