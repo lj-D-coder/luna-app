@@ -17,10 +17,10 @@ export const CartWidget: FunctionComponent<Props> = ({ productsCount }) => {
 
   return (
     <button
-      className=" mr-20 p-x-4 flex border-none bg-transparent cursor-pointer items-center flex-row-reverse justify-between"
+      className="flex border-none bg-transparent cursor-pointer items-center flex-row-reverse justify-between"
       onClick={navigateToCart}
     >
-      <span className="z-10 text-2xl p-2 text-gray-800">{productsCount}</span>
+      <span className="z-10 text-2xl px-2 text-gray-800">{productsCount}</span>
       <ShoppingCartIcon className="h-[32px] w-[32px] text-gray-900" />
     </button>
   );

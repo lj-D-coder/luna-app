@@ -2,28 +2,28 @@ import { FunctionComponent, useState } from "react";
 export type Operation = "decrease" | "increase";
 
 interface Props {
-  removeProductCallback: (productId: number) => void;
-  handleUpdateQuantity: (productId: number, operation: Operation) => void;
-  productId: number;
+  removeProductCallback: (serviceId: string) => void;
+  handleUpdateQuantity: (serviceId: string, operation: Operation) => void;
+  serviceId: string;
 }
 
-export const Quantifier: FunctionComponent<Props> = ({ removeProductCallback, handleUpdateQuantity, productId }) => {
+export const Quantifier: FunctionComponent<Props> = ({ removeProductCallback, handleUpdateQuantity, serviceId }) => {
   const [value, setValue] = useState<number>(1);
 
   const reduce = (): void => {
-    handleUpdateQuantity(productId, "decrease");
+    handleUpdateQuantity(serviceId, "decrease");
 
     setValue((prevState) => {
       const updatedValue = prevState - 1;
       if (updatedValue === 0) {
-        removeProductCallback(productId);
+        removeProductCallback(serviceId);
       }
       return updatedValue;
     });
   };
 
   const increase = (): void => {
-    handleUpdateQuantity(productId, "increase");
+    handleUpdateQuantity(serviceId, "increase");
     setValue((prevState) => prevState + 1);
   };
 

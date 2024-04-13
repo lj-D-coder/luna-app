@@ -12,6 +12,7 @@ import BookingCalender from "../Drawer/calender";
 import type { Dayjs } from "dayjs";
 import dayjs from "dayjs";
 import FormComponent from "../Drawer/form";
+import CartWidget from "./CartWidget";
 
 export const Cart: FunctionComponent = () => {
   const [open, setOpen] = useState(false);
@@ -37,7 +38,7 @@ export const Cart: FunctionComponent = () => {
     window.scrollTo(0, 0);
   }, [location]);
 
-  const handleRemoveProduct = (serviceId: number): void => {
+  const handleRemoveProduct = (serviceId: string): void => {
     setCart((prevCart) => {
       const updatedCart = { ...prevCart };
       delete updatedCart[serviceId];
@@ -45,7 +46,7 @@ export const Cart: FunctionComponent = () => {
     });
   };
 
-  const handleUpdateQuantity = (serviceId: number, operation: Operation) => {
+  const handleUpdateQuantity = (serviceId: string, operation: Operation) => {
     setCart((prevCart) => {
       const updatedCart = { ...prevCart };
       if (updatedCart[serviceId]) {
@@ -71,11 +72,15 @@ export const Cart: FunctionComponent = () => {
     (accumulator, service) => accumulator + service.price * service.serviceCapacity,
     0
   );
+  const productsCount: number = Object.keys(cart || {}).length;
 
   return (
-    <section className="w-full mt-1">
+    <>
       <div className="bg-white shadow-lg rounded-lg p-6">
-        <h2 className="text-lg font-semibold">Cart</h2>
+        <div className="flex justify-between">
+          <h2 className="text-lg font-semibold">Cart</h2>
+          <CartWidget productsCount={productsCount} />
+        </div>
         <div className="grid grid-cols-1 gap-4">
           {getServices().map((service) => (
             <div key={service._id} className="border-t mt-4 pt-4">
@@ -96,27 +101,25 @@ export const Cart: FunctionComponent = () => {
           ))}
         </div>
       </div>
+      <div className="flex border-2 mt-1 rounded">
+        <input type="text" className="px-4 py-2 w-80" placeholder="GET50OFF" />
+        <button className="px-1 text-blue-600 font-semibold border-l flex text-center items-center justify-center">
+          Apply
+        </button>
+      </div>
 
       {totalPrice > 0 && (
-        <>
-          <div className="flex border-2 mt-1 rounded">
-            <input type="text" className="px-4 py-2 w-80" placeholder="GET50OFF" />
-            <button className="px-1 text-blue-600 font-semibold border-l flex text-center items-center justify-center">
-              Apply
-            </button>
-          </div>
-          <div className="flex justify-between items-center mt-5">
-            <span className="text-gray-900 font-semibold">
-              <TotalPrice amount={totalPrice} />
-            </span>
-            <button
-              onClick={handleCheckout}
-              className="bg-purple-600 text-white rounded-md px-6 py-2 hover:purple-900 focus:outline-none focus:bg-purple-900"
-            >
-              Checkout
-            </button>
-          </div>
-        </>
+        <div className="flex justify-between items-center mt-5">
+          <span className="text-gray-900 font-semibold">
+            <TotalPrice amount={totalPrice} />
+          </span>
+          <button
+            onClick={handleCheckout}
+            className="bg-purple-600 text-white rounded-md px-6 py-2 hover:purple-900 focus:outline-none focus:bg-purple-900"
+          >
+            Checkout
+          </button>
+        </div>
       )}
 
       <Drawer title="Basic Drawer" onClose={onClose} open={open}>
@@ -138,6 +141,6 @@ export const Cart: FunctionComponent = () => {
           />
         )}
       </Drawer>
-    </section>
+    </>
   );
 };
