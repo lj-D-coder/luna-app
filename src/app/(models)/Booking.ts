@@ -14,6 +14,6 @@ const BookingSchema: Schema = new Schema({
   phoneNo: { type: String, required: true },
 });
 
-const Booking = mongoose.model<IBooking>('Booking', BookingSchema);
+const Booking = mongoose.models.Booking || mongoose.model('Booking', BookingSchema);
 
 export default Booking;
