@@ -36,8 +36,18 @@ const bannerImages = [
   },
 ];
 
+export type Hero = {
+  _id: string;
+  sliderUrl: string;
+  sliderOrder: number;
+  serviceId: string;
+};
 
-const Hero: React.FC = () => {
+interface HeroProp {
+  sliderData: Hero[];
+}
+
+const Hero: React.FC<HeroProp> = ({ sliderData }) => {
   const [height, setHeight] = useState<string>("30vh");
 
   useEffect(() => {
@@ -86,12 +96,12 @@ const Hero: React.FC = () => {
             </Wrapper>
           </Overlay>
 
-          {bannerImages.map((banner, index) => (
+          {sliderData.map((banner, index) => (
             <div key={index}>
               <Slide
                 label="Giau Pass - Italy"
                 background={{
-                  backgroundImageSrc: banner.url.src,
+                  backgroundImageSrc: banner.sliderUrl,
                 }}
               />
             </div>

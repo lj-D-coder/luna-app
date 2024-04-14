@@ -41,7 +41,23 @@ const testimonies = [
   },
 ];
 
-export default function Testimony() {
+
+export type Testimony = {
+  _id: string
+  name: string;
+  profilePhoto: string;
+  textDescription: string;
+  videoUrl: string;
+  rating: number;
+  thumbnail: string;
+  designation: string
+}
+
+interface TestimonyProp {
+  testimonyData: Testimony[];
+}
+
+const Testimony: React.FC<TestimonyProp> = ({ testimonyData }) => {
   const [navigation, setNavigation] = useState(false);
   const swiperRef = useRef<SwiperClass | null>(null);
 
@@ -109,15 +125,15 @@ export default function Testimony() {
               modules={[EffectCoverflow, Autoplay, Pagination, Navigation]}
               className="mySwiper"
             >
-              {testimonies.map((testimony, index) => (
+              {testimonyData.map((testimony, index) => (
                 <SwiperSlide key={index} onClick={() => swiperRef.current && swiperRef.current.slideTo(index)}>
                   <div className="w-full mx-auto">
                     <div className="grid grid-cols-12">
                       <div className="col-span-12 md:col-span-3 pl-0 md:pl-4 flex flex-col md:flex-none items-center md:items-start justify-center">
-                        <TestimonyCard testimony={testimony} />
+                        <TestimonyCard testimonyTextAndProfile={testimony} />
                       </div>
                       <div className="col-span-12 md:col-span-8 pl-2 md:p-10 mt-0 md:-mt-10 ml-0 md:ml-10">
-                        <TestimonyVideo testimony={testimony} />
+                        <TestimonyVideo testimonyDataVideoAndThumbNail={testimony} />
                       </div>
                     </div>
                   </div>
@@ -130,3 +146,5 @@ export default function Testimony() {
     </>
   );
 }
+
+export default Testimony;

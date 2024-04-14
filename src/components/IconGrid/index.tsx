@@ -1,14 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils/cn";
-
-import { carwash, accleaning, carservice, homecleaning, phoneRepair, sofaCleaning } from "@/assets/images";
 import Image from "next/image";
 import Hero from "../Hero";
 import Search from "../Search";
 import Link from "next/link";
 import { Loader } from "./Loader";
-import { json } from "stream/consumers";
 
 export type Category = {
   _id: string;
@@ -19,43 +16,13 @@ export type Category = {
   subCategory: Array<string>;
 };
 
-const IconGrid = () => {
-  const API_URL = `${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/category`;
-  const [categories, setCategories] = useState<Category[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(false);
+interface CategoryProps {
+  categories: Category[];
+  sliderData: [];
+}
+
+const IconGrid: React.FC<CategoryProps> = ({ categories, sliderData }) => {
   const [specialIndices] = useState([1]);
-
-  useEffect(() => {
-    fetchData(API_URL);
-  }, []);
-
-  async function fetchData(url: string) {
-    try {
-      const response = await fetch(url);
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data);
-        setCategories(data.categoryItem);
-        setIsLoading(false);
-      } else {
-        setError(true);
-        setIsLoading(false);
-      }
-    } catch (error) {
-      setError(true);
-      setIsLoading(false);
-    }
-  }
-
-  if (error) {
-    return <h3>An error occurred when fetching data. Please check the API and try again.</h3>;
-  }
-
-  if (isLoading) {
-    return <Loader />;
-  }
-
   return (
     <>
       <div
@@ -88,7 +55,7 @@ const IconGrid = () => {
           </div>
           <div className="flex flex-col items-center md:flex mt-10 md:items-start">
             <div className="w-96 md:w-[800px] md:h-auto card-hover-effects border-none shadow-none">
-              <Hero />
+              <Hero sliderData={sliderData} />
             </div>
           </div>
         </div>

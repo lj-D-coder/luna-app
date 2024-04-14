@@ -6,12 +6,10 @@ import Image from "next/image";
 
 import logo from "@/assets/images/Luna_Naanna_logo.png";
 import { CartWidget } from "./CartWidget";
-import { CartProps } from "../productBuying/products";
 import { logoblack, logoblacktransparent, lunnaLogo2 } from "@/assets/images";
 import Navbar from "../Navbar";
 
 export const Header: FunctionComponent = () => {
-  const [cart] = useLocalStorageState<CartProps>("cart", {});
   const [isScrolled, setIsScrolled] = useState(false);
 
   const handleScroll = () => {
@@ -29,7 +27,6 @@ export const Header: FunctionComponent = () => {
     };
   }, []);
 
-  const productsCount: number = Object.keys(cart || {}).length;
 
   return (
     <header

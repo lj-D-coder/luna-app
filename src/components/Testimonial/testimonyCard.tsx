@@ -1,21 +1,21 @@
 import React from "react";
 
-interface Testimony {
+interface TestimonyTextAndProfile {
   profilePhoto: string;
   name: string;
   designation: string;
   textDescription: string;
 }
 
-const TestimonyCard = ({ testimony }: { testimony: Testimony }) => (
+const TestimonyCard = ({ testimonyTextAndProfile }: { testimonyTextAndProfile: TestimonyTextAndProfile }) => (
   <div className="w-32 md:w-40">
     <div className="mb-6">
-      <img src={testimony.profilePhoto} className="w-32 rounded-full shadow-lg dark:shadow-black/20" />
+      <img src={testimonyTextAndProfile.profilePhoto} className="w-32 rounded-full shadow-lg dark:shadow-black/20" />
     </div>
-    <h5 className="mb-2 md:text-lg font-bold">{testimony.name}</h5>
-    <h6 className="mb-4 font-medium text-primary dark:text-primary-400">{testimony.designation}</h6>
+    <h5 className="mb-2 md:text-lg font-bold">{testimonyTextAndProfile.name}</h5>
+    <h6 className="mb-4 font-medium text-primary dark:text-primary-400">{testimonyTextAndProfile.designation}</h6>
     <p className="mb-4">
-      {testimony.textDescription}
+      {testimonyTextAndProfile.textDescription}
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960" className="inline-block w-6">
         <path
           fill="currentColor"

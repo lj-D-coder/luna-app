@@ -2,7 +2,7 @@ import mongoose, { Document, Schema } from 'mongoose';
 
 interface ICategory extends Document {
     _id: string;
-    categoryId: Number
+    categoryId: number
     categoryName: string;
     categoryLabel: string;
     IconUrl: string;

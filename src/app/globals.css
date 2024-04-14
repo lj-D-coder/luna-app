@@ -2,14 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer components {
     .card-hover-effects {
       @apply transition duration-500 ease-in-out transform;
       @apply hover:-translate-y-1 hover:scale-[101%];
     }
   }
-
+  
   @keyframes fadeIn {
     from {
       opacity: 0;

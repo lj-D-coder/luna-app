@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import ServiceBooking  from "@/components/ServiceBooking"; 
+import ServiceBooking from "@/components/ServiceBooking";
 
 interface categoryProps {
   params: {
@@ -8,14 +8,18 @@ interface categoryProps {
 }
 
 const page: FC<categoryProps> = async ({ params }) => {
-  const categoryUrl = params.category 
+  const categoryUrl = params.category
   // console.log(categoryUrl)
-  
+
   return (
-        <>
-          <ServiceBooking categoryUrl={categoryUrl}/>
-        </>
-      );
+
+    <div style={{
+
+    }}>
+
+      <ServiceBooking categoryUrl={categoryUrl} />
+    </div>
+  );
 };
 
 export default page;
