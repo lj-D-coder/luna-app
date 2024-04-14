@@ -2,14 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils/cn";
 
-import {
-  carwash,
-  accleaning,
-  carservice,
-  homecleaning,
-  phoneRepair,
-  sofaCleaning,
-} from "@/assets/images";
+import { carwash, accleaning, carservice, homecleaning, phoneRepair, sofaCleaning } from "@/assets/images";
 import Image from "next/image";
 import Hero from "../Hero";
 import Search from "../Search";
@@ -23,7 +16,7 @@ export type Category = {
   categoryLabel: string;
   categoryId: number;
   iconUrl: string;
-  subCategory: Array<string>
+  subCategory: Array<string>;
 };
 
 const IconGrid = () => {
@@ -32,7 +25,6 @@ const IconGrid = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
   const [specialIndices] = useState([1]);
-
 
   useEffect(() => {
     fetchData(API_URL);
@@ -43,7 +35,7 @@ const IconGrid = () => {
       const response = await fetch(url);
       if (response.ok) {
         const data = await response.json();
-        console.log(data)
+        console.log(data);
         setCategories(data.categoryItem);
         setIsLoading(false);
       } else {
@@ -55,7 +47,6 @@ const IconGrid = () => {
       setIsLoading(false);
     }
   }
-
 
   if (error) {
     return <h3>An error occurred when fetching data. Please check the API and try again.</h3>;
@@ -101,7 +92,7 @@ const IconGrid = () => {
             </div>
           </div>
         </div>
-      </div >
+      </div>
     </>
   );
 };

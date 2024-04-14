@@ -13,22 +13,19 @@ import type { Dayjs } from "dayjs";
 import dayjs from "dayjs";
 import FormComponent from "../Drawer/form";
 import CartWidget from "./CartWidget";
+import { Modal } from "../Modal";
 
 export const Cart: FunctionComponent = () => {
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Dayjs>(dayjs());
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [next, setNext] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  const onClose = () => {
-    setOpen(false);
-  };
 
   const handleCheckout = () => {
-    console.log("Checkout clicked. Cart details:", cart);
-    console.log(totalPrice);
-    setOpen(true);
+    setIsOpen(true);
   };
 
   const [cart, setCart] = useLocalStorageState<CartProps>("cart", {});
@@ -122,7 +119,9 @@ export const Cart: FunctionComponent = () => {
         </div>
       )}
 
-      <Drawer title="Basic Drawer" onClose={onClose} open={open}>
+<Modal isOpen={isOpen} setOpen={setIsOpen} />
+
+      {/* <Drawer title="Basic Drawer" onClose={onClose} open={open}>
         {!success && (
           <BookingCalender
             open={open}
@@ -140,7 +139,7 @@ export const Cart: FunctionComponent = () => {
             selectedTime={selectedTime}
           />
         )}
-      </Drawer>
+      </Drawer> */}
     </>
   );
 };
