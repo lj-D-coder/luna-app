@@ -3,7 +3,7 @@ import { FunctionComponent, useEffect, useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
 
 import { Quantifier, Operation } from "./Quantifier";
-import { CartProps } from "./Services";
+import { CartProps } from "./ServicesGrid";
 import { TotalPrice } from "./TotalPrice";
 import { usePathname } from "next/navigation";
 import { Button, Drawer } from "antd";
@@ -24,6 +24,7 @@ export const Cart: FunctionComponent = () => {
   const [success, setSuccess] = useState(false);
   const [cart, setCart] = useLocalStorageState<CartProps>("cart", {});
   const location = usePathname();
+  
   const handleCheckout = () => {
     setIsOpen(true);
   };

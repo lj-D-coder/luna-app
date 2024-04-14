@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useEffect, useState } from 'react';
+import { CalendarForm } from "../CheckOut/dayPicker";
 
 import { cn } from "@/lib/utils/cn";
 import { useMediaQuery } from "@/hooks/use-media-query";
@@ -38,15 +38,16 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, setOpen })=> {
   if (isDesktop) {
     return (
       <Dialog open={isOpen} onOpenChange={setOpen}  >
-      <DialogTrigger asChild>
+      {/* <DialogTrigger asChild>
         <Button variant="outline">Edit Profile</Button>
-      </DialogTrigger>
+      </DialogTrigger> */}
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Edit profile</DialogTitle>
-          <DialogDescription>Make changes to your profile here. Click save when you're done.</DialogDescription>
-        </DialogHeader>
-        <ProfileForm />
+          <DialogTitle>Provide Details</DialogTitle>
+          <DialogDescription>Please select preferred date and time</DialogDescription>
+          </DialogHeader>
+          
+        <CalendarForm />
       </DialogContent>
     </Dialog>
     );
@@ -54,9 +55,9 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, setOpen })=> {
 
   return (
     <Drawer open={isOpen} onOpenChange={setOpen}>
-      <DrawerTrigger asChild>
+      {/* <DrawerTrigger asChild>
         <Button variant="outline">Edit Profile</Button>
-      </DrawerTrigger>
+      </DrawerTrigger> */}
       <DrawerContent>
         <DrawerHeader className="text-left">
           <DrawerTitle>Edit profile</DrawerTitle>

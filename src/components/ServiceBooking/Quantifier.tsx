@@ -45,7 +45,14 @@ export const Quantifier: FunctionComponent<Props> = ({ removeProductCallback, ha
         `}
       </style>
       <button className="text-gray-600 px-3 py-1 border-r" onClick={reduce}>-</button>
-      <input type="text" className="text-center w-10" value="1" />
+      <input
+          type="number"
+          step="1"
+          max=""
+          value={value}
+          onChange={(e) => setValue(parseInt(e.target.value))}
+          className="no-spinner m-0 outline-none items-center w-10 h-7 text-center text-sm"
+        />
       <button className="text-gray-600 px-3 py-1 border-l" onClick={increase}>+</button>
     </>
   );
