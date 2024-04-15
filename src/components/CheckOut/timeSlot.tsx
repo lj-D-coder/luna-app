@@ -1,8 +1,8 @@
 import * as React from "react"
 
 // Generate an array of time slots from 9am to 5pm
-const timeSlots = Array.from({ length: 9 }, (_, i) => {
-  const hour = 9 + i;
+const timeSlots = Array.from({ length: 8 }, (_, i) => {
+  const hour = 5 + i;
   return `${hour <= 12 ? hour : hour - 12}:00 - ${hour < 12 ? hour + 1 : hour - 11}:00 ${hour < 12 ? 'AM' : 'PM'}`;
 });
 

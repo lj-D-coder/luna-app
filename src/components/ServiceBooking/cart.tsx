@@ -13,7 +13,7 @@ import type { Dayjs } from "dayjs";
 import dayjs from "dayjs";
 import FormComponent from "../Drawer/form";
 import CartWidget from "./CartWidget";
-import { Modal } from "../Modal";
+import { CheckOutModal } from "../CheckOut";
 
 export const Cart: FunctionComponent = () => {
   // const [open, setOpen] = useState(false);
@@ -121,7 +121,7 @@ export const Cart: FunctionComponent = () => {
           </div>
         )}
       </div>
-      <Modal isOpen={isOpen} setOpen={setIsOpen} />
+      <CheckOutModal isOpen={isOpen} setOpen={setIsOpen} />
 
       {/* <Drawer title="Basic Drawer" onClose={onClose} open={open}>
         {!success && (

@@ -11,11 +11,12 @@ import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { toast } from "@/components/ui/use-toast";
 import { Input } from "@/components/ui/input";
 import { TimeSlotPicker } from "./timeSlot";
 import { ClockIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
+import useLocalStorageState from "use-local-storage-state";
+import { CartProps } from "../ServiceBooking/ServicesGrid";
 
 const FormSchema = z.object({
   bookingDate: z.date({
@@ -34,66 +35,93 @@ const FormSchema = z.object({
   timeSlot: z.string({ required_error: "Time slot is required." }),
 });
 
-export function CalendarForm() {
+type CheckOutFormProp = {
+
+};
+export const CheckOutForm: React.FC<CheckOutFormProp> = () => {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
+
+  // defining state to automatically close after date and slot is selected
   const [calendarOpen, setCalendarOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  // retrieving cart details from local storage
+  const [cart, setCart] = useLocalStorageState<CartProps>("cart", {});
 
-//   function onSubmit(data: z.infer<typeof FormSchema>) {
-//     console.log(data);
-//     toast({
-//       title: "You submitted the following values:",
-//       description: (
-//         <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-//           <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-//         </pre>
-//       ),
-//     });
-    //   }
-    
+  async function onSubmit(data: z.infer<typeof FormSchema>) {
+    let updatedCart = {};
 
+    if (cart) {
+      updatedCart = Object.values(cart).map(
+        ({ _id: serviceId, supportedModel, thumbnail, images, rating, serviceDetails, ...rest }) => ({
+          serviceId,
+          ...rest,
+        })
+      );
+    }
 
-    function onSubmit(data: z.infer<typeof FormSchema>) {
-        const now = new Date();
-        const bookingDateTime = new Date(data.bookingDate);
-        const [_, bookingEndTime] = data.timeSlot.split(' - ');
-        let [bookingHoursStr, bookingMinutesStr, bookingPeriod] = bookingEndTime.split(/[:\s]/);
-      
-        let bookingHours = parseInt(bookingHoursStr);
-        let bookingMinutes = parseInt(bookingMinutesStr);
-      
-        // Adjust for AM/PM
-        if (bookingPeriod === 'PM' && bookingHours !== 12) {
-          bookingHours += 12;
-        } else if (bookingPeriod === 'AM' && bookingHours === 12) {
-          bookingHours = 0;
-        }
-      
-        // Adjust the date object to the end time of the selected time slot
-        bookingDateTime.setHours(bookingHours, bookingMinutes);
-      
-        // Convert both times to milliseconds
-        const nowMs = now.getTime();
-        const bookingDateTimeMs = bookingDateTime.getTime();
-      
-        // Calculate the difference in milliseconds
-        const diffMs = bookingDateTimeMs - nowMs;
-      
-        if (diffMs < 0) {
-          alert('The selected time slot has already passed.');
-        } else if (diffMs < 2 * 60 * 60 * 1000) { // 2 hours in milliseconds
-          alert('Please book at least 2 hours in advance.');
-        } else {
-          console.log(data);
-        }
+    const now = new Date();
+    const bookingDateTime = new Date(data.bookingDate);
+    const [_, bookingEndTime] = data.timeSlot.split(" - ");
+    let [bookingHoursStr, bookingMinutesStr, bookingPeriod] = bookingEndTime.split(/[:\s]/);
+
+    let bookingHours = parseInt(bookingHoursStr);
+    let bookingMinutes = parseInt(bookingMinutesStr);
+
+    // Adjust for AM/PM
+    if (bookingPeriod === "PM" && bookingHours !== 12) {
+      bookingHours += 12;
+    } else if (bookingPeriod === "AM" && bookingHours === 12) {
+      bookingHours = 0;
+    }
+
+    // Adjust the date object to the end time of the selected time slot
+    bookingDateTime.setHours(bookingHours, bookingMinutes);
+
+    // Convert both times to milliseconds
+    const nowMs = now.getTime();
+    const bookingDateTimeMs = bookingDateTime.getTime();
+
+    // Calculate the difference in milliseconds
+    const diffMs = bookingDateTimeMs - nowMs;
+
+    if (diffMs < 0) {
+      alert("The selected time slot has already passed.");
+    } else if (diffMs < 1 * 60 * 60 * 1000) {
+      // 1 hours in milliseconds
+      alert("Please book at least 1 hours in advance.");
+    } else {
+      const bookingData = {
+        ...data,
+        paymentMode: "offline",
+        paymentStatus: "pending",
+        bookingStatus: "pending",
+        billingAmount: "000",
+        bookingDetails: updatedCart,
+      };
+
+      console.log(bookingData);
+
+      const res = await fetch("/api/booking", {
+        method: "POST",
+        body: JSON.stringify(bookingData),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to create Booking.");
       }
-      
-      
-      
-      
-      
+
+      localStorage.clear();
+      // setSuccess(true);
+
+      // router.refresh();
+      // router.push("/");
+    }
+  }
 
   return (
     <Form {...form}>
@@ -219,4 +247,4 @@ export function CalendarForm() {
       </form>
     </Form>
   );
-}
+};
