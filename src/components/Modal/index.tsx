@@ -47,7 +47,8 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, setOpen })=> {
           <DialogDescription>Please select preferred date and time</DialogDescription>
           </DialogHeader>
           
-        <CalendarForm />
+          <CalendarForm />
+          {/* <ProfileForm className="px-4" /> */}
       </DialogContent>
     </Dialog>
     );
