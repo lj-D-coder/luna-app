@@ -38,6 +38,12 @@ export const Cart: FunctionComponent = () => {
     setIsOpen(true);
   };
 
+
+  const handleSuccess = (successState: boolean) => {
+    setSuccess(successState);
+    setDiscount(0);
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
@@ -150,7 +156,13 @@ export const Cart: FunctionComponent = () => {
           </div>
         )}
       </div>
-      <CheckOutModal isOpen={isOpen} setOpen={setIsOpen} />
+      <CheckOutModal 
+        isOpen={isOpen} 
+        setOpen={setIsOpen} 
+        totalPrice={totalPrice} 
+        discount={discount} 
+        onSuccess={handleSuccess} 
+      />
       <BookingComplete openSuccess={success} setOpenSuccess={setSuccess} />
     </>
   );

@@ -40,11 +40,14 @@ const FormSchema = z.object({
 // Define the props type for CheckOutForm
 interface CheckOutFormProp {
   setOpen: (value: boolean) => void;
+  totalPrice: number;
+  discount: number;
+  onSuccess: (success: boolean) => void;
 }
 
 
 
-export const CheckOutForm: React.FC<CheckOutFormProp> = ({ setOpen }) => {
+export const CheckOutForm: React.FC<CheckOutFormProp> = ({ setOpen, totalPrice, discount, onSuccess }) => {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
@@ -103,7 +106,8 @@ export const CheckOutForm: React.FC<CheckOutFormProp> = ({ setOpen }) => {
         paymentMode: "offline",
         paymentStatus: "pending",
         bookingStatus: "pending",
-        billingAmount: "000",
+        billingAmount: totalPrice,
+        couponValue: discount,
         bookingDetails: updatedCart,
       };
 
@@ -123,6 +127,7 @@ export const CheckOutForm: React.FC<CheckOutFormProp> = ({ setOpen }) => {
 
       localStorage.clear();
       setOpen(false);
+      onSuccess(true);
 
       // router.refresh();
       // router.push("/");

@@ -29,9 +29,12 @@ import { Label } from "@/components/ui/label";
 interface ModalProps {
   isOpen: boolean;
   setOpen: (value: boolean) => void;
+  totalPrice: number;
+  discount: number;
+  onSuccess: (success: boolean) => void;
 }
 
-export const CheckOutModal: React.FC<ModalProps> = ({ isOpen, setOpen })=> {
+export const CheckOutModal: React.FC<ModalProps> = ({ isOpen, setOpen, totalPrice, discount, onSuccess })=> {
   // const [open, setOpen] = useState(isOpen);
   const isDesktop = useMediaQuery("(min-width: 768px)");
   
@@ -43,7 +46,7 @@ export const CheckOutModal: React.FC<ModalProps> = ({ isOpen, setOpen })=> {
           <DialogTitle>Provide Details</DialogTitle>
           </DialogHeader>
           
-          <CheckOutForm setOpen={setOpen}/>
+          <CheckOutForm setOpen={setOpen} totalPrice={totalPrice} discount={discount} onSuccess={onSuccess} />
 
       </DialogContent>
     </Dialog>
@@ -56,7 +59,7 @@ export const CheckOutModal: React.FC<ModalProps> = ({ isOpen, setOpen })=> {
         <DrawerHeader className="text-left">
           <DrawerTitle>Provide Details</DrawerTitle>
         </DrawerHeader>
-        <CheckOutForm setOpen={setOpen}/>
+        <CheckOutForm setOpen={setOpen} totalPrice={totalPrice} discount={discount} onSuccess={onSuccess} />
         <DrawerFooter className="pt-2">
           <DrawerClose asChild>
             <Button variant="outline">Cancel</Button>
