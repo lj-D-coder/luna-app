@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { FC, useEffect, useRef, useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
 
@@ -115,54 +115,53 @@ export const ServicesGrid: FC<ServiceBookingProps & { selectedSubcategory: strin
   return (
     <>
       <div className="col-span-12 md:col-span-8">
-        <div className="col-span-12 md:col-span-8">
-          <div className="bg-white shadow-md rounded-md overflow-hidden p-5">
-            {Object.keys(servicesDataMap).map((subCategory) => (
-              <div key={subCategory} className="mb-8" ref={(el) => (subCategoryRefs.current[subCategory] = el)}>
-                <h2 className="text-2xl font-bold mb-4">
-                  {subCategory
-                    .split("-")
-                    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                    .join(" ")}
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  {servicesDataMap[subCategory].map((service) => (
-                    <div key={service._id} className="bg-white shadow-md rounded-lg overflow-hidden">
-                      <div className="flex justify-center items-center h-60">
-                        <img className="object-cover w-full h-full" src={service.thumbnail} alt={service.title} />
+        <div className="bg-none overflow-hidden">
+          {Object.keys(servicesDataMap).map((subCategory) => (
+            <div key={subCategory} className="mb-8" ref={(el) => (subCategoryRefs.current[subCategory] = el)}>
+              <h2 className="text-2xl font-bold mb-4">
+                {subCategory
+                  .split("-")
+                  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                  .join(" ")}
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {servicesDataMap[subCategory].map((service) => (
+                  <div key={service._id} className="bg-white shadow-md rounded-lg overflow-hidden">
+                    <div className="flex justify-center items-center h-60">
+                      <img className="object-cover w-full h-full" src={service.thumbnail} alt={service.title} />
+                    </div>
+                    <div className="p-4">
+                      <h2 className="text-xl font-semibold text-gray-800 mb-2">{service.title}</h2>
+                      <div className="flex justify-between items-center mb-2">
+                        <h3 className="text-lg font-bold text-gray-700 md:text-xl">Price at {service.price}</h3>
                       </div>
-                      <div className="p-4">
-                        <h2 className="text-xl font-semibold text-gray-800 mb-2">{service.title}</h2>
-                        <div className="flex justify-between items-center mb-2">
-                          <h3 className="text-lg font-bold text-gray-700 md:text-xl">Price at {service.price}</h3>
-                        </div>
-                        <div className="mb-2 h-10">
-                          <p className="text-xs text-gray-600">{service.description}</p>
-                        </div>
-                        <div className="flex justify-between items-center mb-2">
-                          <a
-                            onClick={() => toggleModal(true, service.serviceDetails)}
-                            href="#"
-                            className="text-blue-600 text-sm font-semibold"
-                          >
-                            View details
-                          </a>
-                          <button
-                            onClick={() => addToCart(service)}
-                            className={`bg-black text-white rounded-md px-6 py-2 ${isInCart(service._id) ? "bg-gray-300 cursor-not-allowed" : ""
-                              }`}
-                            disabled={isInCart(service._id)}
-                          >
-                            {isInCart(service._id) ? "In Cart" : "Add to Cart"}
-                          </button>
-                        </div>
+                      <div className="mb-2 h-10">
+                        <p className="text-xs text-gray-600">{service.description}</p>
+                      </div>
+                      <div className="flex justify-between items-center mb-2">
+                        <a
+                          onClick={() => toggleModal(true, service.serviceDetails)}
+                          href="#"
+                          className="text-blue-600 text-sm font-semibold"
+                        >
+                          View details
+                        </a>
+                        <button
+                          onClick={() => addToCart(service)}
+                          className={`bg-black text-white rounded-md px-6 py-2 ${
+                            isInCart(service._id) ? "bg-gray-300 cursor-not-allowed" : ""
+                          }`}
+                          disabled={isInCart(service._id)}
+                        >
+                          {isInCart(service._id) ? "In Cart" : "Add to Cart"}
+                        </button>
                       </div>
                     </div>
-                  ))}
-                </div>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
       {isModalOpen && (
@@ -189,9 +188,9 @@ export const ServicesGrid: FC<ServiceBookingProps & { selectedSubcategory: strin
               <h2 className="text-2xl font-bold mb-4">About the service</h2>
               <ul className="list-disc ml-6">
                 {selectedServiceDetails &&
-                  selectedServiceDetails.split("\n").map((detail, index) => (
-                    <li key={index}>{detail!.replace(/\\n/g, "")}</li>
-                  ))}
+                  selectedServiceDetails
+                    .split("\n")
+                    .map((detail, index) => <li key={index}>{detail!.replace(/\\n/g, "")}</li>)}
               </ul>
               <br />
               <div className="items-center text-center align-middle">

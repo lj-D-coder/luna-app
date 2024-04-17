@@ -6,24 +6,32 @@ import { Quantifier, Operation } from "./Quantifier";
 import { CartProps } from "./ServicesGrid";
 import { TotalPrice } from "./TotalPrice";
 import { usePathname } from "next/navigation";
-import { Button, Drawer } from "antd";
 
-import BookingCalender from "../Drawer/calender";
-import type { Dayjs } from "dayjs";
-import dayjs from "dayjs";
-import FormComponent from "../Drawer/form";
 import CartWidget from "./CartWidget";
 import { CheckOutModal } from "../CheckOut";
+import handleApplyCoupon from "@/lib/utils/couponHandler";
 
 export const Cart: FunctionComponent = () => {
-  // const [open, setOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedDate, setSelectedDate] = useState<Dayjs>(dayjs());
-  const [selectedTime, setSelectedTime] = useState<string | null>(null);
-  const [next, setNext] = useState(false);
   const [success, setSuccess] = useState(false);
   const [cart, setCart] = useLocalStorageState<CartProps>("cart", {});
   const location = usePathname();
+
+  const [coupon, setCoupon] = useState<string | null>(null);
+  const [discount, setDiscount] = useState<number>(0);
+
+  const handleApply = () => {
+    if (coupon) {
+      handleApplyCoupon(coupon, setDiscount);
+    } else {
+      alert("Please enter a coupon code");
+    }
+  };
+
+  const handleRemoveCoupon = () => {
+    setCoupon(null);
+    setDiscount(0);
+  };
 
   const handleCheckout = () => {
     setIsOpen(true);
@@ -63,25 +71,22 @@ export const Cart: FunctionComponent = () => {
 
   const getServices = () => Object.values(cart || {});
 
-  const totalPrice = getServices().reduce(
-    (accumulator, service) => accumulator + service.price * service.serviceCapacity,
-    0
-  );
+  const totalPrice =
+    getServices().reduce((accumulator, service) => accumulator + service.price * service.serviceCapacity, 0) - discount;
   const productsCount: number = Object.keys(cart || {}).length;
 
   return (
     <>
-      <div className="md:fixed">
-
-        <div className="bg-white shadow-lg rounded-lg p-6 overflow-y-auto max-h-[400px]">
+      <div className="w-full md:w-1/4 md:fixed md:right-0 pr-0 md:pr-6">
+        <div className="bg-white shadow-lg rounded-lg overflow-y-auto max-h-[400px]">
           <div className="flex justify-between">
-            <h2 className="text-lg font-semibold">Cart</h2>
+            <h2 className="text-lg font-semibold px-2">Cart</h2>
             <CartWidget productsCount={productsCount} />
           </div>
-          <div className="grid grid-cols-1 gap-4">
+          <div className="grid grid-cols-1">
             {getServices().map((service) => (
               <div key={service._id} className="border-t mt-4 pt-4">
-                <h3 className="font-medium text-gray-700">{service.title}</h3>
+                <h3 className="font-medium text-gray-700 px-2">{service.title}</h3>
                 <div className="flex items-center justify-between mt-3">
                   <div className="flex items-center border rounded-md">
                     <Quantifier
@@ -90,7 +95,7 @@ export const Cart: FunctionComponent = () => {
                       handleUpdateQuantity={handleUpdateQuantity}
                     />
                   </div>
-                  <span className="text-gray-900 font-semibold">
+                  <span className="text-gray-900 font-semibold px-2">
                     ₹{(service.price * service.serviceCapacity).toFixed(2)}
                   </span>
                 </div>
@@ -99,13 +104,36 @@ export const Cart: FunctionComponent = () => {
           </div>
         </div>
         <div className="flex border-2 mt-1 rounded">
-          <input type="text" className="px-4 py-2 w-80" placeholder="GET50OFF" />
-          <button className="px-1 text-blue-600 font-semibold border-l flex text-center items-center justify-center">
-            Apply
-          </button>
+          {discount <= 0 && (
+            <>
+              <h2 className="text-sm md:text-lg p-2 font-semibold">Coupon</h2>
+              <input
+                type="text"
+                className="p-2 w-full text-sm md:text-lg"
+                placeholder="Enter coupon code"
+                value={coupon || ""}
+                onChange={(e) => setCoupon(e.target.value)}
+              />
+              <button
+                className="px-2 text-blue-600 font-semibold border-l flex text-center items-center justify-center"
+                onClick={handleApply}
+              >
+                Apply
+              </button>
+            </>
+          )}
+          {discount > 0 && (
+            <>
+              <div className="p-2 w-full border text-sm md:text-base border-gray-300 rounded">Discount of ₹{discount} is applied</div>
+              <button
+                className="px-1 text-blue-600 font-semibold border-l flex text-center items-center justify-center"
+                onClick={handleRemoveCoupon}
+              >
+                Remove
+              </button>
+            </>
+          )}
         </div>
-
-
 
         {totalPrice > 0 && (
           <div className="flex justify-between items-center mt-5">
@@ -126,9 +154,6 @@ export const Cart: FunctionComponent = () => {
       {/* <Drawer title="Basic Drawer" onClose={onClose} open={open}>
         {!success && (
           <BookingCalender
-            open={open}
-            next={next}
-            setNext={setNext}
             setSelectedDate={setSelectedDate}
             setSelectedTime={setSelectedTime}
           />

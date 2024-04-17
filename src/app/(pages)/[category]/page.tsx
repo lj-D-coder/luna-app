@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC } from "react";
 import ServiceBooking from "@/components/ServiceBooking";
 
 interface categoryProps {
@@ -8,19 +8,14 @@ interface categoryProps {
 }
 
 const page: FC<categoryProps> = async ({ params }) => {
-  const categoryUrl = params.category
+  const categoryUrl = params.category;
   // console.log(categoryUrl)
 
   return (
-
-    <div style={{
-
-    }}>
-
+    <>
       <ServiceBooking categoryUrl={categoryUrl} />
-    </div>
+    </>
   );
 };
 
 export default page;
-

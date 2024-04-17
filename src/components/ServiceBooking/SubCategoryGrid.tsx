@@ -59,31 +59,29 @@ export const SubCategory: FC<SubCategoryProps> = ({ categoryUrl, onIconClick }) 
     .join(" ");
 
   return (
-    <div className="col-span-12 md:col-span-4 ">
-      <h2 className="text-2xl font-bold mb-5 md:fixed">{categoryName} Service</h2>
-      <div className="w-[350px] h-[400px] md:fixed md:top-[130px]">
-        <div className="h-auto bg-white shadow rounded-lg p-4">
-          <div className="font-medium mb-4">Select a service</div>
-          <div className="grid grid-cols-3 gap-4">
-            {subCategoryList.map((subCategory, index) => (
-              <div className="items-center text-center">
-                <div
-                  key={index}
-                  style={{ cursor: "pointer" }}
-                  onClick={() => onIconClick(subCategory.subCategoryName)}
-                  className="w-[100px] h-[100px] text-center px-2 py-5 rounded-lg shadow-md border border-gray-200 hover:border-gray-400 transition duration-300 flex flex-col justify-center items-center"
-                >
-                  <img
-                    src={subCategory.iconUrl}
-                    alt={`Placeholder image for ${subCategory.subCategoryName}`}
-                    className="object-cover mt-2 rounded-lg"
-                    style={{ width: "100%", height: "80%" }} // Adjust height to fit image and text properly
-                  />
-                </div>
-                <span className="block mt-2 text-sm">{toProperCase(subCategory.subCategoryName)}</span>
+    <div className="col-span-12 md:col-span-3 md:fixed md:left-0 pl-0 md:pl-6">
+      <h2 className="text-2xl font-bold mb-5 ">{categoryName} Service</h2>
+      <div className="h-auto rounded-lg py-4">
+        <div className="font-medium mb-4 border-none">Select a service</div>
+        <div className="grid grid-cols-3 gap-3">
+          {subCategoryList.map((subCategory, index) => (
+            <div className="items-center text-center">
+              <div
+                key={index}
+                style={{ cursor: "pointer" }}
+                onClick={() => onIconClick(subCategory.subCategoryName)}
+                className="w-[100px] h-[100px] text-center py-5 rounded-lg shadow-md border border-gray-200 hover:border-gray-400 transition duration-300 flex flex-col justify-center items-center"
+              >
+                <img
+                  src={subCategory.iconUrl}
+                  alt={`Placeholder image for ${subCategory.subCategoryName}`}
+                  className="object-cover mt-2 rounded-lg"
+                  style={{ width: "100%", height: "80%" }} // Adjust height to fit image and text properly
+                />
               </div>
-            ))}
-          </div>
+              <span className="block mt-2 text-sm">{toProperCase(subCategory.subCategoryName)}</span>
+            </div>
+          ))}
         </div>
       </div>
     </div>
