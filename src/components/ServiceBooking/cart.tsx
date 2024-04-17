@@ -24,7 +24,7 @@ export const Cart: FunctionComponent = () => {
   const [success, setSuccess] = useState(false);
   const [cart, setCart] = useLocalStorageState<CartProps>("cart", {});
   const location = usePathname();
-  
+
   const handleCheckout = () => {
     setIsOpen(true);
   };

@@ -1,5 +1,5 @@
-"use client";
-import { FC, useEffect, useRef, useState } from "react";
+"use client"
+import React, { FC, useEffect, useRef, useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
 
 export type Service = {
@@ -41,6 +41,8 @@ export const ServicesGrid: FC<ServiceBookingProps & { selectedSubcategory: strin
   const [error, setError] = useState(false);
   const [cart, setCart] = useLocalStorageState<CartProps>("cart", {});
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedServiceDetails, setSelectedServiceDetails] = useState<string | undefined>();
+  const [scrollPosition, setScrollPosition] = useState<number>(0); // State to store scroll position
 
   const addToCart = (service: Service): void => {
     service.serviceCapacity = 1;
@@ -56,17 +58,22 @@ export const ServicesGrid: FC<ServiceBookingProps & { selectedSubcategory: strin
     fetchData(API_URL);
   }, []);
 
-  const toggleModal = (isOpen: boolean) => {
+  const toggleModal = (isOpen: boolean, serviceDetails?: string) => {
     setIsModalOpen(isOpen);
-  };
+    setSelectedServiceDetails(serviceDetails);
 
-  const serviceMap: ServiceMap = {};
+    // Save scroll position when modal opens
+    if (isOpen) {
+      setScrollPosition(window.scrollY);
+    }
+  };
 
   async function fetchData(url: string) {
     try {
       const response = await fetch(url);
       if (response.ok) {
         const data = await response.json();
+        const serviceMap: ServiceMap = {};
         data.services.forEach((service: Service) => {
           const subCategory = service.subCategory;
           if (!serviceMap[subCategory]) {
@@ -81,8 +88,6 @@ export const ServicesGrid: FC<ServiceBookingProps & { selectedSubcategory: strin
             serviceMap[subCategory][existingServiceIndex] = service;
           }
         });
-        console.log(serviceMap);
-        console.log(Object.entries(serviceMap));
         setServices(data.services);
         setServicesDataMap(serviceMap);
       } else {
@@ -94,9 +99,15 @@ export const ServicesGrid: FC<ServiceBookingProps & { selectedSubcategory: strin
   }
 
   useEffect(() => {
+    // Restore scroll position when modal closes
+    if (!isModalOpen) {
+      window.scrollTo(0, scrollPosition);
+    }
+  }, [isModalOpen, scrollPosition]);
+
+  useEffect(() => {
     // Scroll to the selected subcategory when it changes
     if (selectedSubcategory && subCategoryRefs.current[selectedSubcategory]) {
-      console.log(selectedSubcategory);
       subCategoryRefs.current[selectedSubcategory]?.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   }, [selectedSubcategory]);
@@ -129,14 +140,17 @@ export const ServicesGrid: FC<ServiceBookingProps & { selectedSubcategory: strin
                           <p className="text-xs text-gray-600">{service.description}</p>
                         </div>
                         <div className="flex justify-between items-center mb-2">
-                          <a onClick={() => toggleModal(true)} href="#" className="text-blue-600 text-sm font-semibold">
+                          <a
+                            onClick={() => toggleModal(true, service.serviceDetails)}
+                            href="#"
+                            className="text-blue-600 text-sm font-semibold"
+                          >
                             View details
                           </a>
                           <button
                             onClick={() => addToCart(service)}
-                            className={`bg-black text-white rounded-md px-6 py-2 ${
-                              isInCart(service._id) ? "bg-gray-300 cursor-not-allowed" : ""
-                            }`}
+                            className={`bg-black text-white rounded-md px-6 py-2 ${isInCart(service._id) ? "bg-gray-300 cursor-not-allowed" : ""
+                              }`}
                             disabled={isInCart(service._id)}
                           >
                             {isInCart(service._id) ? "In Cart" : "Add to Cart"}
@@ -155,7 +169,12 @@ export const ServicesGrid: FC<ServiceBookingProps & { selectedSubcategory: strin
         <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-gray-900 bg-opacity-75">
           <div
             className="bg-white p-4 rounded-lg shadow-lg relative"
-            style={{ height: "700px", width: "500px", animation: "fadeIn 0.5s forwards" }}
+            style={{
+              maxHeight: "70vh", // Set max height to 70% of the viewport height
+              overflowY: "auto", // Enable vertical scroll if content exceeds the height
+              width: "500px",
+              animation: "fadeIn 0.5s forwards",
+            }}
           >
             <button
               onClick={() => toggleModal(false)}
@@ -166,55 +185,18 @@ export const ServicesGrid: FC<ServiceBookingProps & { selectedSubcategory: strin
               </svg>
             </button>
             <div className="bg-white p-6">
-              <h1 className="text-3xl font-bold mb-2">Power Saver AC service</h1>
               <div className="flex items-center mb-4"></div>
-              <div className="grid grid-cols-2 gap-4 mb-6">
-                <div className="border p-4 rounded-lg">
-                  <h2 className="text-xl font-semibold">Split AC</h2>
-                  <div className="flex items-center my-2">
-                    <span className="text-yellow-400 mr-2">
-                      <i className="fas fa-star"></i>
-                    </span>
-                    <span className="text-gray-600">4.85 (204K)</span>
-                  </div>
-                  <p className="text-gray-800 font-semibold">₹669</p>
-                  <p className="text-gray-600 mb-4">45 mins</p>
-                  <button className="bg-purple-600 text-white px-6 py-2 rounded-lg">Add</button>
-                </div>
-                <div className="border p-4 rounded-lg">
-                  <h2 className="text-xl font-semibold">Window AC</h2>
-                  <div className="flex items-center my-2">
-                    <span className="text-yellow-400 mr-2">
-                      <i className="fas fa-star"></i>
-                    </span>
-                    <span className="text-gray-600">4.83 (44.4K)</span>
-                  </div>
-                  <p className="text-gray-800 font-semibold">₹599</p>
-                  <p className="text-gray-600 mb-4">45 mins</p>
-                  <button className="bg-purple-600 text-white px-6 py-2 rounded-lg">Add</button>
-                </div>
-              </div>
               <h2 className="text-2xl font-bold mb-4">About the service</h2>
-              <ul className="list-none">
-                <li className="flex items-center mb-2">
-                  <span className="text-green-600 mr-2">
-                    <i className="fas fa-check-circle"></i>
-                  </span>
-                  <span>Advanced Foam-jet cleaning of indoor unit</span>
-                </li>
-                <li className="flex items-center mb-2">
-                  <span className="text-green-600 mr-2">
-                    <i className="fas fa-check-circle"></i>
-                  </span>
-                  <span>Thorough cleaning of outdoor unit</span>
-                </li>
-                <li className="flex items-center mb-2">
-                  <span className="text-green-600 mr-2">
-                    <i className="fas fa-check-circle"></i>
-                  </span>
-                  <span>Final checks & clean-up</span>
-                </li>
+              <ul className="list-disc ml-6">
+                {selectedServiceDetails &&
+                  selectedServiceDetails.split("\n").map((detail, index) => (
+                    <li key={index}>{detail!.replace(/\\n/g, "")}</li>
+                  ))}
               </ul>
+              <br />
+              <div className="items-center text-center align-middle">
+                <h3 className="text-red-600"> NOTE: Water and Electricity should be bear by the customer</h3>
+              </div>
             </div>
           </div>
         </div>

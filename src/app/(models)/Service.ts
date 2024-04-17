@@ -5,6 +5,7 @@ interface IService extends Document {
   title: string;
   description: string;
   price: number;
+  serviceDetails: string;
   discountPercentage: number;
   rating: number;
   serviceCapacity: number;
@@ -18,6 +19,7 @@ const ServiceSchema: Schema = new Schema({
   subCategory: { type: String, required: true },
   title: { type: String, required: true },
   description: { type: String, required: true },
+  serviceDetails: { type: String, required: true },
   price: { type: Number, required: true },
   discountPercentage: { type: Number, required: true },
   rating: { type: Number, required: true },
