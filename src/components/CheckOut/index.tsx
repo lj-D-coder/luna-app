@@ -43,7 +43,6 @@ export const CheckOutModal: React.FC<ModalProps> = ({ isOpen, setOpen, totalPric
       <Dialog open={isOpen} onOpenChange={setOpen}  >
       <DialogContent className="sm:max-w-[425px] md:max-w-[525px]">
         <DialogHeader>
-          <DialogTitle>Provide Details</DialogTitle>
           </DialogHeader>
           
           <CheckOutForm setOpen={setOpen} totalPrice={totalPrice} discount={discount} onSuccess={onSuccess} />
@@ -55,33 +54,16 @@ export const CheckOutModal: React.FC<ModalProps> = ({ isOpen, setOpen, totalPric
 
   return (
     <Drawer open={isOpen} onOpenChange={setOpen}>
-      <DrawerContent >
+      <DrawerContent className="px-4" >
         <DrawerHeader className="text-left">
-          <DrawerTitle>Provide Details</DrawerTitle>
         </DrawerHeader>
         <CheckOutForm setOpen={setOpen} totalPrice={totalPrice} discount={discount} onSuccess={onSuccess} />
         <DrawerFooter className="pt-2">
-          <DrawerClose asChild>
+          {/* <DrawerClose asChild>
             <Button variant="outline">Cancel</Button>
-          </DrawerClose>
+          </DrawerClose> */}
         </DrawerFooter>
       </DrawerContent>
     </Drawer>
-  );
-}
-
-function ProfileForm({ className }: React.ComponentProps<"form">) {
-  return (
-    <form className={cn("grid items-start gap-4", className)}>
-      <div className="grid gap-2">
-        <Label htmlFor="email">Email</Label>
-        <Input type="email" id="email" defaultValue="shadcn@example.com" />
-      </div>
-      <div className="grid gap-2">
-        <Label htmlFor="username">Username</Label>
-        <Input id="username" defaultValue="@shadcn" />
-      </div>
-      <Button type="submit">Save changes</Button>
-    </form>
   );
 }

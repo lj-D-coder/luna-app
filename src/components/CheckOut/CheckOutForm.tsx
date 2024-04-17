@@ -137,6 +137,7 @@ export const CheckOutForm: React.FC<CheckOutFormProp> = ({ setOpen, totalPrice, 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className={cn("grid items-start gap-4")}>
+        <h1 className="text text-lg font-semibold">Provide Details</h1>
         <FormField
           control={form.control}
           name="phone"
@@ -254,7 +255,7 @@ export const CheckOutForm: React.FC<CheckOutFormProp> = ({ setOpen, totalPrice, 
             )}
           />
         </div>
-        <Button type="submit">Submit</Button>
+        <Button type="submit">Book Now</Button>
       </form>
     </Form>
   );

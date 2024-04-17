@@ -85,7 +85,7 @@ export const Cart: FunctionComponent = () => {
   return (
     <>
       <div className="w-full md:w-1/4 md:fixed md:right-0 py-3 pl-0 md:pl-4 pr-0 md:pr-6">
-        <div className="bg-white shadow-lg rounded-lg overflow-y-auto max-h-[400px]">
+        <div className="bg-white shadow-lg rounded-lg overflow-y-auto max-h-[400px] p-5">
           <div className="flex justify-between">
             <h2 className="text-lg font-semibold px-2">Cart</h2>
             <CartWidget productsCount={productsCount} />
