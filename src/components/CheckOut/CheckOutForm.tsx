@@ -35,10 +35,16 @@ const FormSchema = z.object({
   timeSlot: z.string({ required_error: "Time slot is required." }),
 });
 
-type CheckOutFormProp = {
 
-};
-export const CheckOutForm: React.FC<CheckOutFormProp> = () => {
+
+// Define the props type for CheckOutForm
+interface CheckOutFormProp {
+  setOpen: (value: boolean) => void;
+}
+
+
+
+export const CheckOutForm: React.FC<CheckOutFormProp> = ({ setOpen }) => {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
@@ -116,7 +122,7 @@ export const CheckOutForm: React.FC<CheckOutFormProp> = () => {
       }
 
       localStorage.clear();
-      // setSuccess(true);
+      setOpen(false);
 
       // router.refresh();
       // router.push("/");

@@ -10,6 +10,7 @@ import { usePathname } from "next/navigation";
 import CartWidget from "./CartWidget";
 import { CheckOutModal } from "../CheckOut";
 import handleApplyCoupon from "@/lib/utils/couponHandler";
+import { BookingComplete } from "../CheckOut/success";
 
 export const Cart: FunctionComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -77,7 +78,7 @@ export const Cart: FunctionComponent = () => {
 
   return (
     <>
-      <div className="w-full md:w-1/4 md:fixed md:right-0 pr-0 md:pr-6">
+      <div className="w-full md:w-1/4 md:fixed md:right-0 py-3 pl-0 md:pl-4 pr-0 md:pr-6">
         <div className="bg-white shadow-lg rounded-lg overflow-y-auto max-h-[400px]">
           <div className="flex justify-between">
             <h2 className="text-lg font-semibold px-2">Cart</h2>
@@ -109,7 +110,7 @@ export const Cart: FunctionComponent = () => {
               <h2 className="text-sm md:text-lg p-2 font-semibold">Coupon</h2>
               <input
                 type="text"
-                className="p-2 w-full text-sm md:text-lg"
+                className="p-2 w-full text-sm md:text-base"
                 placeholder="Enter coupon code"
                 value={coupon || ""}
                 onChange={(e) => setCoupon(e.target.value)}
@@ -150,23 +151,7 @@ export const Cart: FunctionComponent = () => {
         )}
       </div>
       <CheckOutModal isOpen={isOpen} setOpen={setIsOpen} />
-
-      {/* <Drawer title="Basic Drawer" onClose={onClose} open={open}>
-        {!success && (
-          <BookingCalender
-            setSelectedDate={setSelectedDate}
-            setSelectedTime={setSelectedTime}
-          />
-        )}
-        {next && (
-          <FormComponent
-            success={success}
-            setSuccess={setSuccess}
-            selectedDate={selectedDate}
-            selectedTime={selectedTime}
-          />
-        )}
-      </Drawer> */}
+      <BookingComplete openSuccess={success} setOpenSuccess={setSuccess} />
     </>
   );
 };

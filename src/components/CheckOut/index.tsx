@@ -38,12 +38,12 @@ export const CheckOutModal: React.FC<ModalProps> = ({ isOpen, setOpen })=> {
   if (isDesktop) {
     return (
       <Dialog open={isOpen} onOpenChange={setOpen}  >
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[425px] md:max-w-[525px]">
         <DialogHeader>
           <DialogTitle>Provide Details</DialogTitle>
           </DialogHeader>
           
-          <CheckOutForm />
+          <CheckOutForm setOpen={setOpen}/>
 
       </DialogContent>
     </Dialog>
@@ -56,7 +56,7 @@ export const CheckOutModal: React.FC<ModalProps> = ({ isOpen, setOpen })=> {
         <DrawerHeader className="text-left">
           <DrawerTitle>Provide Details</DrawerTitle>
         </DrawerHeader>
-        <CheckOutForm />
+        <CheckOutForm setOpen={setOpen}/>
         <DrawerFooter className="pt-2">
           <DrawerClose asChild>
             <Button variant="outline">Cancel</Button>
