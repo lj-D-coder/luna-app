@@ -9,7 +9,7 @@ interface categoryProps {
 
 const page: FC<categoryProps> = async ({ params }) => {
   const categoryUrl = params.category;
-  // console.log(categoryUrl)
+  
 
   return (
     <>

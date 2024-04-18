@@ -17,6 +17,7 @@ import { ClockIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
 import { CartProps } from "../ServiceBooking/ServicesGrid";
+import { useRouter } from "next/navigation";
 
 const FormSchema = z.object({
   bookingDate: z.date({
@@ -51,6 +52,7 @@ export const CheckOutForm: React.FC<CheckOutFormProp> = ({ setOpen, totalPrice, 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
+  const router = useRouter();
 
   // defining state to automatically close after date and slot is selected
   const [calendarOpen, setCalendarOpen] = useState(false);
@@ -128,9 +130,11 @@ export const CheckOutForm: React.FC<CheckOutFormProp> = ({ setOpen, totalPrice, 
       localStorage.clear();
       setOpen(false);
       onSuccess(true);
-
-      // router.refresh();
-      // router.push("/");
+      setTimeout(() => {
+        router.refresh();
+        router.push("/");
+    }, 5000);
+      
     }
   }
 
@@ -143,7 +147,7 @@ export const CheckOutForm: React.FC<CheckOutFormProp> = ({ setOpen, totalPrice, 
           name="phone"
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel>Phone Number</FormLabel>
+              <FormLabel>WhatsApp Number</FormLabel>
               <FormControl>
                 <Input {...field} type="text" maxLength={10} placeholder="Enter 10 digit phone number" />
               </FormControl>

@@ -46,10 +46,6 @@ export default function Home() {
             seotextResponse.json()
 
           ]);
-          console.log(bannerData);
-          console.log(iconGridData);
-          console.log(heroData);
-          console.log(testimonyData);
           setBannerData(bannerData.bannerData);
           setCategories(iconGridData.categoryItem);
           setHeroData(heroData.heroData);
