@@ -17,10 +17,10 @@ export const Services: FC<ServiceBookingProps> = ({ categoryUrl }) => {
 
   return (
     <div className="grid grid-cols-12 gap-4">
-      <div className="col-span-12 md:col-span-4">
+      <div className="col-span-12 md:col-span-4 p-2">
         <SubCategory onIconClick={handleIconClick} categoryUrl={categoryUrl} />
       </div>
-      <div className="col-span-12 md:col-span-8">
+      <div className="col-span-12 md:col-span-8 p-2">
         <ServicesGrid selectedSubcategory={selectedSubcategory} categoryUrl={categoryUrl} />
       </div>
     </div>
