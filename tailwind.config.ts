@@ -1,6 +1,6 @@
 import type { Config } from "tailwindcss"
 
-const config = {
+const config: Config = {
   darkMode: ["class"],
   content: [
     './pages/**/*.{ts,tsx}',
@@ -18,6 +18,10 @@ const config = {
       },
     },
     extend: {
+      // Add this to hide scrollbar
+      scrollbarHide: {
+        'scrollbar-hide': 'scrollbar-width: thin; scrollbar-color: transparent transparent;',
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -38,12 +42,16 @@ const config = {
       },
     },
   },
-  // variants: {
-  //   extend: {
-  //     borderColor: ['responsive', 'hover', 'focus'], // Add this line
-  //   },
-  // },
-  plugins: [require("tailwindcss-animate")],
-} satisfies Config
+  variants: {
+    extend: {
+      // Add this to use it in a variant
+      scrollbarHide: ['responsive'],
+    },
+  },
+  plugins: [
+    require("tailwindcss-animate"),
+    require('tailwind-scrollbar-hide')  // Add this plugin
+  ],
+}
 
 export default config
