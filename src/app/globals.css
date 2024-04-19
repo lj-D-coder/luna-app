@@ -3,32 +3,45 @@
 @tailwind utilities;
 
 @layer components {
-    .card-hover-effects {
-      @apply transition duration-500 ease-in-out transform;
-      @apply hover:-translate-y-1 hover:scale-[101%];
-    }
+  .card-hover-effects {
+    @apply transition duration-500 ease-in-out transform;
+    @apply hover:-translate-y-1 hover:scale-[101%];
   }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE and Edge */
+body {
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Hide scrollbar for Firefox */
+body {
+  scrollbar-width: none; /* Firefox */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
   }
- 
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.heroSlider {
+  border-radius: 10px;
+  height: 30vh;
+}
+
+@media (min-width: 768px) {
   .heroSlider {
-    border-radius: 10px;
-    height: 30vh;
+    height: 50vh;
   }
-  
-  @media (min-width: 768px) {
-    .heroSlider {
-      height: 50vh;
-    }
-  }
-  
-  
+}

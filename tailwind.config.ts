@@ -18,6 +18,7 @@ const config = {
       },
     },
     extend: {
+      
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -38,12 +39,10 @@ const config = {
       },
     },
   },
-  // variants: {
-  //   extend: {
-  //     borderColor: ['responsive', 'hover', 'focus'], // Add this line
-  //   },
-  // },
   plugins: [require("tailwindcss-animate")],
 } satisfies Config
 
 export default config
+
+
+
