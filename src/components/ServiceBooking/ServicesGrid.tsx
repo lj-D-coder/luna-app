@@ -114,7 +114,7 @@ export const ServicesGrid: FC<ServiceBookingProps & { selectedSubcategory: strin
 
   return (
     <>
-      <div className="col-span-12 md:col-span-8">
+      <div className="block p-4">
         <div className="bg-none overflow-hidden">
           {Object.keys(servicesDataMap).map((subCategory) => (
             <div key={subCategory} className="mb-8" ref={(el) => (subCategoryRefs.current[subCategory] = el)}>
@@ -126,11 +126,11 @@ export const ServicesGrid: FC<ServiceBookingProps & { selectedSubcategory: strin
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {servicesDataMap[subCategory].map((service) => (
-                  <div key={service._id} className="bg-white shadow-md rounded-lg overflow-hidden">
+                  <div key={service._id} className="border-2 border-neutral-200 shadow-md rounded-lg overflow-hidden">
                     <div className="flex justify-center items-center h-60">
                       <img className="object-cover w-full h-full" src={service.thumbnail} alt={service.title} />
                     </div>
-                    <div className="p-4">
+                    <div className="p-2">
                       <h2 className="text-xl font-semibold text-gray-800 mb-2">{service.title}</h2>
                       <div className="flex justify-between items-center mb-2">
                         <h3 className="text-lg font-bold text-gray-700 md:text-xl">Price at {service.price}</h3>

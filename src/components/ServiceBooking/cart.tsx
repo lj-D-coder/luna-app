@@ -84,16 +84,15 @@ export const Cart: FunctionComponent = () => {
 
   return (
     <>
-      <div className="w-full md:w-1/4 md:fixed md:right-0 py-3 pl-0 md:pl-4 pr-0 md:pr-6">
-        <div className="bg-white shadow-lg rounded-lg overflow-y-auto max-h-[400px] p-5">
+      <div className="block relative md:fixed w-full md:w-3/12 p-4">
+        <div className="bg-white shadow-lg rounded-lg overflow-y-auto max-h-[400px]">
           <div className="flex justify-between">
             <h2 className="text-lg font-semibold px-2">Cart</h2>
             <CartWidget productsCount={productsCount} />
           </div>
-          <div className="grid grid-cols-1">
             {getServices().map((service) => (
-              <div key={service._id} className="border-t mt-4 pt-4">
-                <h3 className="font-medium text-gray-700 px-2">{service.title}</h3>
+              <div key={service._id} className="border-t mt-4 p-4">
+                <h3 className="font-medium text-gray-700">{service.title}</h3>
                 <div className="flex items-center justify-between mt-3">
                   <div className="flex items-center border rounded-md">
                     <Quantifier
@@ -108,7 +107,6 @@ export const Cart: FunctionComponent = () => {
                 </div>
               </div>
             ))}
-          </div>
         </div>
         <div className="flex border-2 mt-1 rounded">
           {discount <= 0 && (
