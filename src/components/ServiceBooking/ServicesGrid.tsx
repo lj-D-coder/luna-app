@@ -112,10 +112,17 @@ export const ServicesGrid: FC<ServiceBookingProps & { selectedSubcategory: strin
     }
   }, [selectedSubcategory]);
 
+  useEffect(() => {
+    document.body.style.backgroundColor = 'white'; // Set background color to white
+    return () => {
+      document.body.style.backgroundColor = ''; // Reset background color when component unmounts
+    };
+  }, []);
+
   return (
     <>
-      <div className="block p-4">
-        <div className="bg-none overflow-hidden">
+      <div className="block p-4 bg-white">
+        <div className="bg-white overflow-hidden">
           {Object.keys(servicesDataMap).map((subCategory) => (
             <div key={subCategory} className="mb-8" ref={(el) => (subCategoryRefs.current[subCategory] = el)}>
               <h2 className="text-2xl font-bold mb-4">
@@ -148,9 +155,8 @@ export const ServicesGrid: FC<ServiceBookingProps & { selectedSubcategory: strin
                         </a>
                         <button
                           onClick={() => addToCart(service)}
-                          className={`bg-black text-white rounded-md px-6 py-2 ${
-                            isInCart(service._id) ? "bg-gray-300 cursor-not-allowed" : ""
-                          }`}
+                          className={`bg-black text-white rounded-md px-6 py-2 ${isInCart(service._id) ? "bg-gray-300 cursor-not-allowed" : ""
+                            }`}
                           disabled={isInCart(service._id)}
                         >
                           {isInCart(service._id) ? "In Cart" : "Add to Cart"}
