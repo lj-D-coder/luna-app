@@ -173,7 +173,7 @@ export const CheckOutForm: React.FC<CheckOutFormProp> = ({ setOpen, totalPrice, 
           name="address"
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel>Address</FormLabel>
+              <FormLabel>Full Address</FormLabel>
               <FormControl>
                 <Input {...field} type="text" placeholder="Enter your address" />
               </FormControl>
@@ -195,7 +195,7 @@ export const CheckOutForm: React.FC<CheckOutFormProp> = ({ setOpen, totalPrice, 
                         variant={"outline"}
                         className={cn("w-[150px] pl-3 text-left font-normal", !field.value && "text-muted-foreground")}
                       >
-                        {field.value ? format(field.value, "PPP") : <span>select a date</span>}
+                        {field.value ? format(field.value, "PPP") : <span>Select a date</span>}
                         <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                       </Button>
                     </FormControl>

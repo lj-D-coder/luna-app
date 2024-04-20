@@ -1,12 +1,35 @@
-"use client";
-
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import target from "../assets/images/target.svg";
 import Image from "next/image";
 
+type SearchResult = {
+  keyword: string[];
+  slug: string;
+};
+
 export default function Search({ placeholder }: { placeholder: string }) {
-  function handleSearch(term: string) {
-    console.log(term);
+  const [term, setTerm] = useState("");
+  const [results, setResults] = useState<SearchResult[]>([{ keyword: [], slug: "" }]);
+
+  const router = useRouter();
+
+  async function handleSearch(term: string) {
+    setTerm(term);
+    if (term) {
+      // Fetch the search results from your API
+      const res = await fetch(`/api/search?query=${term}`);
+      const data = await res.json();
+      setResults(data.searches);
+    } else {
+      setResults([]);
+    }
+  }
+
+  function handleSelectResult(result: { keyword: string[]; slug: string }) {
+    // Redirect to the selected result page
+    router.push(`/${result.slug}`);
   }
 
   return (
@@ -19,6 +42,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
           <input
             className="block w-full h-[50px] rounded-full pl-10 text-base outline-2 placeholder:text-gray-300 bg-white bg-opacity-80  focus:outline-none"
             placeholder={placeholder}
+            value={term}
             onChange={(e) => {
               handleSearch(e.target.value);
             }}
@@ -37,6 +61,28 @@ export default function Search({ placeholder }: { placeholder: string }) {
               Set my location
             </button>
           </div>
+          {term ? (
+            results.length > 0 ? (
+              <div
+                className="absolute w-full mt-2 rounded-md shadow-lg max-h-60 overflow-auto"
+                onMouseLeave={() => setResults([])} // Reset results when mouse leaves
+              >
+                {results.map((result, index) =>
+                  result.keyword.map((keyword, keyIndex) => (
+                    <div
+                      key={`${index}-${keyIndex}`}
+                      className="cursor-pointer hover:bg-gray-100 py-1"
+                      onClick={() => handleSelectResult(result)}
+                    >
+                      {keyword}
+                    </div>
+                  ))
+                )}
+              </div>
+            ) : (
+              <div className="absolute w-full mt-2 rounded-md shadow-lg max-h-60 overflow-auto py-1">Not found!</div>
+            )
+          ) : null}
         </div>
       </div>
     </div>
