@@ -1,19 +1,44 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import target from "../assets/images/target.svg";
 import Image from "next/image";
 
 type SearchResult = {
-  keyword: string[];
-  slug: string;
+  keyword: string;
+  urlSlug: string;
 };
 
 export default function Search({ placeholder }: { placeholder: string }) {
   const [term, setTerm] = useState("");
-  const [results, setResults] = useState<SearchResult[]>([{ keyword: [], slug: "" }]);
-
+  const [results, setResults] = useState<SearchResult[]>([]);
+  const [activeIndex, setActiveIndex] = useState(0);
   const router = useRouter();
+
+  const activeIndexRef = useRef(activeIndex);
+  activeIndexRef.current = activeIndex;
+
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      setActiveIndex((prevActiveIndex) => Math.min(prevActiveIndex + 1, results.length - 1));
+    } else if (event.key === 'ArrowUp') {
+      event.preventDefault();
+      setActiveIndex((prevActiveIndex) => Math.max(prevActiveIndex - 1, 0));
+    } else if (event.key === 'Enter') {
+      event.preventDefault();
+      if (results[activeIndexRef.current]) {
+        handleSelectResult(results[activeIndexRef.current]);
+      }
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [results]);
 
   async function handleSearch(term: string) {
     setTerm(term);
@@ -22,14 +47,15 @@ export default function Search({ placeholder }: { placeholder: string }) {
       const res = await fetch(`/api/search?query=${term}`);
       const data = await res.json();
       setResults(data.searches);
+      setActiveIndex(0); // Reset active index
     } else {
       setResults([]);
     }
   }
 
-  function handleSelectResult(result: { keyword: string[]; slug: string }) {
+  function handleSelectResult(result: SearchResult) {
     // Redirect to the selected result page
-    router.push(`/${result.slug}`);
+    router.push(`/${result.urlSlug}`);
   }
 
   return (
@@ -67,17 +93,15 @@ export default function Search({ placeholder }: { placeholder: string }) {
                 className="absolute w-full mt-2 rounded-md shadow-lg max-h-60 overflow-auto"
                 onMouseLeave={() => setResults([])} // Reset results when mouse leaves
               >
-                {results.map((result, index) =>
-                  result.keyword.map((keyword, keyIndex) => (
-                    <div
-                      key={`${index}-${keyIndex}`}
-                      className="cursor-pointer hover:bg-gray-100 py-1"
-                      onClick={() => handleSelectResult(result)}
-                    >
-                      {keyword}
-                    </div>
-                  ))
-                )}
+                {results.map((result, index) => (
+                  <div
+                    key={index}
+                    className={`cursor-pointer hover:bg-gray-100 py-1 ${activeIndex === index ? 'bg-gray-200' : ''}`}
+                    onClick={() => handleSelectResult(result)}
+                  >
+                    {result.keyword}
+                  </div>
+                ))}
               </div>
             ) : (
               <div className="absolute w-full mt-2 rounded-md shadow-lg max-h-60 overflow-auto py-1">Not found!</div>
