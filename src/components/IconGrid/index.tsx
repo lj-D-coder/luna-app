@@ -32,7 +32,7 @@ const IconGrid: React.FC<CategoryProps> = ({ categories, sliderData }) => {
         }}
         className="w-full h-screen grid grid-cols-1"
       >
-        <Search placeholder="Search for area, street name, landmark..." />
+        <Search placeholder="Search for services ..." />
         <div className="flex flex-col md:flex-row items-center md:justify-between px-10 pt-20">
           <div className="w-96 md:w-[600px] mt-40 md:mt-0 h-[300px] self-center">
             <div className="grid grid-cols-3 md:grid-cols-3 gap-4 mx-auto">

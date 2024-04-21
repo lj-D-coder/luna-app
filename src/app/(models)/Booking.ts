@@ -29,6 +29,7 @@ interface IBooking extends Document {
   phone: string;
   name: string;
   address: string;
+  landmark: string;
   timeSlot: string;
   paymentMode: string;
   paymentStatus: string;
@@ -43,6 +44,7 @@ const BookingSchema: Schema = new Schema({
   phone: { type: String, required: true },
   name: { type: String, required: true },
   address: { type: String, required: true },
+  landmark: { type: String, required: true },
   timeSlot: { type: String, required: true },
   paymentMode: { type: String, default: 'offline' },
   paymentStatus: { type: String,  default: 'pending' },

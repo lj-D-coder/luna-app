@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import target from "../assets/images/target.svg";
 import Image from "next/image";
+import GoogleMapComponent from "./Map";
 
 type SearchResult = {
   keyword: string;
@@ -14,18 +15,32 @@ export default function Search({ placeholder }: { placeholder: string }) {
   const [results, setResults] = useState<SearchResult[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const router = useRouter();
+  // state for map location service
+  const [showMap, setShowMap] = useState(false);
+  const [location, setLocation] = useState<string | null>(null);
+
+  const handleSetLocation = async (location: { lat: number; lng: number }) => {
+    const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.lat},${location.lng}&key=${process.env.NEXT_PUBLIC_MAP_API_KEY}`);
+    const data = await response.json();
+    const fullAddress = data.results[0].formatted_address;
+    // const parts = fullAddress.split(','); 
+    // const cityAndState = parts.slice(1, 2).join(',');
+    setLocation(fullAddress);
+    setShowMap(false);
+  };
+  
 
   const activeIndexRef = useRef(activeIndex);
   activeIndexRef.current = activeIndex;
 
   const handleKeyDown = (event: KeyboardEvent) => {
-    if (event.key === 'ArrowDown') {
+    if (event.key === "ArrowDown") {
       event.preventDefault();
       setActiveIndex((prevActiveIndex) => Math.min(prevActiveIndex + 1, results.length - 1));
-    } else if (event.key === 'ArrowUp') {
+    } else if (event.key === "ArrowUp") {
       event.preventDefault();
       setActiveIndex((prevActiveIndex) => Math.max(prevActiveIndex - 1, 0));
-    } else if (event.key === 'Enter') {
+    } else if (event.key === "Enter") {
       event.preventDefault();
       if (results[activeIndexRef.current]) {
         handleSelectResult(results[activeIndexRef.current]);
@@ -34,9 +49,9 @@ export default function Search({ placeholder }: { placeholder: string }) {
   };
 
   useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
     return () => {
-      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener("keydown", handleKeyDown);
     };
   }, [results]);
 
@@ -74,19 +89,27 @@ export default function Search({ placeholder }: { placeholder: string }) {
             }}
           />
           <MagnifyingGlassIcon className="absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-600 peer-focus:text-gray-200" />
-          {/* <div className="absolute z-10 right-4 top-1/2 h-[18px] w-[18px] -translate-y-1/2">
+          {!location && (<div className="absolute z-10 right-4 top-1/2 h-[18px] w-[18px] -translate-y-1/2">
             <Image src={target} alt="target-icon" />
-          </div>
+          </div>)}
           <div className="absolute right-2 top-1/2 -translate-y-1/2">
-            <button
-              className="rounded-full bg-blue-100 text-black py-1 pl-5 pr-8"
-              onClick={() => {
-                // Add your button click functionality here
-              }}
-            >
-              Search Services
-            </button>
-          </div> */}
+            <div>
+              {!location && (
+                <button
+                  className="rounded-full bg-blue-100 text-black py-1 pl-5 pr-8"
+                  onClick={() => {
+                    setShowMap(true);
+                  }}
+                >
+                  Set my location
+                </button>
+              )}
+
+              {showMap && <GoogleMapComponent onClose={() => setShowMap(false)} onSetLocation={handleSetLocation} />}
+
+              {location && <p>{location}</p>}
+            </div>
+          </div>
           {term ? (
             results.length > 0 ? (
               <div
@@ -96,7 +119,9 @@ export default function Search({ placeholder }: { placeholder: string }) {
                 {results.map((result, index) => (
                   <div
                     key={index}
-                    className={`cursor-pointer hover:bg-gray-100 py-1 px-4 ${activeIndex === index ? 'bg-gray-200' : ''}`}
+                    className={`cursor-pointer hover:bg-gray-100 py-1 px-4 ${
+                      activeIndex === index ? "bg-gray-200" : ""
+                    }`}
                     onClick={() => handleSelectResult(result)}
                   >
                     {result.keyword}

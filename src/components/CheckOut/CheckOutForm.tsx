@@ -33,10 +33,9 @@ const FormSchema = z.object({
   ),
   name: z.string().min(8, "Full Name is required."),
   address: z.string().min(8, "Full Address is required."),
+  landmark: z.string().min(5, "Landmark required."),
   timeSlot: z.string({ required_error: "Time slot is required." }),
 });
-
-
 
 // Define the props type for CheckOutForm
 interface CheckOutFormProp {
@@ -45,8 +44,6 @@ interface CheckOutFormProp {
   discount: number;
   onSuccess: (success: boolean) => void;
 }
-
-
 
 export const CheckOutForm: React.FC<CheckOutFormProp> = ({ setOpen, totalPrice, discount, onSuccess }) => {
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -133,15 +130,18 @@ export const CheckOutForm: React.FC<CheckOutFormProp> = ({ setOpen, totalPrice, 
       setTimeout(() => {
         router.refresh();
         router.push("/");
-    }, 5000);
-      
+      }, 5000);
     }
   }
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className={cn("grid items-start gap-4")}>
-        <h1 className="text text-lg font-semibold">Provide Details</h1>
+        <p className="text text-sm text-center md:text-base">
+          <span className="text-red-500">*Note:</span> our services are exclusively available in the Imphal area.
+        </p>
+
+        <h1 className="text text-base text-center font-semibold">Please Provide Your Details:</h1>
         <FormField
           control={form.control}
           name="phone"
@@ -176,6 +176,20 @@ export const CheckOutForm: React.FC<CheckOutFormProp> = ({ setOpen, totalPrice, 
               <FormLabel>Full Address</FormLabel>
               <FormControl>
                 <Input {...field} type="text" placeholder="Enter your address" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="landmark"
+          render={({ field }) => (
+            <FormItem className="flex flex-col">
+              <FormLabel>Add Landmark</FormLabel>
+              <FormControl>
+                <Input {...field} type="text" placeholder="Enter your landmark..." />
               </FormControl>
               <FormMessage />
             </FormItem>
