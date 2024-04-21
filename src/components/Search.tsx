@@ -96,7 +96,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
                 {results.map((result, index) => (
                   <div
                     key={index}
-                    className={`cursor-pointer hover:bg-gray-100 py-1 ${activeIndex === index ? 'bg-gray-200' : ''}`}
+                    className={`cursor-pointer hover:bg-gray-100 py-1 px-4 ${activeIndex === index ? 'bg-gray-200' : ''}`}
                     onClick={() => handleSelectResult(result)}
                   >
                     {result.keyword}
