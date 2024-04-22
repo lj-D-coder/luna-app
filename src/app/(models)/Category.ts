@@ -5,8 +5,7 @@ interface ICategory extends Document {
     categoryId: number
     categoryName: string;
     categoryLabel: string;
-    IconUrl: string;
-    subCategory: Array<string>
+    iconUrl: string;
 }
 
 const CategorySchema: Schema = new Schema({
@@ -14,8 +13,8 @@ const CategorySchema: Schema = new Schema({
     categoryName: { type: String, required: true },
     categoryId: { type: Number, required: true },
     categoryLabel: { type: String, required: true },
-    IconUrl: { type: String, required: true },
-    subCategory: { type: Array, required: true }
+    iconUrl: { type: String, required: true },
+    orderNo: { type: Number, required: true },
 });
 
 const Category = mongoose.models.Category || mongoose.model('Category', CategorySchema);

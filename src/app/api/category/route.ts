@@ -5,7 +5,7 @@ import connection from "@/lib/utils/db-connect";
 export async function GET(req: any): Promise<NextResponse> {
     await connection();
     try {
-        const categoryItem = await Category.find();
+        const categoryItem = await Category.find().sort({ orderNo: 1 });
         return NextResponse.json({ categoryItem, message: "Category Fetched" }, { status: 200 },);
     } catch (error: any) {
         console.error("Error caught", error);
