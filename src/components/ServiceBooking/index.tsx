@@ -1,7 +1,7 @@
 import { Header } from "./header";
 import { Cart } from "./cart";
 import { FC } from "react";
-import { Services } from "./Services";
+import { Services } from "./Service";
 
 interface ServiceBookingProps {
   categoryUrl: string;

@@ -1,7 +1,6 @@
 "use client";
 import { FC, useEffect, useState } from "react";
 import { toProperCase } from "@/lib/utils/propercase";
-import Image from "next/image";
 
 interface SubCategoryProps {
   categoryUrl: string;
@@ -20,7 +19,9 @@ export type SubCategory = {
 
 export const SubCategory: FC<SubCategoryProps> = ({ categoryUrl, onIconClick }) => {
   console.log(categoryUrl);
-  const API_URL = `api/services/${categoryUrl}`;
+  let categoryId = sessionStorage.getItem('categoryId');
+
+  const API_URL = `api/services/${categoryId}`;
   const [isLoading, setIsLoading] = useState(true);
   const [subCategoryList, setSubCategory] = useState<SubCategory[]>([]);
   const [error, setError] = useState(false);
@@ -71,7 +72,7 @@ export const SubCategory: FC<SubCategoryProps> = ({ categoryUrl, onIconClick }) 
             onClick={() => onIconClick(subCategory.subCategoryName)}
             className="w-full h-[100px] text-center py-5 rounded-lg shadow-md border border-gray-200 hover:border-gray-400 transition duration-300 flex flex-col justify-center items-center"
           >
-            <Image
+            <img
               src={subCategory.iconUrl}
               alt={`Placeholder image for ${subCategory.subCategoryName}`}
               className="object-cover mt-2 rounded-lg"

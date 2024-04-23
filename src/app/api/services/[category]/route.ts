@@ -3,10 +3,10 @@ import connection from "@/lib/utils/db-connect";
 import SubCategory from "@/app/(models)/SubCategory";
 
 export async function GET(request: NextRequest, { params }: { params: { category: string } }) {
-  await connection();
+  await connection()
   try {
-    const parentCategoryName = params.category;
-    const subCategoryList = await SubCategory.find({ parentCategoryName });
+    const parentCategoryId = params.category;
+    const subCategoryList = await SubCategory.find({ parentCategoryId });
     return NextResponse.json({ subCategoryList, message: "Sub category Fetched" }, { status: 200 },);
 
   } catch (error: any) {

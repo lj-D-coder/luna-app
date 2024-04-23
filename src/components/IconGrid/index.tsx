@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils/cn";
 import Image from "next/image";
 import Hero from "../Hero";
 import Search from "../Search";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export type Category = {
   _id: string;
@@ -21,7 +21,16 @@ interface CategoryProps {
 }
 
 const IconGrid: React.FC<CategoryProps> = ({ categories, sliderData }) => {
+  const router = useRouter();
   const [specialIndices] = useState([1]);
+  const [categoryId, setCategoryId] = useState<string | null>(null);
+
+  const handleClick = (id: string, categoryName: string) => {
+    setCategoryId(id);
+    sessionStorage.setItem('categoryId', id.toString());
+    router.push(`/${categoryName}`);
+  }
+
   return (
     <>
       <div
@@ -43,9 +52,12 @@ const IconGrid: React.FC<CategoryProps> = ({ categories, sliderData }) => {
                       specialIndices.includes(index) && "w-24 h-24"
                     )}
                   >
-                    <Link href={`/${data.categoryName}`}>
-                      <Image src={data.iconUrl} alt={data.categoryLabel} fill />
-                    </Link>
+                    <Image
+                      src={data.iconUrl}
+                      alt={data.categoryLabel}
+                      fill
+                      onClick={() => handleClick(data._id, data.categoryName)}
+                    />
                   </div>
                   <div className="text-center mt-2">{data.categoryLabel}</div> {/* Added text-center class */}
                 </div>
