@@ -1,8 +1,9 @@
 "use client";
 import "hero-slider/dist/index.css";
 import HeroSlider, { ButtonsNav, MenuNav, Overlay, Slide } from "hero-slider";
+import Wrapper from "./Wrapper";
+import Title from "./Title";
 import { useEffect, useState } from "react";
-
 
 
 
@@ -60,6 +61,11 @@ const Hero: React.FC<HeroProp> = ({ sliderData }) => {
           }}
           accessibility={{ shouldDisplayButtons: false }}
         >
+          <Overlay>
+            <Wrapper>
+              <Title></Title>
+            </Wrapper>
+          </Overlay>
 
           {sliderData.map((banner, index) => (
             <div key={index}>
