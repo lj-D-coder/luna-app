@@ -34,7 +34,7 @@ export const ServicesGrid: FC<ServiceBookingProps & { selectedSubcategory: strin
 }) => {
   const subCategoryRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
-  const API_URL = `${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/servicesUnderCategory/${categoryUrl}`;
+  const API_URL = `api/servicesUnderCategory/${categoryUrl}`;
   const [isLoading, setIsLoading] = useState(true);
   const [services, setServices] = useState<ServiceMap[]>([]);
   const [servicesDataMap, setServicesDataMap] = useState<ServiceMap>({});

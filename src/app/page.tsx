@@ -12,11 +12,11 @@ import { Loader } from "@/components/ServiceBooking/Loader";
 
 
 export default function Home() {
-  const API_URL_BANNER = `${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/banner`;
-  const API_URL_ICON_GRID = `${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/category`;
-  const API_URL_HERO = `${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/hero`;
-  const API_URL_TESTIMONY = `${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/testimony`;
-  const API_URL_SEOTEXT = `${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/seotext`;
+  const API_URL_BANNER = "/api/banner";
+  const API_URL_ICON_GRID = "api/category";
+  const API_URL_HERO = "/api/hero";
+  const API_URL_TESTIMONY = "api/testimony";
+  const API_URL_SEOTEXT = "/api/seotext";
 
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);

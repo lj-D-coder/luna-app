@@ -20,7 +20,7 @@ export type SubCategory = {
 
 export const SubCategory: FC<SubCategoryProps> = ({ categoryUrl, onIconClick }) => {
   console.log(categoryUrl);
-  const API_URL = `${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/services/${categoryUrl}`;
+  const API_URL = `api/services/${categoryUrl}`;
   const [isLoading, setIsLoading] = useState(true);
   const [subCategoryList, setSubCategory] = useState<SubCategory[]>([]);
   const [error, setError] = useState(false);
