@@ -63,7 +63,7 @@ export default function Home() {
     };
 
     fetchAllHomePageData();
-  }, []);
+  });
 
   if (error) {
     return <h3>An error occurred when fetching data. Please check the API and try again.</h3>;

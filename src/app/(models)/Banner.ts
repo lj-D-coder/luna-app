@@ -12,6 +12,6 @@ const BannerSchema: Schema = new Schema({
     bannerUrl: { type: String, required: true },
 });
 
-const Banner = mongoose.models.Banner || mongoose.model('Banner', BannerSchema);
+const Banner = mongoose.models.Banner || mongoose.model<IBanner>('Banner', BannerSchema);
 
 export default Banner;

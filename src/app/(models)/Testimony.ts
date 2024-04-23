@@ -22,6 +22,6 @@ const TestimonySchema: Schema = new Schema({
     designation: { type: String, required: true },
 });
 
-const Testimony = mongoose.models.Testimony || mongoose.model('Testimony', TestimonySchema);
+const Testimony = mongoose.models.Testimony || mongoose.model<ITestimony>('Testimony', TestimonySchema);
 
 export default Testimony;

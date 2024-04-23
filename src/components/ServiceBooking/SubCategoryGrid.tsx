@@ -1,7 +1,7 @@
 "use client";
 import { FC, useEffect, useState } from "react";
-import { Loader } from "./Loader";
 import { toProperCase } from "@/lib/utils/propercase";
+import Image from "next/image";
 
 interface SubCategoryProps {
   categoryUrl: string;
@@ -65,14 +65,13 @@ export const SubCategory: FC<SubCategoryProps> = ({ categoryUrl, onIconClick }) 
     <div className="font-medium mb-4 border-none">Select a service</div>
     <div className="grid grid-cols-3 gap-4 justify-items-stretch justify-content-center pt-4 w-full">
       {subCategoryList.map((subCategory, index) => (
-        <div className="flex flex-col items-center text-center">
+        <div key={index} className="flex flex-col items-center text-center">
           <div
-            key={index}
             style={{ cursor: "pointer" }}
             onClick={() => onIconClick(subCategory.subCategoryName)}
             className="w-full h-[100px] text-center py-5 rounded-lg shadow-md border border-gray-200 hover:border-gray-400 transition duration-300 flex flex-col justify-center items-center"
           >
-            <img
+            <Image
               src={subCategory.iconUrl}
               alt={`Placeholder image for ${subCategory.subCategoryName}`}
               className="object-cover mt-2 rounded-lg"

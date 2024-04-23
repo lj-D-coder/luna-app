@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import Service from "@/app/(models)/Service";
 import connection from "@/lib/utils/db-connect";
-import SubCategory from "@/app/(models)/SubCategory";
 import Banner from "@/app/(models)/Banner";
 
 export async function GET(request: NextRequest) {

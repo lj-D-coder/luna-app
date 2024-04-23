@@ -30,6 +30,6 @@ const ServiceSchema: Schema = new Schema({
   images: { type: [String], required: true },
 });
 
-const Service = mongoose.models.Service || mongoose.model('Service', ServiceSchema);
+const Service = mongoose.models.Service || mongoose.model<IService>('Service', ServiceSchema);
 
 export default Service;

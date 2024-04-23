@@ -1,7 +1,5 @@
-import Service from "@/app/(models)/Service";
 import { NextResponse } from "next/server";
 import connection from "@/lib/utils/db-connect";
-import Testimony from "@/app/(models)/Testimony";
 import Seotext from "@/app/(models)/Seotext";
 // import type { NextApiRequest, NextApiResponse } from 'next'
 

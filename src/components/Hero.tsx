@@ -1,40 +1,10 @@
 "use client";
 import "hero-slider/dist/index.css";
 import HeroSlider, { ButtonsNav, MenuNav, Overlay, Slide } from "hero-slider";
-import Wrapper from "./Wrapper";
-import Title from "./Title";
-import {
-  carwashimg,
-  carserviceimg,
-  accleaningimg,
-  homecleaningimg,
-  sofacleaningimg,
-  phonerepairimg,
-} from "../assets/images/index";
 import { useEffect, useState } from "react";
 
 
 
-const bannerImages = [
-  {
-    url: carwashimg,
-  },
-  {
-    url: carserviceimg,
-  },
-  {
-    url: accleaningimg,
-  },
-  {
-    url: homecleaningimg,
-  },
-  {
-    url: sofacleaningimg,
-  },
-  {
-    url: phonerepairimg,
-  },
-];
 
 export type Hero = {
   _id: string;
@@ -90,11 +60,6 @@ const Hero: React.FC<HeroProp> = ({ sliderData }) => {
           }}
           accessibility={{ shouldDisplayButtons: false }}
         >
-          <Overlay>
-            <Wrapper>
-              <Title></Title>
-            </Wrapper>
-          </Overlay>
 
           {sliderData.map((banner, index) => (
             <div key={index}>

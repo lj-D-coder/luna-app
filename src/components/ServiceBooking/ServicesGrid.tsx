@@ -124,7 +124,7 @@ export const ServicesGrid: FC<ServiceBookingProps & { selectedSubcategory: strin
       <div className="block p-4 bg-white">
         <div className="bg-white overflow-hidden">
           {Object.keys(servicesDataMap).map((subCategory) => (
-            <div key={subCategory} className="mb-8" ref={(el) => (subCategoryRefs.current[subCategory] = el)}>
+            <div key={subCategory} className="mb-8" ref={(el) => { subCategoryRefs.current[subCategory] = el; }}>
               <h2 className="text-2xl font-bold mb-4">
                 {subCategory
                   .split("-")

@@ -14,6 +14,6 @@ const HeroSchema: Schema = new Schema({
     sliderOrder: { type: Number, required: true },
 });
 
-const Hero = mongoose.models.Hero || mongoose.model('Hero', HeroSchema);
+const Hero = mongoose.models.Hero || mongoose.model<IHero>('Hero', HeroSchema);
 
 export default Hero;

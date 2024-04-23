@@ -17,6 +17,6 @@ const CategorySchema: Schema = new Schema({
     orderNo: { type: Number, required: true },
 });
 
-const Category = mongoose.models.Category || mongoose.model('Category', CategorySchema);
+const Category = mongoose.models.Category || mongoose.model<ICategory>('Category', CategorySchema);
 
 export default Category;

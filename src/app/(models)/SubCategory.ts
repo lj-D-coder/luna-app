@@ -18,6 +18,6 @@ const SubCategoryScheme: Schema = new Schema({
     iconUrl: { type: String, required: true },
 });
 
-const SubCategory = mongoose.models.SubCategory || mongoose.model('SubCategory', SubCategoryScheme);
+const SubCategory = mongoose.models.SubCategory || mongoose.model<ISubCategory>('SubCategory', SubCategoryScheme);
 
 export default SubCategory;

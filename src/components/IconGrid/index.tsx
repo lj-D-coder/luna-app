@@ -5,7 +5,6 @@ import Image from "next/image";
 import Hero from "../Hero";
 import Search from "../Search";
 import Link from "next/link";
-import { Loader } from "./Loader";
 
 export type Category = {
   _id: string;

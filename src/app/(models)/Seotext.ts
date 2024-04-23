@@ -8,6 +8,6 @@ const SeotextSchema: Schema = new Schema({
     text: { type: Array, required: true },
 });
 
-const Seotext = mongoose.models.Seotext || mongoose.model('Seotext', SeotextSchema);
+const Seotext = mongoose.models.Seotext || mongoose.model<ISeotext>('Seotext', SeotextSchema);
 
 export default Seotext;

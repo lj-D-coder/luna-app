@@ -1,10 +1,5 @@
-// components/Navbar.js
 import Image from "next/image";
-import logo from "../assets/images/logo.svg";
-import hamburger from "../assets/images/hamburger.svg";
-import { logoblack, lunnaLogo2, logoblacktransparent } from "../assets/images/index";
-import Search from "./Search";
-import Socials from "./Footer/Socials";
+import { logoblacktransparent } from "../assets/images/index";
 import Link from "next/link";
 import { PhoneIcon } from "@heroicons/react/24/solid";
 
@@ -13,7 +8,7 @@ const Navbar = () => {
     <nav className="absolute top-0 z-10 w-full h-[auto] bg-no-repeat bg-cover">
       <div className="container mx-auto px-1 py-2">
         <div className="flex items-center justify-between md:h-[50px]">
-          <div className="flex items-cente pt-1">
+          <div className="flex items-center pt-1">
             <Link href="/">
               <Image src={logoblacktransparent} alt="Logo" width={140} height={100} className="mr-2" />
             </Link>
