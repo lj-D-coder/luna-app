@@ -13,3 +13,5 @@ export async function GET(req: any): Promise<NextResponse> {
     }
 }
 
+
+export const revalidate = 0;

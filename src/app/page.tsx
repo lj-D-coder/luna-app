@@ -10,7 +10,6 @@ import HowItWorks from "../components/HowItWorks";
 import { useEffect, useState } from "react";
 import { Loader } from "@/components/ServiceBooking/Loader";
 
-
 export default function Home() {
   const API_URL_BANNER = "/api/banner";
   const API_URL_ICON_GRID = "api/category";
@@ -30,11 +29,11 @@ export default function Home() {
     const fetchAllHomePageData = async () => {
       try {
         const [bannerResponse, iconGridResponse, heroResponse, testimonyResponse, seotextResponse] = await Promise.all([
-          fetch(API_URL_BANNER),
-          fetch(API_URL_ICON_GRID),
-          fetch(API_URL_HERO),
-          fetch(API_URL_TESTIMONY),
-          fetch(API_URL_SEOTEXT),
+          fetch(API_URL_BANNER, { cache: "no-store" }),
+          fetch(API_URL_ICON_GRID, { cache: "no-store" }),
+          fetch(API_URL_HERO, { cache: "no-store" }),
+          fetch(API_URL_TESTIMONY, { cache: "no-store" }),
+          fetch(API_URL_SEOTEXT, { cache: "no-store" }),
         ]);
 
         if (bannerResponse.ok && iconGridResponse.ok && heroResponse.ok && testimonyResponse.ok && seotextResponse.ok) {
@@ -43,8 +42,7 @@ export default function Home() {
             iconGridResponse.json(),
             heroResponse.json(),
             testimonyResponse.json(),
-            seotextResponse.json()
-
+            seotextResponse.json(),
           ]);
           setBannerData(bannerData.bannerData);
           setCategories(iconGridData.categoryItem);

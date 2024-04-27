@@ -14,3 +14,6 @@ export async function GET(req: any): Promise<NextResponse> {
         return NextResponse.json({ message: "Error", error }, { status: 500 });
     }
 }
+
+
+export const revalidate = 0;
