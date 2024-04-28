@@ -1,6 +1,6 @@
 "use client";
 import Navbar from "../components/Navbar";
-import Info from "../components/Info";
+import Info from "../components/Offer";
 import Testimony from "../components/Testimonial";
 import Footer from "../components/Footer";
 import IconGrid from "../components/IconGrid";

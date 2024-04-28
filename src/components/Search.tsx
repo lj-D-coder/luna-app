@@ -57,14 +57,14 @@ export default function Search({ placeholder }: { placeholder: string }) {
   }
 
   return (
-    <div className="absolute w-full md:w-5/6 px-5 z-10 -mt-[70px] md:-mt-[110px] top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+    <div className="absolute w-full md:w-5/6  px-5 z-10 -mt-[70px] md:-mt-[110px] top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
       <div className="relative flex flex-col md:flex-row flex-1 flex-shrink-0 justify-center items-center">
         <label htmlFor="search" className="sr-only">
           Search
         </label>
         <div className="relative w-full md:w-3/6">
           <input
-            className="block w-full h-[50px] rounded-full pl-10 text-base outline-2 placeholder:text-gray-300 bg-white bg-opacity-80  focus:outline-none"
+            className="block w-full h-[50px] rounded-full pl-10 border-2 border-sky-500 text-base outline-2 placeholder:text-gray-300 bg-white bg-opacity-80  focus:outline-none"
             placeholder={placeholder}
             value={term}
             onChange={(e) => {

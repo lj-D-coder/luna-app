@@ -33,14 +33,8 @@ const IconGrid: React.FC<CategoryProps> = ({ categories, sliderData }) => {
 
   return (
     <>
-      <div
-        style={{
-          background:
-            "linear-gradient(106.89deg, rgba(192, 132, 252, 0.11), rgba(14, 165, 233, 0.41), rgba(232, 121, 249, 0.26) 56.49%, rgba(79, 70, 229, 0.4))",
-        }}
-        className="w-full h-screen grid grid-cols-1"
-      >
-        <Search placeholder="Search for services ..." />
+      <div className="w-full h-screen grid grid-cols-1 bg-white">
+        <Search placeholder="what services are you looking for ?" />
         <div className="flex flex-col md:flex-row items-center md:justify-between px-10 pt-20">
           <div className="w-96 md:w-[600px] mt-40 md:mt-0 h-[300px] self-center">
             <div className="grid grid-cols-3 md:grid-cols-3 gap-4 mx-auto">
