@@ -3,11 +3,12 @@ import connection from "@/lib/utils/db-connect";
 import SubCategory from "@/app/(models)/SubCategory";
 
 export async function GET(request: NextRequest, { params }: { params: { category: string } }) {
-  await connection()
+  await connection();
   try {
-    const parentCategoryId = params.category;
-    const subCategoryList = await SubCategory.find({ parentCategoryId });
-    return NextResponse.json({ subCategoryList, message: "Sub category Fetched" }, { status: 200 },);
+    const categoryId = params.category;
+    // Sort by the 'orderNo' field in ascending order
+    const subCategoryList = await SubCategory.find({ categoryId }).sort({ orderNo: 1 });
+    return NextResponse.json({ subCategoryList, message: "Sub category Fetched" }, { status: 200 });
 
   } catch (error: any) {
     console.error("Error caught", error);

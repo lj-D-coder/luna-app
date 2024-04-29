@@ -1,21 +1,19 @@
 import mongoose, { Document, Schema } from 'mongoose';
 
 interface ISubCategory extends Document {
-    parentCategoryId: string,
-    parentCategoryName: string,
-    subCategoryId: number;
+    categoryId: string,
     subCategoryName: string;
     subCategoryLabel: string;
     iconUrl: string;
+    orderNo: number;
 }
 
 const SubCategoryScheme: Schema = new Schema({
-    parentCategoryName: { type: String, required: true },
-    subCategoryId: { type: Number, required: true },
-    parentCategoryId: { type: String, required: true },
+    categoryId: { type: String, required: true },
     subCategoryName: { type: String, required: true },
     subCategoryLabel: { type: String, required: true },
     iconUrl: { type: String, required: true },
+    orderNo: { type: Number },
 });
 
 const SubCategory = mongoose.models.SubCategory || mongoose.model<ISubCategory>('SubCategory', SubCategoryScheme);
