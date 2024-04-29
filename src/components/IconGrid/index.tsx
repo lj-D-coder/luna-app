@@ -33,17 +33,17 @@ const IconGrid: React.FC<CategoryProps> = ({ categories, sliderData }) => {
 
   return (
     <>
-      <div className="w-full h-screen grid grid-cols-1 bg-white">
+      <div className="w-full h-auto md:h-screen grid grid-cols-1 bg-white">
         <Search placeholder="what services are you looking for ?" />
         <div className="flex flex-col md:flex-row items-center md:justify-between px-10 pt-20">
-          <div className="w-96 md:w-[600px] mt-40 md:mt-0 h-[300px] self-center">
+          <div className="w-96 md:w-[600px] mt-40 md:mt-0 self-center">
             <div className="grid grid-cols-3 md:grid-cols-3 gap-4 mx-auto">
               {categories.map((data, index) => (
-                <div key={index} className="col-span-1 md:col-span-1 flex flex-col items-center hover:text-white">
+                <div key={index} className="col-span-1 md:col-span-1 cursor-pointer flex flex-col items-center hover:text-sky-500">
                   <div
                     className={cn(
-                      "w-[100px] h-[100px] card-hover-effects border-none shadow-none",
-                      specialIndices.includes(index) && "w-24 h-24"
+                      "w-[120px] h-[120px] card-hover-effects border-none shadow-none",
+                      specialIndices.includes(index)
                     )}
                   >
                     <Image
@@ -59,7 +59,7 @@ const IconGrid: React.FC<CategoryProps> = ({ categories, sliderData }) => {
             </div>
           </div>
           <div className="flex flex-col items-center md:flex mt-10 md:items-start">
-            <div className="w-96 md:w-[800px] md:h-auto card-hover-effects border-none shadow-none">
+            <div className="w-96 md:w-[800px] h-auto md:h-auto card-hover-effects border-none shadow-none">
               <Hero sliderData={sliderData} />
             </div>
           </div>
