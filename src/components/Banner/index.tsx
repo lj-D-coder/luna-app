@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-
 export type BannerModel = {
   bannerId: string;
   bannerUrl: string;
@@ -13,8 +12,12 @@ interface BannerProps {
   banners: BannerModel[];
 }
 
-
 const Banner: React.FC<BannerProps> = ({ banners }) => {
+  // Check if banners array is empty
+  if (banners.length === 0) {
+    return null; // Render nothing if the array is empty
+  }
+
   return (
     <div className="w-full p-5 lg:p-20 bg-white">
       <div className="bg-white w-full rounded-lg overflow-hidden transition duration-300">
