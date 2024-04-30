@@ -1,42 +1,74 @@
 "use client";
 import React, { useRef, useState, useEffect } from "react";
-import { Swiper as SwiperClass } from "swiper";
 import Image from "next/image";
+import { ShowOfferModal } from "./offerModal";
+import { getOffers } from "@/lib/uiDataProvider/fetch-offer";
 
-const infos = [
+import EmblaCarousel from './cardSlider'
+import { EmblaOptionsType } from 'embla-carousel'
+
+
+const OPTIONS: EmblaOptionsType = {
+  align: 'start',
+  loop: true,
+  dragFree: true,
+}
+
+const sliderData = [
   {
-    title: "Top rated professionals",
-    description: "Our professionals are reliable & well-trained, with an average rating of 4.78 out of 5!",
-    url: "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template/w_394,dpr_1,fl_progressive:steep,q_auto:low,f_auto,c_limit/images/growth/home-screen/1711428213587-b4f7dd.jpeg",
+    id: 1,
+    title: 'Serene Nature Scene with Sunlight Streaming Through Trees',
+    url: 'https://res.cloudinary.com/urbanclap/image/upload/images/growth/luminosity/1651040419628-022a2b.jpeg'
   },
   {
-    title: "Same-day availability",
-    description: "Book in less than 60 seconds, and even select same-day slots.",
-    url: "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template/w_394,dpr_1,fl_progressive:steep,q_auto:low,f_auto,c_limit/images/growth/luminosity/1708087047512-f7035f.jpeg",
+    id: 2,
+    title: 'Tranquil Beach with Gentle Waves and Clear Blue Sky',
+    url: 'https://res.cloudinary.com/urbanclap/image/upload/images/growth/luminosity/1685362825553-834c0d.jpeg'
   },
   {
-    title: "value for money services",
-    description: "Our professionals are equipped with the best tools and our services .",
-    url: "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template/w_394,dpr_1,fl_progressive:steep,q_auto:low,f_auto,c_limit/images/growth/home-screen/1711433813875-bf7579.jpeg",
+    id: 3,
+    title: 'Lush Forest Scene with Rays of Sunlight Peeking Through',
+    url: 'https://res.cloudinary.com/urbanclap/image/upload/images/growth/luminosity/1651040419628-022a2b.jpeg'
   },
-];
+  {
+    id: 4,
+    title: 'Elegant Woman in City Setting with a Chic Attitude',
+    url: 'https://cdn.pixabay.com/photo/2014/12/16/22/25/woman-570883_1280.jpg'
+  },
+  {
+    id: 5,
+    title: 'Majestic Tree in Vibrant Autumn Colors',
+    url: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg'
+  }
+]
+
 
 export default function Info() {
-  const swiperRef = useRef<SwiperClass | null>(null);
+  const offers = getOffers();
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleClick = () => {
+    setIsOpen(true);
+  };
+
   return (
     <>
-      <div className="w-full mx-auto p-5 md:p-10 bg-white">
-        <div className="text-center mb-4">
-          <h3 className="text-4xl font-bold">Offers on top service</h3>
+      <div className="w-screen bg-white">
+      
+      <div className="text-center pt-10">
+          <h3 className="text-base md:text-4xl font-sans font-normal tracking-widest">TOP SERVICES OFFERED</h3>
+          <div className="border-t w-1/3 mx-auto border-gray-900 mt-4"></div>
         </div>
-        <div className="flex flex-col md:flex-row justify-center items-center">
-          {infos.map((info, index) => (
-            <div key={index} className="w-[98%] md:w-[28%] h-[200px] card-hover-effects m-5">
-              <Image src={info.url} alt="car wash" fill style={{ objectFit: "cover", borderRadius: 20 }} />
-            </div>
-          ))}
-        </div>
+      <div className="w-full relative p-10">
+        <EmblaCarousel slides={sliderData} options={OPTIONS} />
       </div>
+      </div>
+      
+
+      <ShowOfferModal isOpen={isOpen} setOpen={setIsOpen} />
     </>
   );
 }
+
+

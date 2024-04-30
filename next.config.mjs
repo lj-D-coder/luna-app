@@ -18,7 +18,7 @@ const nextConfig = {
             },
             {
                 protocol: 'https',
-                hostname: 'ui.aceternity.com',
+                hostname: 'cdn.pixabay.com',
                 pathname: '**',
             },
             {

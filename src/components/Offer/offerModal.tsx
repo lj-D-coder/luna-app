@@ -1,5 +1,5 @@
 import * as React from "react";
-import { CheckOutForm } from "../CheckOut/CheckOutForm";
+import { OfferedServices } from "./offeredService";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import {
   Dialog,
@@ -17,12 +17,9 @@ import {
 interface ModalProps {
   isOpen: boolean;
   setOpen: (value: boolean) => void;
-  totalPrice: number;
-  discount: number;
-  onSuccess: (success: boolean) => void;
 }
 
-export const CheckOutModal: React.FC<ModalProps> = ({ isOpen, setOpen, totalPrice, discount, onSuccess })=> {
+export const ShowOfferModal: React.FC<ModalProps> = ({ isOpen, setOpen })=> {
   // const [open, setOpen] = useState(isOpen);
   const isDesktop = useMediaQuery("(min-width: 768px)");
   
@@ -32,7 +29,7 @@ export const CheckOutModal: React.FC<ModalProps> = ({ isOpen, setOpen, totalPric
       <DialogContent className="sm:max-w-[425px] md:max-w-[525px]">
         <DialogHeader>
           </DialogHeader>
-          
+          <OfferedServices/>
           {/* <CheckOutForm setOpen={setOpen} totalPrice={totalPrice} discount={discount} onSuccess={onSuccess} /> */}
 
       </DialogContent>
