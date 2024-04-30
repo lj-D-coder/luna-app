@@ -1,4 +1,3 @@
-"use client";
 import React, { FC, useEffect, useRef, useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
 
@@ -108,7 +107,7 @@ export const ServicesGrid: FC<ServiceBookingProps & { selectedSubcategory: strin
   useEffect(() => {
     // Scroll to the selected subcategory when it changes
     if (selectedSubcategory && subCategoryRefs.current[selectedSubcategory]) {
-      subCategoryRefs.current[selectedSubcategory]?.scrollIntoView({ behavior: "smooth", block: "start" });
+      subCategoryRefs.current[selectedSubcategory]?.scrollIntoView({ behavior: "smooth", block: "end" });
     }
   }, [selectedSubcategory]);
 
@@ -124,8 +123,8 @@ export const ServicesGrid: FC<ServiceBookingProps & { selectedSubcategory: strin
       <div className="block p-4 bg-white">
         <div className="bg-white overflow-hidden">
           {Object.keys(servicesDataMap).map((subCategory) => (
-            <div key={subCategory} className="mb-8" ref={(el) => { subCategoryRefs.current[subCategory] = el; }}>
-              <h2 className="text-2xl font-bold mb-4">
+            <div key={subCategory} className="mb-4" ref={(el) => { subCategoryRefs.current[subCategory] = el; }}>
+              <h2 className="text-2xl font-bold mb-2">
                 {subCategory
                   .split("-")
                   .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
@@ -134,15 +133,15 @@ export const ServicesGrid: FC<ServiceBookingProps & { selectedSubcategory: strin
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {servicesDataMap[subCategory].map((service) => (
                   <div key={service._id} className="border-2 border-neutral-200 shadow-md rounded-lg overflow-hidden">
-                    <div className="flex justify-center items-center h-60">
+                    <div className="flex justify-center items-center h-40">
                       <img className="object-cover w-full h-full" src={service.thumbnail} alt={service.title} />
                     </div>
                     <div className="p-2">
-                      <h2 className="text-xl font-semibold text-gray-800 mb-2">{service.title}</h2>
+                      <h2 className="text-lg font-semibold text-gray-800 mb-2">{service.title}</h2>
                       <div className="flex justify-between items-center mb-2">
-                        <h3 className="text-lg font-bold text-gray-700 md:text-xl">Price at {service.price}</h3>
+                        <h3 className="text-md font-bold text-gray-700">Price at {service.price}</h3>
                       </div>
-                      <div className="mb-2 h-10">
+                      <div className="mb-2 h-3">
                         <p className="text-xs text-gray-600">{service.description}</p>
                       </div>
                       <div className="flex justify-between items-center mb-2">
@@ -155,7 +154,7 @@ export const ServicesGrid: FC<ServiceBookingProps & { selectedSubcategory: strin
                         </a>
                         <button
                           onClick={() => addToCart(service)}
-                          className={`bg-black text-white rounded-md px-6 py-2 ${isInCart(service._id) ? "bg-gray-300 cursor-not-allowed" : ""
+                          className={`bg-black h-10 text-white rounded-md px-4 py-1 ${isInCart(service._id) ? "bg-gray-300 cursor-not-allowed" : ""
                             }`}
                           disabled={isInCart(service._id)}
                         >
