@@ -65,6 +65,10 @@ const Testimony: React.FC<TestimonyProp> = ({ testimonyData }) => {
     setNavigation(window.innerWidth > maxWidthForNavigation);
   }, []);
 
+  if (testimonyData == null || testimonyData.length == 0) {
+    return null;
+  }
+
   return (
     <>
       <div className="w-full h-auto mx-auto md:p-14 bg-slate-100">

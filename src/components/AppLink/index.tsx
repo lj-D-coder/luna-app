@@ -12,11 +12,11 @@ function AppLink() {
         }}>
             <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
                 <div className="text-center md:text-left mb-10 md:mb-0">
-                    <div className="text-2xl md:text-3xl lg:text-4xl">Download Our App Now!</div>
+                    <div className="text-2xl md:text-3xl lg:text-4xl">App comming soon...</div>
                 </div>
                 <div className="flex flex-col md:flex-row md:space-x-4">
                     <a
-                        href="https://play.google.com/store/apps/details?id=your-app-id"
+                        href="#"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center bg-white text-gray-800 py-3 px-6 rounded-full font-semibold text-sm md:text-base lg:text-lg transition duration-300 hover:bg-gray-300 mb-4 md:mb-0"
@@ -31,7 +31,7 @@ function AppLink() {
                         Google Play
                     </a>
                     <a
-                        href="https://apps.apple.com/us/app/your-app-name/idyour-app-id"
+                        href="#"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center bg-white text-gray-800 py-3 px-6 rounded-full font-semibold text-sm md:text-base lg:text-lg transition duration-300 hover:bg-gray-300"
