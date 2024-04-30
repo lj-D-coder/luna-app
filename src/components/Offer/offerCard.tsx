@@ -44,16 +44,9 @@ const OfferCard: React.FC<OfferCardProps> = ({ offerData }) => {
         </div>
       </div>
 
-      <style jsx>{`
-        .glow-on-hover:focus,
-        .glow-on-hover:hover {
-          text-shadow: 0 0 30px #ffffff;
-        }
-      `}</style>
-
       <div className="w-full absolute bottom-0 right-0 flex justify-end space-x-4 text-sm font-medium m-1">
         <button
-          className="w-[50%] h-12 uppercase font-medium tracking-wider bg-slate-900 text-white glow-on-hover card-hover-effects"
+          className="w-[50%] h-12 uppercase font-medium tracking-wider bg-slate-900 text-white card-hover-effects"
           type="submit"
         >
           Book now

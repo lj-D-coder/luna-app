@@ -131,14 +131,14 @@ body {
 
 .prevButton {
   position: absolute;
-  left: 0;
+  left: 15px;
   top: 50%;
   transform: translateY(-50%);
 }
 
 .nextButton {
   position: absolute;
-  right: 0;
+  right: 15px;
   top: 50%;
   transform: translateY(-50%);
 }
