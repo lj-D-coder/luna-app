@@ -18,7 +18,7 @@ export const TimeSlotPicker: React.FC<TimeSlotPickerProps> = ({ selectedTimeSlot
         <button
           key={timeSlot}
           onClick={() => onSelect(timeSlot)}
-          className={`p-2 rounded-md text-xs md:text-base ${
+          className={`p-0 md:p-2 rounded-md text-xs md:text-base ${
             selectedTimeSlot === timeSlot ? "bg-blue-500 text-white" : "bg-gray-200"
           }`}
         >

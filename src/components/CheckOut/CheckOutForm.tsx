@@ -14,7 +14,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Input } from "@/components/ui/input";
 import { TimeSlotPicker } from "./timeSlot";
 import { ClockIcon } from "@heroicons/react/24/outline";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useLocalStorageState from "use-local-storage-state";
 import { CartProps } from "../ServiceBooking/ServicesGrid";
 import { useRouter } from "next/navigation";
@@ -133,6 +133,28 @@ export const CheckOutForm: React.FC<CheckOutFormProp> = ({ setOpen, totalPrice, 
       }, 5000);
     }
   }
+
+  useEffect(() => {
+    const handleFocus = (event: Event) => {
+      const target = event.target as HTMLElement;
+      if (target.tagName === "INPUT" || target.tagName === "TEXTAREA") {
+        document.body.classList.add("keyboard");
+      }
+    };
+
+    const handleBlur = () => {
+      document.body.classList.remove("keyboard");
+    };
+
+    document.body.addEventListener("focus", handleFocus, true);
+    document.body.addEventListener("blur", handleBlur, true);
+
+    // Cleanup function
+    return () => {
+      document.body.removeEventListener("focus", handleFocus, true);
+      document.body.removeEventListener("blur", handleBlur, true);
+    };
+  }, []); // Empty dependency array means this effect runs once on mount and cleanup on unmount
 
   return (
     <Form {...form}>

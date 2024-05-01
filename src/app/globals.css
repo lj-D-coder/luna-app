@@ -142,3 +142,8 @@ body {
   top: 50%;
   transform: translateY(-50%);
 }
+
+.keyboard {
+  height: calc(100% + 300px); /* add padding for keyboard */
+}
+
