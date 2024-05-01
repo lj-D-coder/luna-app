@@ -7,7 +7,6 @@ export async function POST(req: any): Promise<NextResponse> {
   try {
     const bookingData = await req.json(); // remove JSON.parse()
   
-    // console.log(body);
     await Booking.create(bookingData);
     console.log("Booking created");
     return NextResponse.json({ message: "Booking Created" }, { status: 201 });

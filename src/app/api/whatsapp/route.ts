@@ -4,7 +4,6 @@ import { NextResponse } from "next/server";
 // Define the POST function to handle POST requests
 export async function POST(req: any): Promise<NextResponse> {
     try {
-        // console.log(req.body);
         // // Replace 'YOUR_FACEBOOK_ACCESS_TOKEN' with your actual access token
         const accessToken = "EAALApE2JF1IBO4uyDZAwdZCd5zsvXf8PjbB97jiw15LqNYyJgiBKdr35DQIAZB0aECZBtJ1PmMk6hz1zt6feP2VgyfVCw4fbo58uRan5neWWxXOSkJHoMYxh76lKp2SUWnkZBqiUOkaBOxXZADTPzYTTZAqhZBiPauIb7xUpCvKuotHzD2LPg343iwaRzuZAZCgdhG6JneNtEG89h7J40vuikZD";
 
@@ -14,7 +13,6 @@ export async function POST(req: any): Promise<NextResponse> {
         // Define the Facebook Graph API URL
         const url = "https://graph.facebook.com/v18.0/278525638677011/messages";
 
-        // console.log(url);
 
         // // Prepare the request body with the provided JSON payload
         const body = JSON.stringify({
@@ -99,9 +97,6 @@ export async function POST(req: any): Promise<NextResponse> {
             }`,
         });
 
-        // console.log(body);
-
-        console.log(response.body);
 
 
         // Check if the response is successful

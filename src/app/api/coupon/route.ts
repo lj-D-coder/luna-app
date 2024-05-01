@@ -6,8 +6,6 @@ export async function POST(req: any): Promise<NextResponse> {
   await connection();
   try {
     const couponData = await req.json(); // remove JSON.parse()
-  
-    // console.log(couponData);
     await Coupon.create(couponData);
     console.log("Coupon created");
     return NextResponse.json({ message: "Coupon Created" }, { status: 201 });

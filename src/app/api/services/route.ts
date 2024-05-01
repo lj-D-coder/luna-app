@@ -9,7 +9,6 @@ export async function GET(req: any): Promise<NextResponse> {
   await connection();
   try {
     //const { category } = req.query
-    console.log(req)
     const services = await Service.find();
     return NextResponse.json({ services }, { status: 200 });
   } catch (error: any) {

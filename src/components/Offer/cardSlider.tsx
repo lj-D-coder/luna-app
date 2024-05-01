@@ -42,9 +42,10 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
             ))}
           </div>
         </div>
-
-        <PrevButton className="embla__button prevButton" onClick={scrollPrev} />
-        <NextButton className="embla__button nextButton" onClick={scrollNext} />
+        <div className="hidden md:block">
+        <PrevButton className="hidden embla__button prevButton" onClick={scrollPrev} />
+          <NextButton className="hidden embla__button nextButton" onClick={scrollNext} />
+          </div>
       </div>
     </div>
   );

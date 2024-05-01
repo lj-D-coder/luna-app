@@ -31,9 +31,9 @@ const FormSchema = z.object({
       message: "Phone number must be exactly 10 digits.",
     }
   ),
-  name: z.string().min(8, "Full Name is required."),
-  address: z.string().min(8, "Full Address is required."),
-  landmark: z.string().min(5, "Landmark required."),
+  name: z.string().min(3, "Full Name is required."),
+  address: z.string().min(3, "Full Address is required."),
+  landmark: z.string().min(3, "Landmark required."),
   timeSlot: z.string({ required_error: "Time slot is required." }),
 });
 
@@ -61,12 +61,12 @@ export const CheckOutForm: React.FC<CheckOutFormProp> = ({ setOpen, totalPrice, 
     let updatedCart = {};
 
     if (cart) {
-      updatedCart = Object.values(cart).map(
-        ({ _id: serviceId, supportedModel, thumbnail, images, rating, serviceDetails, ...rest }) => ({
-          serviceId,
-          ...rest,
-        })
-      );
+      updatedCart = Object.values(cart).map(({ _id: serviceId, title, price, serviceCapacity, ...rest }) => ({
+        serviceId,
+        title,
+        price,
+        serviceCapacity,
+      }));
     }
 
     const now = new Date();
@@ -110,8 +110,6 @@ export const CheckOutForm: React.FC<CheckOutFormProp> = ({ setOpen, totalPrice, 
         bookingDetails: updatedCart,
       };
 
-      console.log(bookingData);
-
       const res = await fetch("/api/booking", {
         method: "POST",
         body: JSON.stringify(bookingData),
@@ -119,12 +117,14 @@ export const CheckOutForm: React.FC<CheckOutFormProp> = ({ setOpen, totalPrice, 
           "Content-Type": "application/json",
         },
       });
-
       if (!res.ok) {
         throw new Error("Failed to create Booking.");
       }
 
-      localStorage.clear();
+      //localStorage.clear();
+      // Clear only the cart from localStorage
+      localStorage.removeItem("cart");
+
       setOpen(false);
       onSuccess(true);
       setTimeout(() => {
@@ -225,9 +225,8 @@ export const CheckOutForm: React.FC<CheckOutFormProp> = ({ setOpen, totalPrice, 
                       disabled={(date) => {
                         const today = new Date();
                         today.setHours(0, 0, 0, 0); // remove time part of today
-                        const nextWeek = new Date();
-                        nextWeek.setDate(today.getDate() + 10);
-                        return date < today || date > nextWeek;
+                        const nextWeek = new Date(today.getTime() + 10 * 24 * 60 * 60 * 1000); // add 10 days
+                        return date.getTime() < today.getTime() || date.getTime() > nextWeek.getTime();
                       }}
                       initialFocus
                     />

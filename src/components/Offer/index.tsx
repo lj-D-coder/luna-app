@@ -60,7 +60,7 @@ export default function Info() {
           <h3 className="text-base md:text-4xl font-sans font-normal tracking-widest">TOP SERVICES OFFERED</h3>
           <div className="border-t w-1/3 mx-auto border-gray-900 mt-4"></div>
         </div>
-      <div className="w-full relative p-10 md:p-16">
+      <div className="w-full relative p-4 md:p-16">
         <EmblaCarousel slides={sliderData} options={OPTIONS} />
       </div>
       </div>

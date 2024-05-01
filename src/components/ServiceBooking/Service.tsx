@@ -11,7 +11,6 @@ export const Services: FC<ServiceBookingProps> = ({ categoryUrl }) => {
   const [selectedSubcategory, setSelectedSubcategory] = useState("");
 
   const handleIconClick = (subCategory: string) => {
-    console.log(subCategory);
     setSelectedSubcategory(subCategory);
   };
 

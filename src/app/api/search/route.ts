@@ -36,7 +36,6 @@ export async function POST(req: any): Promise<NextResponse> {
   try {
     const searchData = await req.json(); // remove JSON.parse()
 
-    // console.log(body);
     await Search.create(searchData);
     console.log("Search data created");
     return NextResponse.json({ message: "Search data Created" }, { status: 201 });

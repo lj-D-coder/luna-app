@@ -31,7 +31,6 @@ export const OfferedServices: FunctionComponent = () => {
 
     const API_URL = `api/servicesUnderCategory/car-wash`;
     
-    console.log("ashdkahsjkdhajshdhasjhdjagshjdgashjbdhjbsajd");
  
   const [services, setServices] = useState<ServiceMap[]>([]);
   const [servicesDataMap, setServicesDataMap] = useState<ServiceMap>({});

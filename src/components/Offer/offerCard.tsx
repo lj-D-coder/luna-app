@@ -16,7 +16,7 @@ const OfferCard: React.FC<OfferCardProps> = ({ offerData }) => {
   return (
     <div className="w-full bg-gray-100 cursor-pointer relative card-hover-effects">
       <div className="flex h-full">
-        <div className="flex-none w-52 relative m-1">
+        <div className="flex-none w-32 md:w-48 relative m-1">
           <Image
             src={offerData.url}
             width={100}
@@ -44,9 +44,9 @@ const OfferCard: React.FC<OfferCardProps> = ({ offerData }) => {
         </div>
       </div>
 
-      <div className="w-full absolute bottom-0 right-0 flex justify-end space-x-4 text-sm font-medium m-1">
+      <div className="w-full absolute bottom-0 right-10 md:right-8 flex justify-end space-x-4 text-sm font-medium m-1 pb-2">
         <button
-          className="w-[50%] h-12 uppercase font-medium tracking-wider bg-slate-900 text-white card-hover-effects"
+          className="w-[40%] md:w-1/3 h-12 uppercase font-medium rounded-full border-2 border-sky-600 tracking-wider bg-transparent hover:bg-sky-400 text-black card-hover-effects"
           type="submit"
         >
           Book now

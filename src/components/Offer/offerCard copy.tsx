@@ -53,7 +53,7 @@ const OfferCard: React.FC<OfferCardProps> = ({ offerData }) => {
 
       <div className="w-full absolute bottom-0 right-0 flex justify-end space-x-4 text-sm font-medium m-1">
         <button
-          className="w-[40%] h-12 uppercase font-medium tracking-wider bg-slate-900 text-white glow-on-hover card-hover-effects"
+          className="w-[30%] h-12 uppercase font-medium tracking-wider bg-slate-900 text-white glow-on-hover card-hover-effects"
           type="submit"
         >
           Book now

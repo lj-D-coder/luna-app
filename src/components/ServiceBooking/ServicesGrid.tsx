@@ -12,7 +12,8 @@ export type Service = {
   subCategory: string;
   supportedModel: string[];
   serviceCapacity: number;
-  serviceDetails?: string;
+  serviceDetails: string;
+  subCategoryId: string;
 };
 
 interface ServiceMap {

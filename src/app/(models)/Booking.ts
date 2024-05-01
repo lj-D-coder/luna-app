@@ -3,25 +3,16 @@ import mongoose, { Document, Schema } from 'mongoose';
 interface IBookingDetail extends Document {
   serviceId: string;
   title: string;
-  description: string;
   price: number;
-  discountPercentage: number;
   serviceCapacity: number;
-  category: string;
-  categoryId: string;
-  subCategory: string;
+  
 }
 
 const BookingDetailSchema: Schema = new Schema({
   serviceId: { type: String, required: true },
   title: { type: String, required: true },
-  description: { type: String, required: true },
   price: { type: Number, required: true },
-  discountPercentage: { type: Number, required: true },
   serviceCapacity: { type: Number, required: true },
-  category: { type: String, required: true },
-  categoryId: { type: String, required: true },
-  subCategory: { type: String, required: true },
 });
 
 interface IBooking extends Document {

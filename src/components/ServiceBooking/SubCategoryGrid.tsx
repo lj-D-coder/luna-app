@@ -17,6 +17,7 @@ export type SubCategory = {
 
 export const SubCategory: FC<SubCategoryProps> = ({ categoryUrl, onIconClick }) => {
   console.log(categoryUrl);
+  // const API_URL = `api/services/${categoryUrl}`;
   let categoryId = sessionStorage.getItem('categoryId');
 
   const API_URL = `api/services/${categoryId}`;
@@ -39,7 +40,6 @@ export const SubCategory: FC<SubCategoryProps> = ({ categoryUrl, onIconClick }) 
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
         setSubCategory(data.subCategoryList);
         setIsLoading(false);
       } else {
