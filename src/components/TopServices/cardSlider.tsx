@@ -3,16 +3,19 @@ import { EmblaOptionsType } from "embla-carousel";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { NextButton, PrevButton } from "../ui/EmblaCarousel/EmblaCarouselArrowButtons";
-import OfferCard from "./offerCard";
+import ServiceCard from "./serviceCard";
 
-type SlideType = {
-  id: number;
+type services = {
+  _id: string;
   title: string;
-  url: string;
+  serviceDetails: string;
+  thumbnail: string;
+  price: number;
+  serviceCapacity: number;
 };
 
 type PropType = {
-  slides: SlideType[];
+  slides: services[];
   options: EmblaOptionsType;
 };
 
@@ -35,17 +38,17 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
       <div className="embla">
         <div className="embla__viewport" ref={emblaRef}>
           <div className="embla__container">
-            {slides.map((offerData) => (
-              <div className="embla__slide" key={offerData.id}>
-                <OfferCard offerData={offerData} />
+            {slides.map((service) => (
+              <div className="embla__slide" key={service._id}>
+                <ServiceCard service={service} />
               </div>
             ))}
           </div>
         </div>
         <div className="hidden md:block">
-        <PrevButton className="hidden embla__button prevButton" onClick={scrollPrev} />
+          <PrevButton className="hidden embla__button prevButton" onClick={scrollPrev} />
           <NextButton className="hidden embla__button nextButton" onClick={scrollNext} />
-          </div>
+        </div>
       </div>
     </div>
   );

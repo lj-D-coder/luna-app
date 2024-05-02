@@ -1,6 +1,6 @@
 "use client";
 import Navbar from "../components/Navbar";
-import Info from "../components/Offer";
+import TopServices from "../components/TopServices";
 import Testimony from "../components/Testimonial";
 import Footer from "../components/Footer";
 import IconGrid from "../components/IconGrid";
@@ -9,6 +9,7 @@ import AppLink from "../components/AppLink";
 import HowItWorks from "../components/HowItWorks";
 import { useEffect, useState } from "react";
 import { Loader } from "@/components/ServiceBooking/Loader";
+import Offer from "@/components/Offer";
 
 export default function Home() {
   const API_URL_BANNER = "/api/banner";
@@ -75,9 +76,10 @@ export default function Home() {
     <>
       <Navbar />
       <IconGrid categories={categories} sliderData={heroData} />
-      <Info />
+      <Offer/>
       <Banner banners={bannerData} />
       <Testimony testimonyData={testimonyData} />
+      <TopServices />
       <AppLink />
       <HowItWorks />
       <Footer textData={seoTextData} />

@@ -157,104 +157,49 @@ export const CheckOutForm: React.FC<CheckOutFormProp> = ({ setOpen, totalPrice, 
   }, []); // Empty dependency array means this effect runs once on mount and cleanup on unmount
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className={cn("grid items-start gap-4")}>
-        <p className="text text-sm text-center md:text-base">
-          <span className="text-red-500">*Note:</span> our services are exclusively available in the Imphal area.
-        </p>
+    <div className="h-auto">
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className={cn("grid items-start gap-4")}>
+          <p className="text text-sm text-center md:text-base">
+            <span className="text-red-500">*Note:</span> our services are exclusively available in the Imphal area.
+          </p>
 
-        <h1 className="text text-base text-center font-semibold">Please Provide Your Details:</h1>
-        <FormField
-          control={form.control}
-          name="phone"
-          render={({ field }) => (
-            <FormItem className="flex flex-col">
-              <FormLabel>WhatsApp Number</FormLabel>
-              <FormControl>
-                <Input {...field} type="text" maxLength={10} placeholder="Enter 10 digit phone number" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem className="flex flex-col">
-              <FormLabel>Full Name</FormLabel>
-              <FormControl>
-                <Input {...field} type="text" placeholder="Enter your full name" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="address"
-          render={({ field }) => (
-            <FormItem className="flex flex-col">
-              <FormLabel>Full Address</FormLabel>
-              <FormControl>
-                <Input {...field} type="text" placeholder="Enter your address" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="landmark"
-          render={({ field }) => (
-            <FormItem className="flex flex-col">
-              <FormLabel>Add Landmark</FormLabel>
-              <FormControl>
-                <Input {...field} type="text" placeholder="Enter your landmark..." />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <div className="flex flex-row justify-between">
+          <h1 className="text text-base text-center font-semibold">Please Provide Your Details:</h1>
           <FormField
             control={form.control}
-            name="bookingDate"
+            name="phone"
             render={({ field }) => (
               <FormItem className="flex flex-col">
-                <FormLabel>Date of Booking</FormLabel>
-                <Popover open={calendarOpen} onOpenChange={setCalendarOpen}>
-                  <PopoverTrigger asChild>
-                    <FormControl>
-                      <Button
-                        variant={"outline"}
-                        className={cn("w-[150px] pl-3 text-left font-normal", !field.value && "text-muted-foreground")}
-                      >
-                        {field.value ? format(field.value, "PPP") : <span>Select a date</span>}
-                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                      </Button>
-                    </FormControl>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0" align="start">
-                    <Calendar
-                      mode="single"
-                      selected={field.value}
-                      onSelect={(value) => {
-                        field.onChange(value);
-                        setCalendarOpen(false);
-                      }}
-                      disabled={(date) => {
-                        const today = new Date();
-                        today.setHours(0, 0, 0, 0); // remove time part of today
-                        const nextWeek = new Date(today.getTime() + 10 * 24 * 60 * 60 * 1000); // add 10 days
-                        return date.getTime() < today.getTime() || date.getTime() > nextWeek.getTime();
-                      }}
-                      initialFocus
-                    />
-                  </PopoverContent>
-                </Popover>
-                <FormDescription>Choose a booking date</FormDescription>
+                <FormLabel>WhatsApp Number</FormLabel>
+                <FormControl>
+                  <Input {...field} type="text" maxLength={10} placeholder="Enter 10 digit phone number" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem className="flex flex-col">
+                <FormLabel>Full Name</FormLabel>
+                <FormControl>
+                  <Input {...field} type="text" placeholder="Enter your full name" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="address"
+            render={({ field }) => (
+              <FormItem className="flex flex-col">
+                <FormLabel>Full Address</FormLabel>
+                <FormControl>
+                  <Input {...field} type="text" placeholder="Enter your address" />
+                </FormControl>
                 <FormMessage />
               </FormItem>
             )}
@@ -262,40 +207,103 @@ export const CheckOutForm: React.FC<CheckOutFormProp> = ({ setOpen, totalPrice, 
 
           <FormField
             control={form.control}
-            name="timeSlot"
+            name="landmark"
             render={({ field }) => (
               <FormItem className="flex flex-col">
-                <FormLabel>Time Slot</FormLabel>
-                <Popover open={isOpen} onOpenChange={setIsOpen}>
-                  <PopoverTrigger asChild>
-                    <FormControl>
-                      <Button
-                        variant={"outline"}
-                        className={cn("w-[150px] pl-3 text-left font-normal", !field.value && "text-muted-foreground")}
-                      >
-                        {field.value ? field.value : <span>Pick a time slot</span>}
-                        <ClockIcon className="ml-auto h-4 w-4 opacity-50" /> {/* Use the clock icon */}
-                      </Button>
-                    </FormControl>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0" align="center">
-                    <TimeSlotPicker
-                      selectedTimeSlot={field.value}
-                      onSelect={(value) => {
-                        field.onChange(value);
-                        setIsOpen(false); // Close the popover when a value is selected
-                      }}
-                    />
-                  </PopoverContent>
-                </Popover>
-                <FormDescription>Choose a time slot</FormDescription>
+                <FormLabel>Add Landmark</FormLabel>
+                <FormControl>
+                  <Input {...field} type="text" placeholder="Enter your landmark..." />
+                </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-        </div>
-        <Button type="submit">Book Now</Button>
-      </form>
-    </Form>
+          <div className="flex flex-row justify-between">
+            <FormField
+              control={form.control}
+              name="bookingDate"
+              render={({ field }) => (
+                <FormItem className="flex flex-col">
+                  <FormLabel>Date of Booking</FormLabel>
+                  <Popover open={calendarOpen} onOpenChange={setCalendarOpen}>
+                    <PopoverTrigger asChild>
+                      <FormControl>
+                        <Button
+                          variant={"outline"}
+                          className={cn(
+                            "w-[150px] pl-3 text-left font-normal",
+                            !field.value && "text-muted-foreground"
+                          )}
+                        >
+                          {field.value ? format(field.value, "PPP") : <span>Select a date</span>}
+                          <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                        </Button>
+                      </FormControl>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0" align="start">
+                      <Calendar
+                        mode="single"
+                        selected={field.value}
+                        onSelect={(value) => {
+                          field.onChange(value);
+                          setCalendarOpen(false);
+                        }}
+                        disabled={(date) => {
+                          const today = new Date();
+                          today.setHours(0, 0, 0, 0); // remove time part of today
+                          const nextWeek = new Date(today.getTime() + 10 * 24 * 60 * 60 * 1000); // add 10 days
+                          return date.getTime() < today.getTime() || date.getTime() > nextWeek.getTime();
+                        }}
+                        initialFocus
+                      />
+                    </PopoverContent>
+                  </Popover>
+                  <FormDescription>Choose a booking date</FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="timeSlot"
+              render={({ field }) => (
+                <FormItem className="flex flex-col">
+                  <FormLabel>Time Slot</FormLabel>
+                  <Popover open={isOpen} onOpenChange={setIsOpen}>
+                    <PopoverTrigger asChild>
+                      <FormControl>
+                        <Button
+                          variant={"outline"}
+                          className={cn(
+                            "w-[150px] pl-3 text-left font-normal",
+                            !field.value && "text-muted-foreground"
+                          )}
+                        >
+                          {field.value ? field.value : <span>Pick a time slot</span>}
+                          <ClockIcon className="ml-auto h-4 w-4 opacity-50" /> {/* Use the clock icon */}
+                        </Button>
+                      </FormControl>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0" align="center">
+                      <TimeSlotPicker
+                        selectedTimeSlot={field.value}
+                        onSelect={(value) => {
+                          field.onChange(value);
+                          setIsOpen(false); // Close the popover when a value is selected
+                        }}
+                      />
+                    </PopoverContent>
+                  </Popover>
+                  <FormDescription>Choose a time slot</FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+          <Button type="submit">Book Now</Button>
+        </form>
+      </Form>
+    </div>
   );
 };
