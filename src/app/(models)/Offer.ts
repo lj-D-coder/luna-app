@@ -1,25 +1,26 @@
-import mongoose from 'mongoose';
+import mongoose, { Document, Schema } from 'mongoose';
 
-interface IOffer {
-  title: string;
-  image: string;
-  price: number;
-  offerPrice: number;
-  discountPc: number;
-  category: string;
-  serviceDetails: string;
+interface IOffer extends Document {
+    _id: string;
+    title: string;
+    thumbnail: string;
+    price: number;
+    serviceCapacity: number;
+    images: string[];
+    offerDetails: string;
+    __v: number;
 }
 
-const OfferSchema = new mongoose.Schema<IOffer>({
-  title: { type: String, required: true },
-  image: { type: String, required: true },
-  price: { type: Number, required: true },
-  offerPrice: { type: Number, required: true },
-  discountPc: { type: Number, required: true },
-  category: { type: String, required: true },
-  serviceDetails: { type: String, required: true },
+const OfferSchema: Schema = new Schema({
+    _id: { type: String, required: true },
+    title: { type: String, required: true },
+    thumbnail: { type: String, required: true },
+    price: { type: Number, required: true },
+    serviceCapacity: { type: Number, required: true },
+    images: { type: [String], required: true },
+    offerDetails: { type: String, required: true },
+    __v: { type: Number, required: true },
 });
-
 
 const Offer = mongoose.models.Offer || mongoose.model<IOffer>('Offer', OfferSchema);
 

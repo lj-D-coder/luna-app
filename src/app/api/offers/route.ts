@@ -5,7 +5,7 @@ import Offer from "@/app/(models)/Offer";
 export async function GET(request: NextRequest) {
     await connection();
     try {
-        const offerData = await Offer.findById("662e7abcd922e7a8416776f9");
+        const offerData = await Offer.find();
         return NextResponse.json({ offerData, message: "Offer Data Fetched" }, { status: 200 });
     } catch (error: any) {
         console.error("Error caught", error);

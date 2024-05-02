@@ -1,7 +1,4 @@
-"use client";
-import React, { useRef, useState, useEffect } from "react";
-import Image from "next/image";
-import { ShowOfferModal } from "./offerModal";
+import React from "react";
 import { CommonFetcher } from "@/lib/uiDataFetcher/commonFetcher";
 
 import EmblaCarousel from "./cardSlider";
@@ -13,42 +10,13 @@ const OPTIONS: EmblaOptionsType = {
   dragFree: true,
 };
 
-const sliderData = [
-  {
-    id: 1,
-    title: "Serene Nature Scene with Sunlight Streaming Through Trees",
-    url: "https://res.cloudinary.com/urbanclap/image/upload/images/growth/luminosity/1651040419628-022a2b.jpeg",
-  },
-  {
-    id: 2,
-    title: "Tranquil Beach with Gentle Waves and Clear Blue Sky",
-    url: "https://res.cloudinary.com/urbanclap/image/upload/images/growth/luminosity/1685362825553-834c0d.jpeg",
-  },
-  {
-    id: 3,
-    title: "Lush Forest Scene with Rays of Sunlight Peeking Through",
-    url: "https://res.cloudinary.com/urbanclap/image/upload/images/growth/luminosity/1651040419628-022a2b.jpeg",
-  },
-  {
-    id: 4,
-    title: "Elegant Woman in City Setting with a Chic Attitude",
-    url: "https://cdn.pixabay.com/photo/2014/12/16/22/25/woman-570883_1280.jpg",
-  },
-  {
-    id: 5,
-    title: "Majestic Tree in Vibrant Autumn Colors",
-    url: "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
-  },
-];
-
 export default function Offer() {
-  const offers = CommonFetcher("api/offer");
 
-  const [isOpen, setIsOpen] = useState(false);
+  const { data, error } = CommonFetcher("/api/offers");
 
-  const handleClick = () => {
-    setIsOpen(true);
-  };
+  if (error) return <div>Failed to load</div>;
+  if (!data) return <div>Loading...</div>;
+  if (data.offerData && data.offerData.length === 0) return null;
 
   return (
     <>
@@ -58,10 +26,9 @@ export default function Offer() {
           <div className="border-t w-1/3 mx-auto border-gray-900 mt-4"></div>
         </div>
         <div className="w-full relative p-4 md:p-16">
-          <EmblaCarousel slides={sliderData} options={OPTIONS} />
+          <EmblaCarousel slides={data.offerData} options={OPTIONS} />
         </div>
       </div>
-      <ShowOfferModal isOpen={isOpen} setOpen={setIsOpen} />
     </>
   );
 }

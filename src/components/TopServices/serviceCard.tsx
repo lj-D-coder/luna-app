@@ -24,7 +24,7 @@ interface ServiceCardProps {
   service: service;
 }
 
-const OfferCard: React.FC<ServiceCardProps> = ({ service }) => {
+const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [success, setSuccess] = useState(false);
   const [cart, setCart] = useLocalStorageState<CartProps>("cart", {});
@@ -53,25 +53,15 @@ const OfferCard: React.FC<ServiceCardProps> = ({ service }) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    if (success) {
-      setLoading(true);
+  if (success) {
+    const timer = setTimeout(() => {
       localStorage.clear();
+      router.refresh();
+      router.push("/");
+    }, 3000); // *** remove this when payment gateway is integrated ****
+  }
 
-      const timer = setTimeout(() => {
-        router.refresh();
-        router.push("/");
-        setLoading(false);
-      }, 1000); // *** remove this when payment gateway is integrated ****
-
-      // This will clear the timeout if the component unmounts before the timeout finishes
-      return () => clearTimeout(timer);
-    }
-  }, [router, success]); // The router instance and success are dependencies
-
-  return loading ? (
-    <Loader />
-  ) : (
+  return (
     <>
       <div className="w-full bg-gray-100 cursor-pointer relative card-hover-effects">
         <div className="flex h-full">
@@ -122,4 +112,4 @@ const OfferCard: React.FC<ServiceCardProps> = ({ service }) => {
   );
 };
 
-export default OfferCard;
+export default ServiceCard;

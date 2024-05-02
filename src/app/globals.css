@@ -49,7 +49,7 @@ body {
 
 .embla {
   width: auto;
-  --slide-spacing: 24px;
+  --slide-spacing: 10px;
 }
 
 .embla__viewport {
