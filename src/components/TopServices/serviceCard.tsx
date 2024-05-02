@@ -4,7 +4,6 @@ import useLocalStorageState from "use-local-storage-state";
 import Image from "next/image";
 import { CheckOutModal } from "../CheckOut";
 import { useRouter } from "next/navigation";
-import { Loader } from "../ServiceBooking/Loader";
 import { BookingComplete } from "../CheckOut/success";
 
 export interface CartProps {

@@ -4,6 +4,7 @@ import Service from "@/app/(models)/Service";
 
 export async function GET(request: NextRequest) {
   await connection();
+  const { searchParams } = new URL(request.url);
   try {
     // Sort by the 'rating' field in descending order and limit to top 10
     const topServiceList = await Service.find().sort({ rating: -1 }).limit(10);
