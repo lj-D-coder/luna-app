@@ -82,7 +82,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
                 <div className="flex-auto text-lg font-sans text-slate-900">₹ {service.price}</div>
               </div>
               <div className="flex items-start mt-2 border-b border-slate-200 overflow-auto">
-                <p className="text-sm text-slate-500">{service.serviceDetails}</p>
+                <p className="line-clamp-2 text-sm text-slate-500">{service.serviceDetails}</p>
               </div>
             </div>
           </div>
