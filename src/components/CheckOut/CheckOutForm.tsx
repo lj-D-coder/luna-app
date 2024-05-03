@@ -149,7 +149,7 @@ export const CheckOutForm: React.FC<CheckOutFormProp> = ({ setOpen, totalPrice, 
               <FormItem className="flex flex-col">
                 <FormLabel className="hidden md:block">WhatsApp Number</FormLabel>
                 <FormControl>
-                  <Input {...field} type="text" maxLength={10} placeholder="Enter 10 digit WhatsApp number" className="w-full sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-1/3"/>
+                  <Input {...field} type="text" maxLength={10} placeholder="Enter 10 digit WhatsApp number"/>
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -160,9 +160,9 @@ export const CheckOutForm: React.FC<CheckOutFormProp> = ({ setOpen, totalPrice, 
             name="name"
             render={({ field }) => (
               <FormItem className="flex flex-col">
-                <FormLabel className="hidden md:block">Full Name</FormLabel>
+                <FormLabel className="hidden md:inline-block">Full Name</FormLabel>
                 <FormControl>
-                  <Input {...field} type="text" placeholder="Enter your full name" className="w-full sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-1/3"/>
+                  <Input {...field} type="text" placeholder="Enter your full name" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -175,7 +175,7 @@ export const CheckOutForm: React.FC<CheckOutFormProp> = ({ setOpen, totalPrice, 
               <FormItem className="flex flex-col">
                 <FormLabel className="hidden md:block">Full Address</FormLabel>
                 <FormControl>
-                  <Input {...field} type="text" placeholder="Enter your address" className="w-full sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-1/3"/>
+                  <Input {...field} type="text" placeholder="Enter your address"/>
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -189,7 +189,7 @@ export const CheckOutForm: React.FC<CheckOutFormProp> = ({ setOpen, totalPrice, 
               <FormItem className="flex flex-col">
                 <FormLabel className="hidden md:block">Add Landmark</FormLabel>
                 <FormControl>
-                  <Input {...field} type="text" placeholder="Enter your landmark..." className="w-full sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-1/3"/>
+                  <Input {...field} type="text" placeholder="Enter your landmark..."/>
                 </FormControl>
                 <FormMessage />
               </FormItem>
