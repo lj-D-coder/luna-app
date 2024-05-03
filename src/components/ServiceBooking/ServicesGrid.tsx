@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useRef, useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
+import Image from "next/image";
 
 export type Service = {
   _id: string;
@@ -135,7 +136,7 @@ export const ServicesGrid: FC<ServiceBookingProps & { selectedSubcategory: strin
                 {servicesDataMap[subCategory].map((service) => (
                   <div key={service._id} className="border-2 border-neutral-200 shadow-md rounded-lg overflow-hidden">
                     <div className="flex justify-center items-center h-40">
-                      <img className="object-cover w-full h-full" src={service.thumbnail} alt={service.title} />
+                      <Image width={500} height={500} className="object-cover w-full h-full" src={service.thumbnail} alt={service.title} />
                     </div>
                     <div className="p-2">
                       <h2 className="text-lg font-semibold text-gray-800 mb-2">{service.title}</h2>

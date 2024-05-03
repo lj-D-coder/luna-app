@@ -1,6 +1,7 @@
 "use client";
 import { FC, useEffect, useState } from "react";
 import { toProperCase } from "@/lib/utils/propercase";
+import Image from "next/image";
 
 interface SubCategoryProps {
   categoryUrl: string;
@@ -70,7 +71,9 @@ export const SubCategory: FC<SubCategoryProps> = ({ categoryUrl, onIconClick }) 
                 onClick={() => onIconClick(subCategory.subCategoryName)}
                 className="w-full h-[100px] text-center rounded-lg shadow-md border border-gray-200 hover:border-gray-400 transition duration-300 flex flex-col justify-center items-center"
               >
-                <img
+                <Image
+                  width={500}
+                  height={500}
                   src={subCategory.iconUrl}
                   alt={`Placeholder image for ${subCategory.subCategoryName}`}
                   className="object-cover rounded-lg"

@@ -35,11 +35,10 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
       <div className="embla">
         <div className="embla__viewport" ref={emblaRef}>
           <div className="embla__container">
-            {slides.map((slide) => (
+            {/* {slides.map((slide) => (
               <div className="embla__slide" key={slide.id}>
-                <img src={slide.url} alt={slide.title} />
               </div>
-            ))}
+            ))} */}
           </div>
         </div>
       </div>

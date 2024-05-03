@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 interface TestimonyTextAndProfile {
   profilePhoto: string;
@@ -10,7 +11,7 @@ interface TestimonyTextAndProfile {
 const TestimonyCard = ({ testimonyTextAndProfile }: { testimonyTextAndProfile: TestimonyTextAndProfile }) => (
   <div className="w-32 md:w-40">
     <div className="mb-6">
-      <img src={testimonyTextAndProfile.profilePhoto} className="w-32 rounded-full shadow-lg dark:shadow-black/20" />
+      <Image width={500} height={ 500 } alt="testimony" src={testimonyTextAndProfile.profilePhoto} className="w-32 rounded-full shadow-lg dark:shadow-black/20" />
     </div>
     <h5 className="mb-2 md:text-lg font-bold">{testimonyTextAndProfile.name}</h5>
     <h6 className="mb-4 font-medium text-primary dark:text-primary-400">{testimonyTextAndProfile.designation}</h6>

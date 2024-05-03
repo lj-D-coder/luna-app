@@ -66,8 +66,8 @@ const OfferCard: React.FC<ServiceCardProps> = ({ service }) => {
           <div className="flex-none w-full md:w-full relative m-1">
             <Image
               src={service.thumbnail}
-              width={100}
-              height={100}
+              width={500}
+              height={500}
               alt={service.title}
               className="w-full h-full object-cover"
               loading="lazy"
