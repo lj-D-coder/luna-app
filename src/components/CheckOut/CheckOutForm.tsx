@@ -1,11 +1,9 @@
 "use client";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CalendarIcon } from "@heroicons/react/24/solid";
 import { format } from "date-fns";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
 import { cn } from "@/lib/utils/cn";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
@@ -14,7 +12,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Input } from "@/components/ui/input";
 import { TimeSlotPicker } from "./timeSlot";
 import { ClockIcon } from "@heroicons/react/24/outline";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
 import { CartProps } from "../ServiceBooking/ServicesGrid";
 import { useRouter } from "next/navigation";
@@ -134,45 +132,24 @@ export const CheckOutForm: React.FC<CheckOutFormProp> = ({ setOpen, totalPrice, 
     }
   }
 
-  useEffect(() => {
-    const handleFocus = (event: Event) => {
-      const target = event.target as HTMLElement;
-      if (target.tagName === "INPUT" || target.tagName === "TEXTAREA") {
-        document.body.classList.add("keyboard");
-      }
-    };
-
-    const handleBlur = () => {
-      document.body.classList.remove("keyboard");
-    };
-
-    document.body.addEventListener("focus", handleFocus, true);
-    document.body.addEventListener("blur", handleBlur, true);
-
-    // Cleanup function
-    return () => {
-      document.body.removeEventListener("focus", handleFocus, true);
-      document.body.removeEventListener("blur", handleBlur, true);
-    };
-  }, []); // Empty dependency array means this effect runs once on mount and cleanup on unmount
 
   return (
     <div className="h-auto">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className={cn("grid items-start gap-4")}>
-          <p className="text text-sm text-center md:text-base">
+        <form onSubmit={form.handleSubmit(onSubmit)} className={cn("grid items-start gap-2 md:gap-4")}>
+          <p className="text text-xs text-center md:text-base">
             <span className="text-red-500">*Note:</span> our services are exclusively available in the Imphal area.
           </p>
 
-          <h1 className="text text-base text-center font-semibold">Please Provide Your Details:</h1>
+          <h1 className="text text-sm md:text-base text-center font-semibold">Please Provide Your Details:</h1>
           <FormField
             control={form.control}
             name="phone"
             render={({ field }) => (
               <FormItem className="flex flex-col">
-                <FormLabel>WhatsApp Number</FormLabel>
+                <FormLabel className="hidden md:block">WhatsApp Number</FormLabel>
                 <FormControl>
-                  <Input {...field} type="text" maxLength={10} placeholder="Enter 10 digit phone number" />
+                  <Input {...field} type="text" maxLength={10} placeholder="Enter 10 digit WhatsApp number" className="w-full sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-1/3"/>
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -183,9 +160,9 @@ export const CheckOutForm: React.FC<CheckOutFormProp> = ({ setOpen, totalPrice, 
             name="name"
             render={({ field }) => (
               <FormItem className="flex flex-col">
-                <FormLabel>Full Name</FormLabel>
+                <FormLabel className="hidden md:block">Full Name</FormLabel>
                 <FormControl>
-                  <Input {...field} type="text" placeholder="Enter your full name" />
+                  <Input {...field} type="text" placeholder="Enter your full name" className="w-full sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-1/3"/>
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -196,9 +173,9 @@ export const CheckOutForm: React.FC<CheckOutFormProp> = ({ setOpen, totalPrice, 
             name="address"
             render={({ field }) => (
               <FormItem className="flex flex-col">
-                <FormLabel>Full Address</FormLabel>
+                <FormLabel className="hidden md:block">Full Address</FormLabel>
                 <FormControl>
-                  <Input {...field} type="text" placeholder="Enter your address" />
+                  <Input {...field} type="text" placeholder="Enter your address" className="w-full sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-1/3"/>
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -210,9 +187,9 @@ export const CheckOutForm: React.FC<CheckOutFormProp> = ({ setOpen, totalPrice, 
             name="landmark"
             render={({ field }) => (
               <FormItem className="flex flex-col">
-                <FormLabel>Add Landmark</FormLabel>
+                <FormLabel className="hidden md:block">Add Landmark</FormLabel>
                 <FormControl>
-                  <Input {...field} type="text" placeholder="Enter your landmark..." />
+                  <Input {...field} type="text" placeholder="Enter your landmark..." className="w-full sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-1/3"/>
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -224,7 +201,7 @@ export const CheckOutForm: React.FC<CheckOutFormProp> = ({ setOpen, totalPrice, 
               name="bookingDate"
               render={({ field }) => (
                 <FormItem className="flex flex-col">
-                  <FormLabel>Date of Booking</FormLabel>
+                  <FormLabel className="hidden md:block">Date of Booking</FormLabel>
                   <Popover open={calendarOpen} onOpenChange={setCalendarOpen}>
                     <PopoverTrigger asChild>
                       <FormControl>
@@ -258,7 +235,6 @@ export const CheckOutForm: React.FC<CheckOutFormProp> = ({ setOpen, totalPrice, 
                       />
                     </PopoverContent>
                   </Popover>
-                  <FormDescription>Choose a booking date</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -269,7 +245,7 @@ export const CheckOutForm: React.FC<CheckOutFormProp> = ({ setOpen, totalPrice, 
               name="timeSlot"
               render={({ field }) => (
                 <FormItem className="flex flex-col">
-                  <FormLabel>Time Slot</FormLabel>
+                  <FormLabel className="hidden md:block">Time Slot</FormLabel>
                   <Popover open={isOpen} onOpenChange={setIsOpen}>
                     <PopoverTrigger asChild>
                       <FormControl>
@@ -285,7 +261,7 @@ export const CheckOutForm: React.FC<CheckOutFormProp> = ({ setOpen, totalPrice, 
                         </Button>
                       </FormControl>
                     </PopoverTrigger>
-                    <PopoverContent className="w-auto p-0" align="center">
+                    <PopoverContent className="w-auto p-0 m-3" align="center">
                       <TimeSlotPicker
                         selectedTimeSlot={field.value}
                         onSelect={(value) => {
@@ -295,7 +271,6 @@ export const CheckOutForm: React.FC<CheckOutFormProp> = ({ setOpen, totalPrice, 
                       />
                     </PopoverContent>
                   </Popover>
-                  <FormDescription>Choose a time slot</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}

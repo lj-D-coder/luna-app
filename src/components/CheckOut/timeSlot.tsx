@@ -13,6 +13,7 @@ interface TimeSlotPickerProps {
 
 export const TimeSlotPicker: React.FC<TimeSlotPickerProps> = ({ selectedTimeSlot, onSelect }) => {
   return (
+    <div className="w-72 md:w-full">
     <div className="grid grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-2 p-3">
       {timeSlots.map((timeSlot) => (
         <button
@@ -25,6 +26,7 @@ export const TimeSlotPicker: React.FC<TimeSlotPickerProps> = ({ selectedTimeSlot
           {timeSlot}
         </button>
       ))}
-    </div>
+      </div>
+      </div>
   );
 };
