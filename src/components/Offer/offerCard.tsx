@@ -63,7 +63,7 @@ const OfferCard: React.FC<ServiceCardProps> = ({ service }) => {
     <>
       <div className="w-full bg-gray-100 cursor-pointer relative card-hover-effects">
         <div className="flex h-full">
-          <div className="flex-none w-32 md:w-48 relative m-1">
+          <div className="flex-none w-full md:w-full relative m-1">
             <Image
               src={service.thumbnail}
               width={100}
@@ -74,7 +74,10 @@ const OfferCard: React.FC<ServiceCardProps> = ({ service }) => {
             />
           </div>
 
-          <div className="flex-auto flex flex-col justify-between">
+          {/* This block is make hidden because of client */}
+
+          {/* <div className="flex-auto flex flex-col justify-between"> */}
+          <div className="hidden">
             <div className="p-2">
               <div className="flex flex-wrap items-baseline">
                 <h1 className="w-full flex-none mb-3 text-lg leading-none text-slate-900">{service.title}</h1>
@@ -87,7 +90,9 @@ const OfferCard: React.FC<ServiceCardProps> = ({ service }) => {
           </div>
         </div>
 
-        <div className="w-full absolute bottom-0 right-10 md:right-8 flex justify-end space-x-4 text-sm font-medium m-1 pb-2">
+        {/* This block is make hidden because of client */}
+        {/* <div className=" w-full absolute bottom-0 right-10 md:right-8 flex justify-end space-x-4 text-sm font-medium m-1 pb-2"> */}
+        <div className="hidden">
           <button
             onClick={() => instantCheckout(service)}
             className="w-[40%] md:w-1/3 h-12 uppercase font-medium rounded-full border-2 border-sky-600 tracking-wider bg-transparent hover:bg-sky-200 text-black card-hover-effects"
