@@ -33,10 +33,11 @@ const IconGrid: React.FC<CategoryProps> = ({ categories, sliderData }) => {
 
   return (
     <>
-      <div className="w-full h-auto md:h-screen grid grid-cols-1 bg-white">
-        <Search placeholder="what services are you looking for ?" />
-        <div className="flex flex-col md:flex-row items-center md:justify-between px-10 pt-20">
-          <div className="w-96 md:w-[600px] mt-40 md:mt-0 self-center">
+      <div className="w-full block h-auto md:h-screen bg-white">
+      <Search propClassName="hidden md:block relative" placeholder="what services are you looking for ?" />
+        <div className="flex flex-col lg:flex-row items-center lg:justify-between px-2 md:px-10">
+        <Search propClassName="inline-block md:hidden relative mt-10" placeholder="what services are you looking for ?" />
+          <div className="w-96 md:w-[600px] self-center">
             <div className="grid grid-cols-3 md:grid-cols-3 gap-4 mx-auto">
               {categories.map((data, index) => (
                 <div key={index} className="col-span-1 md:col-span-1 cursor-pointer flex flex-col items-center hover:text-sky-500">
@@ -58,8 +59,8 @@ const IconGrid: React.FC<CategoryProps> = ({ categories, sliderData }) => {
               ))}
             </div>
           </div>
-          <div className="flex flex-col items-center md:flex mt-10 md:items-start">
-            <div className="w-96 md:w-[800px] h-auto md:h-auto card-hover-effects border-none shadow-none">
+          <div className="flex flex-col items-center py-16 lg:flex lg:items-start">
+            <div className="w-96 md:w-[600px] lg:w-[700px] 2xl:w-[800px] h-auto md:h-auto card-hover-effects border-none shadow-none">
               <Hero sliderData={sliderData} />
             </div>
           </div>

@@ -62,7 +62,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
 
   return (
     <>
-      <div className="w-full bg-gray-100 cursor-pointer relative card-hover-effects">
+      <div className="w-full bg-gray-200 cursor-pointer relative card-hover-effects">
         <div className="flex h-full">
           <div className="flex-none w-32 md:w-48 relative m-1">
             <Image

@@ -26,7 +26,7 @@ const Footer: React.FC<SeoTextProp> = ({ textData }) => {
                   {data.text.map((item, idx) => (
                     <span
                       key={idx}
-                      className="inline-block bg-white text-black px-3 py-1 m-1 rounded-full"
+                      className="inline-block text-xs bg-white text-black px-1 md:px-3 py-1 m-1 rounded-full"
                     >
                       {item}
                     </span>

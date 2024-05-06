@@ -37,7 +37,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
     <div>
       <div className="embla">
         <div className="embla__viewport" ref={emblaRef}>
-          <div className="embla__container">
+          <div className={`embla__container mr-0 ${slides.length < 4 ? 'md:mr-[-50px]' : 'mr-0'}`}>
             {slides.map((service) => (
               <div className="embla__slide" key={service._id}>
                 <OfferCard service={service} />

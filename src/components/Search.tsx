@@ -7,7 +7,7 @@ type SearchResult = {
   urlSlug: string;
 };
 
-export default function Search({ placeholder }: { placeholder: string }) {
+export default function Search({ placeholder, propClassName }: { placeholder: string, propClassName: string }) {
   const [term, setTerm] = useState("");
   const [results, setResults] = useState<SearchResult[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -57,7 +57,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
   }
 
   return (
-    <div className="absolute w-full md:w-5/6  px-5 z-10 -mt-[70px] md:-mt-[110px] top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+    <div className={`${propClassName} w-full md:w-5/6  px-5 z-10 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}>
       <div className="relative flex flex-col md:flex-row flex-1 flex-shrink-0 justify-center items-center">
         <label htmlFor="search" className="sr-only">
           Search
@@ -75,7 +75,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
           {term ? (
             results.length > 0 ? (
               <div
-                className="absolute w-full mt-2 bg-black/40 rounded-md shadow-lg max-h-60 overflow-auto"
+                className="absolute w-full mt-2 bg-gray-200 rounded-md shadow-lg max-h-60 overflow-auto"
                 onMouseLeave={() => setResults([])} // Reset results when mouse leaves
               >
                 {results.map((result, index) => (

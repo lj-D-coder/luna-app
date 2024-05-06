@@ -84,8 +84,8 @@ export const Cart: FunctionComponent = () => {
 
   return (
     <>
-      <div className="block relative md:fixed w-full md:w-3/12 p-4">
-        <div className="bg-white shadow-lg rounded-lg overflow-y-auto max-h-[400px]">
+      <div className= {`${totalPrice > 0 ? 'block' : 'hidden'} md:block fixed bottom-0 md:fixed md:top-24 w-full md:w-3/12 p-4 bg-white`}>
+        <div className="bg-white shadow-lg rounded-lg overflow-y-auto max-h-[180px] md:max-h-[400px]">
           <div className="flex justify-between">
             <h2 className="text-lg font-semibold px-2">Cart</h2>
             <CartWidget productsCount={productsCount} />

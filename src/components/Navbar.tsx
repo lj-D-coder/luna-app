@@ -5,7 +5,7 @@ import { PhoneIcon } from "@heroicons/react/24/solid";
 
 const Navbar = () => {
   return (
-    <nav className="absolute top-0 z-10 w-full h-[auto] bg-no-repeat bg-cover">
+    <nav className="block relative w-screen h-[auto] bg-white">
       <div className="container mx-auto mt-2 p-2">
         <div className="flex items-center justify-between md:h-[50px]">
           <div className="flex items-center">

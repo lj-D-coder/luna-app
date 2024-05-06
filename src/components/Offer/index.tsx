@@ -21,8 +21,8 @@ export default function Offer() {
   return (
     <>
       <div className="w-screen bg-white">
-        <div className="text-center pt-10">
-          <h3 className="text-base md:text-4xl font-sans font-normal tracking-widest">NEW OFFER SERVICES</h3>
+        <div className="text-center pt-4">
+          <h3 className="text-xl md:text-4xl font-sans font-semibold tracking-widest">NEW OFFER SERVICES</h3>
           <div className="border-t w-1/3 mx-auto border-gray-900 mt-4"></div>
         </div>
         <div className="w-full relative p-4 md:p-16">

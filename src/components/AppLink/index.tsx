@@ -15,7 +15,7 @@ function AppLink() {
     >
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
         <div className="text-center md:text-left mb-10 md:mb-0">
-          <div className="text-2xl md:text-3xl lg:text-4xl">App comming soon...</div>
+          <div className="text-2xl md:text-3xl lg:text-4xl">App coming soon...</div>
         </div>
         <div className="flex flex-col md:flex-row md:space-x-4">
           <a
