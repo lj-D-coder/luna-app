@@ -20,12 +20,11 @@ export default function Offer() {
 
   return (
     <>
-      <div className="w-screen bg-white">
+      <div className="w-screen bg-slate-800 mt-10 py-4">
         <div className="pt-4 ml-20">
-          <h3 className="text-xl md:text-4xl font-sans font-semibold tracking-widest">NEW SERVICES</h3>
-          <div className="border-t w-1/4 border-gray-900 mt-4"></div>
+          <h3 className="text-white text-xl md:text-4xl font-sans font-semibold tracking-widest">NEW SERVICES</h3>
         </div>
-        <div className="w-full relative p-4 md:p-16">
+        <div className="w-full relative p-4 md:p-10">
           <EmblaCarousel slides={data.offerData} options={OPTIONS} />
         </div>
       </div>

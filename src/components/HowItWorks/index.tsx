@@ -64,7 +64,7 @@ const HowItWorks = () => {
 
   return (
     <>
-      <div className="grid grid-cols-1 mt-20 md:mt-0">
+      <div className="grid grid-cols-1 mt-10 bg-slate-400">
         <div className="h-full flex flex-col justify-center items-center">
           <div className="mb-10 md:mt-20">
             <h3 className="text-gray-800 text-3xl text-center px-4 font-semibold sm:text-4xl">

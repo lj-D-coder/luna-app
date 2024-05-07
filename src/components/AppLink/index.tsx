@@ -2,7 +2,7 @@ import React from "react";
 
 function AppLink() {
   return (
-    <div
+    <div className="mt-10"
       style={{
         background:
           "linear-gradient(106.89deg, rgba(192, 132, 252, 0.11), rgba(14, 165, 233, 0.41), rgba(232, 121, 249, 0.26) 56.49%, rgba(79, 70, 229, 0.4))",

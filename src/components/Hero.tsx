@@ -23,7 +23,7 @@ const Hero: React.FC<HeroProp> = ({ sliderData }) => {
 
   useEffect(() => {
     const updateHeight = () => {
-      setHeight(window.innerWidth >= 768 ? "70vh" : "30vh");
+      setHeight(window.innerWidth >= 768 ? "60vh" : "30vh");
     };
 
     updateHeight();

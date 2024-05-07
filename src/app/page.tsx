@@ -10,6 +10,7 @@ import HowItWorks from "../components/HowItWorks";
 import { useEffect, useState } from "react";
 import { Loader } from "@/components/ServiceBooking/Loader";
 import Offer from "@/components/Offer";
+import Search from "@/components/Search";
 
 export default function Home() {
   const API_URL_BANNER = "/api/banner";
@@ -70,6 +71,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
+      <Search propClassName="relative" placeholder="what services are you looking for ?" />
       <IconGrid categories={categories} sliderData={heroData} />
       <Offer/>
       <Banner banners={bannerData} />

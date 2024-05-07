@@ -5,8 +5,9 @@ import { PhoneIcon } from "@heroicons/react/24/solid";
 
 const Navbar = () => {
   return (
-    <nav className="block relative w-screen h-[auto] bg-white">
-      <div className="container mx-auto mt-2 p-2">
+    <nav className="w-screen h-[auto] bg-slate-300" style={{
+      background: 'linear-gradient(90deg, rgba(189,202,232,1) 0%, rgba(3,79,106,1) 50%, rgba(183,197,232,1) 100%)'}}>
+      <div className="container mx-auto p-4">
         <div className="flex items-center justify-between md:h-[50px]">
           <div className="flex items-center">
             <Link href="/">

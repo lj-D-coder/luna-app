@@ -16,7 +16,7 @@ const Footer = () => {
 
   return (
     <>
-      <div className="text-center  bg-black text-neutral-200">
+      <div className="text-center  bg-slate-900 text-neutral-200 mt-10">
         <Socials />
 
         <div className="mx-6 pt-8 pb-4 text-center">

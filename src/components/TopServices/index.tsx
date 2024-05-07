@@ -20,12 +20,11 @@ export default function TopServices() {
 
   return (
     <>
-      <div className="w-screen bg-white">
+      <div className="w-screen bg-slate-400 py-4 mt-10">
         <div className="ml-20 pt-10">
           <h3 className="text-xl md:text-4xl font-sans font-semibold tracking-widest">OUR TOP SERVICES</h3>
-          <div className="border-t w-1/3 border-gray-900 mt-4"></div>
         </div>
-        <div className="w-full relative p-4 md:p-16">
+        <div className="w-full relative p-4 md:p-10">
           <EmblaCarousel slides={data.topServiceList} options={OPTIONS} />
         </div>
       </div>
