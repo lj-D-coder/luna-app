@@ -32,14 +32,14 @@ const IconGrid: React.FC<CategoryProps> = ({ categories, sliderData }) => {
 
   return (
     <>
-      <div className="w-full block h-auto bg-slate-400">
-        <div className="flex flex-col lg:flex-row items-center lg:justify-between px-2 md:px-10">
+      <div className="w-screen block h-auto bg-slate-400">
+        <div className="flex flex-col lg:flex-row items-center lg:justify-between px-2">
           <div className="w-96 md:w-[600px] self-center">
             <h1 className="text-center text-5xl mb-4">Hassle-free!</h1>
             <h1 className="text-center text-3xl font-semibold tracking-wider mb-12">Doorstep professional services.</h1>
             <div className="grid grid-cols-3 md:grid-cols-3 gap-4 mx-auto align-bottom">
               {categories.map((data, index) => (
-                <div key={index} className="col-span-1 md:col-span-1 cursor-pointer flex flex-col items-center hover:text-sky-500">
+                <div key={index} className="col-span-1 md:col-span-1 cursor-pointer flex flex-col items-center hover:text-white">
                   <div
                     className={cn(
                       "w-[120px] h-[120px] card-hover-effects border-none shadow-none",
@@ -58,7 +58,7 @@ const IconGrid: React.FC<CategoryProps> = ({ categories, sliderData }) => {
               ))}
             </div>
           </div>
-          <div className="flex flex-col items-center py-10 lg:flex lg:items-start">
+          <div className="flex flex-col items-center p-10 lg:flex lg:items-start">
             <div className="w-96 md:w-[600px] lg:w-[700px] 2xl:w-[800px] h-auto md:h-auto card-hover-effects border-none shadow-none">
               <Hero sliderData={sliderData} />
             </div>
