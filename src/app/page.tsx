@@ -12,6 +12,7 @@ import { Loader } from "@/components/ServiceBooking/Loader";
 import Offer from "@/components/Offer";
 import Search from "@/components/Search";
 
+
 export default function Home() {
   const API_URL_BANNER = "/api/banner";
   const API_URL_ICON_GRID = "api/category";
@@ -71,7 +72,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <Search propClassName="relative" placeholder="what services are you looking for ?" />
+      <Search propClassName="relative pt-40 bg-slate-900" placeholder="what services are you looking for ?" />
       <IconGrid categories={categories} sliderData={heroData} />
       <Offer/>
       <Banner banners={bannerData} />
@@ -80,6 +81,7 @@ export default function Home() {
       <AppLink />
       <HowItWorks />
       <Footer />
+      
     </>
   );
 }

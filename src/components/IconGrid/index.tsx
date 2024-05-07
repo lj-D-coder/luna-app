@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils/cn";
 import Image from "next/image";
 import Hero from "../Hero";
 import { useRouter } from "next/navigation";
+import { BackgroundBeams } from "@/components/ui/background-beams";
 
 export type Category = {
   _id: string;
@@ -32,14 +33,15 @@ const IconGrid: React.FC<CategoryProps> = ({ categories, sliderData }) => {
 
   return (
     <>
-      <div className="w-screen block h-auto bg-slate-400">
+      <div className="w-screen block h-auto bg-slate-900">
+        <BackgroundBeams/>
         <div className="flex flex-col lg:flex-row items-center lg:justify-between px-2">
           <div className="w-96 md:w-[600px] self-center">
-            <h1 className="text-center text-5xl mb-4">Hassle-free!</h1>
-            <h1 className="text-center text-3xl font-semibold tracking-wider mb-12">Doorstep professional services.</h1>
+            <h1 className="text-white text-center text-5xl mb-4">Hassle-free!</h1>
+            <h1 className="text-white text-center text-3xl font-semibold tracking-wider mb-12">Doorstep professional services.</h1>
             <div className="grid grid-cols-3 md:grid-cols-3 gap-4 mx-auto align-bottom">
               {categories.map((data, index) => (
-                <div key={index} className="col-span-1 md:col-span-1 cursor-pointer flex flex-col items-center hover:text-white">
+                <div key={index} className="col-span-1 md:col-span-1 cursor-pointer flex flex-col items-center text-white hover:text-sky-400">
                   <div
                     className={cn(
                       "w-[120px] h-[120px] card-hover-effects border-none shadow-none",
