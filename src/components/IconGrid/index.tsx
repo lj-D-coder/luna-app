@@ -38,6 +38,8 @@ const IconGrid: React.FC<CategoryProps> = ({ categories, sliderData }) => {
         <div className="flex flex-col lg:flex-row items-center lg:justify-between px-2 md:px-10">
         <Search propClassName="inline-block md:hidden relative mt-10" placeholder="what services are you looking for ?" />
           <div className="w-96 md:w-[600px] self-center">
+            <h1 className="text-center text-6xl mb-4">Hassle-free!</h1>
+            <h1 className="text-center text-3xl font-semibold tracking-widest mb-12">Doorstep professional services.</h1>
             <div className="grid grid-cols-3 md:grid-cols-3 gap-4 mx-auto">
               {categories.map((data, index) => (
                 <div key={index} className="col-span-1 md:col-span-1 cursor-pointer flex flex-col items-center hover:text-sky-500">
@@ -54,7 +56,7 @@ const IconGrid: React.FC<CategoryProps> = ({ categories, sliderData }) => {
                       onClick={() => handleClick(data._id, data.categoryName)}
                     />
                   </div>
-                  <div className="text-center mt-2">{data.categoryLabel}</div> {/* Added text-center class */}
+                  <div className="text-center font-medium mt-2">{data.categoryLabel}</div> {/* Added text-center class */}
                 </div>
               ))}
             </div>

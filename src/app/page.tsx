@@ -16,7 +16,6 @@ export default function Home() {
   const API_URL_ICON_GRID = "api/category";
   const API_URL_HERO = "/api/hero";
   const API_URL_TESTIMONY = "api/testimony";
-  const API_URL_SEOTEXT = "/api/seotext";
 
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -24,32 +23,28 @@ export default function Home() {
   const [categories, setCategories] = useState<[]>([]);
   const [heroData, setHeroData] = useState<[]>([]);
   const [testimonyData, setTestimony] = useState<[]>([]);
-  const [seoTextData, setSeotext] = useState<[]>([]);
 
   useEffect(() => {
     const fetchAllHomePageData = async () => {
       try {
-        const [bannerResponse, iconGridResponse, heroResponse, testimonyResponse, seotextResponse] = await Promise.all([
+        const [bannerResponse, iconGridResponse, heroResponse, testimonyResponse,] = await Promise.all([
           fetch(API_URL_BANNER, { cache: "no-store" }),
           fetch(API_URL_ICON_GRID, { cache: "no-store" }),
           fetch(API_URL_HERO, { cache: "no-store" }),
           fetch(API_URL_TESTIMONY, { cache: "no-store" }),
-          fetch(API_URL_SEOTEXT, { cache: "no-store" }),
         ]);
 
-        if (bannerResponse.ok && iconGridResponse.ok && heroResponse.ok && testimonyResponse.ok && seotextResponse.ok) {
-          const [bannerData, iconGridData, heroData, testimonyData, seoTextData] = await Promise.all([
+        if (bannerResponse.ok && iconGridResponse.ok && heroResponse.ok && testimonyResponse.ok) {
+          const [bannerData, iconGridData, heroData, testimonyData] = await Promise.all([
             bannerResponse.json(),
             iconGridResponse.json(),
             heroResponse.json(),
             testimonyResponse.json(),
-            seotextResponse.json(),
           ]);
           setBannerData(bannerData.bannerData);
           setCategories(iconGridData.categoryItem);
           setHeroData(heroData.heroData);
           setTestimony(testimonyData.testimonyData);
-          setSeotext(seoTextData.seoTextData);
           setIsLoading(false);
         } else {
           setError(true);
@@ -82,7 +77,7 @@ export default function Home() {
       <TopServices />
       <AppLink />
       <HowItWorks />
-      <Footer textData={seoTextData} />
+      <Footer />
     </>
   );
 }
