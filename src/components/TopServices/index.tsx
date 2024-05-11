@@ -20,7 +20,7 @@ export default function TopServices() {
 
   return (
     <>
-      <div className="w-screen bg-slate-400 py-4 mt-10">
+      <div className="w-screen py-4 mt-10">
         <div className="ml-20 pt-10">
           <h3 className="text-xl md:text-4xl font-sans font-semibold tracking-widest">OUR TOP SERVICES</h3>
         </div>
