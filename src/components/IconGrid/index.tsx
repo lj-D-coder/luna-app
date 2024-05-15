@@ -40,6 +40,7 @@ useLayoutEffect(() => {
   if (box) {
     // Define your event handlers as separate functions
     const handleMouseOver = () => {
+      timeline.pause(); // Pause the timeline
       gsap.to(box, {
         scaleX: 1.05, // Change this to the scale you want in the x direction
         scaleY: 1.05, // Change this to the scale you want in the y direction
@@ -49,6 +50,7 @@ useLayoutEffect(() => {
     };
 
     const handleMouseOut = () => {
+      timeline.resume(); // Resume the timeline
       gsap.to(box, {
         scaleX: 1, // Change this to the scale you want in the x direction
         scaleY: 1, // Change this to the scale you want in the y direction

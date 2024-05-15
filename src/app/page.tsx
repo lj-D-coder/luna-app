@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { Loader } from "@/components/ServiceBooking/Loader";
 import Offer from "@/components/Offer";
 import Search from "@/components/Search";
+import FloatingSocial from "@/components/FloatingSocial";
 
 
 export default function Home() {
@@ -73,6 +74,7 @@ export default function Home() {
     <>
       <Navbar />
       <Search propClassName="relative pt-40" placeholder="what services are you looking for ?" />
+      <FloatingSocial/>
       <IconGrid categories={categories} sliderData={heroData} />
       <Offer/>
       <Banner banners={bannerData} />
