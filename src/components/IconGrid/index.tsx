@@ -99,7 +99,7 @@ useLayoutEffect(() => {
 
   return (
     <>
-      <div className="w-screen block h-auto">
+      <div className="container block h-auto">
         <div className="flex flex-col lg:flex-row items-center lg:justify-between px-2">
           <div className="w-96 md:w-[600px] self-center">
             <h1 className="text-slate-900 text-center text-5xl mb-4">Hassle-free!</h1>
