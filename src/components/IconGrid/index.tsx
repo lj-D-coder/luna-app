@@ -1,11 +1,10 @@
 "use client";
-import React, { useEffect, useState, useLayoutEffect, useRef } from "react";
+import React, { useState } from "react";
 import { cn } from "@/lib/utils/cn";
 import Image from "next/image";
 import Hero from "../Hero";
 import { useRouter } from "next/navigation";
-import { BackgroundBeams } from "@/components/ui/background-beams";
-import gsap from "gsap";
+
 
 export type Category = {
   _id: string;
@@ -32,69 +31,7 @@ const IconGrid: React.FC<CategoryProps> = ({ categories, sliderData }) => {
     router.push(`/${categoryName}`);
   };
 
-  const boxRef = useRef<HTMLDivElement | null>(null);
-
-useLayoutEffect(() => {
-  const box = boxRef.current;
-
-  if (box) {
-    // Define your event handlers as separate functions
-    const handleMouseOver = () => {
-      timeline.pause(); // Pause the timeline
-      gsap.to(box, {
-        scaleX: 1.05, // Change this to the scale you want in the x direction
-        scaleY: 1.05, // Change this to the scale you want in the y direction
-        duration: 0.5,
-        ease: "power1.inOut",
-      });
-    };
-
-    const handleMouseOut = () => {
-      timeline.resume(); // Resume the timeline
-      gsap.to(box, {
-        scaleX: 1, // Change this to the scale you want in the x direction
-        scaleY: 1, // Change this to the scale you want in the y direction
-        duration: 0.5,
-        ease: "Ease In Out",
-      });
-    };
-
-    // Add a hover effect to move the box a little bit
-    box.addEventListener("mouseover", handleMouseOver);
-    box.addEventListener("mouseout", handleMouseOut);
-
-    // Create a timeline for the animations
-    const timeline = gsap.timeline({
-      repeat: -1, // Loop the animation indefinitely
-      repeatDelay: 1, // Delay between each loop
-    });
-
-    timeline
-      .set(box, {
-        x: window.innerWidth,
-        scale: 0.3,
-      })
-      .to(box, {
-        x: 0,
-        scale: 1,
-        duration: 1,
-        ease: "power1.inOut",
-      })
-      .to(box, {
-        x: window.innerWidth,
-        duration: 2,
-        ease: "power1.inOut",
-        delay: 5,
-      });
-
-    return () => {
-      // Cleanup when component unmounts
-      box.removeEventListener("mouseover", handleMouseOver);
-      box.removeEventListener("mouseout", handleMouseOut);
-      timeline.kill(); // Stop the timeline
-    };
-  }
-}, []);
+  
 
 
   return (
@@ -132,10 +69,7 @@ useLayoutEffect(() => {
             </div>
           </div>
           <div className="flex flex-col items-center p-10 lg:flex lg:items-start">
-            <div
-              ref={boxRef}
-              className="box w-96 md:w-[600px] lg:w-[700px] 2xl:w-[800px] h-auto md:h-auto border-none shadow-none"
-            >
+            <div className="w-96 md:w-[600px] lg:w-[700px] 2xl:w-[800px] h-auto md:h-auto border-none shadow-none">
               <Hero sliderData={sliderData} />
             </div>
           </div>
