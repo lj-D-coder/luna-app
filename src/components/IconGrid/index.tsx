@@ -69,7 +69,7 @@ const IconGrid: React.FC<CategoryProps> = ({ categories, sliderData }) => {
             </div>
           </div>
           <div className="flex flex-col items-center p-10 lg:flex lg:items-start">
-            <div className="w-96 md:w-[600px] lg:w-[700px] 2xl:w-[800px] h-auto md:h-auto border-none shadow-none">
+            <div className="w-96 md:w-[600px] lg:w-[700px] 2xl:w-[800px] h-auto md:h-auto border-none shadow-none cursor-pointer">
               <Hero sliderData={sliderData} />
             </div>
           </div>
