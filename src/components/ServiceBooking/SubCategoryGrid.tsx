@@ -12,7 +12,7 @@ export type SubCategory = {
   _id: string;
   categoryId: String;
   subCategoryName: string;
-  subcategoryLabel: string;
+  subCategoryLabel: string;
   iconUrl: string;
 };
 
@@ -42,6 +42,7 @@ export const SubCategory: FC<SubCategoryProps> = ({ categoryUrl, onIconClick }) 
       if (response.ok) {
         const data = await response.json();
         setSubCategory(data.subCategoryList);
+        console.log(data.subCategoryList[0].subCategoryLabel);
         setIsLoading(false);
       } else {
         setError(true);
@@ -80,12 +81,11 @@ export const SubCategory: FC<SubCategoryProps> = ({ categoryUrl, onIconClick }) 
                   style={{ width: "100%", height: "100%" }} // Adjust height to fit image and text properly
                 />
               </div>
-              <span className="block mt-2 text-sm">{toProperCase(subCategory.subCategoryName)}</span>
+              <span className="block mt-2 text-sm">{toProperCase(subCategory.subCategoryLabel)}</span>
             </div>
           ))}
         </div>
       </div>
     </div>
-
   );
 };
