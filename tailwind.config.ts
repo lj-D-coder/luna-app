@@ -29,7 +29,9 @@ const config = {
     },
 
     extend: {
-      
+      fontFamily: {
+        sans: ['var(--font-outfit)', 'sans-serif'],
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -58,5 +60,3 @@ const config = {
 } satisfies Config
 
 export default config
-
-

@@ -1,13 +1,8 @@
 "use client";
 import "hero-slider/dist/index.css";
-import HeroSlider, { ButtonsNav, MenuNav, Overlay, Slide } from "hero-slider";
-import Wrapper from "./Wrapper";
-import Title from "./Title";
 import { useEffect, useState, useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
-
-
-
+import Image from "next/image";
 
 export type Hero = {
   _id: string;
@@ -22,10 +17,11 @@ interface HeroProp {
 
 const Hero: React.FC<HeroProp> = ({ sliderData }) => {
   const [height, setHeight] = useState<string>("30vh");
+  const boxRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const updateHeight = () => {
-      setHeight(window.innerWidth >= 768 ? "60vh" : "30vh");
+      setHeight(window.innerWidth >= 768 ? "65vh" : "30vh");
     };
 
     updateHeight();
@@ -36,112 +32,103 @@ const Hero: React.FC<HeroProp> = ({ sliderData }) => {
     };
   }, []);
 
+  useLayoutEffect(() => {
+    const box = boxRef.current;
 
+    if (box) {
+      let currentIndex = 0;
+      const images = box.querySelectorAll("img");
 
-  const boxRef = useRef<HTMLDivElement | null>(null);
+      // Initialize all images to be hidden and offscreen to the right
+      gsap.set(images, { opacity: 0, x: window.innerWidth });
 
-useLayoutEffect(() => {
-  const box = boxRef.current;
+      const showImage = (index: number) => {
+        gsap.to(images[index], {
+          opacity: 1,
+          x: 0,
+          duration: 1,
+          ease: "power1.inOut",
+        });
+      };
 
-  if (box) {
-    // Define your event handlers as separate functions
-    const handleMouseOver = () => {
-      timeline.pause(); // Pause the timeline
-      gsap.to(box, {
-        scaleX: 1.05, // Change this to the scale you want in the x direction
-        scaleY: 1.05, // Change this to the scale you want in the y direction
-        duration: 0.5,
-        ease: "power1.inOut",
+      const hideImage = (index: number) => {
+        gsap.to(images[index], {
+          opacity: 0,
+          x: -window.innerWidth,
+          duration: 1,
+          ease: "power1.inOut",
+        });
+      };
+
+      const handleMouseOver = () => {
+        timeline.pause();
+        gsap.to(box, {
+          scaleX: 1.05,
+          scaleY: 1.05,
+          duration: 0.5,
+          ease: "power1.inOut",
+        });
+      };
+
+      const handleMouseOut = () => {
+        timeline.resume();
+        gsap.to(box, {
+          scaleX: 1,
+          scaleY: 1,
+          duration: 0.5,
+          ease: "power1.inOut",
+        });
+      };
+
+      box.addEventListener("mouseover", handleMouseOver);
+      box.addEventListener("mouseout", handleMouseOut);
+
+      const timeline = gsap.timeline({
+        repeat: -1,
+        repeatDelay: 0,
+        delay: 5,
+        onComplete: () => {
+          hideImage(currentIndex);
+          currentIndex = (currentIndex + 1) % images.length;
+          showImage(currentIndex);
+        },
       });
-    };
 
-    const handleMouseOut = () => {
-      timeline.resume(); // Resume the timeline
-      gsap.to(box, {
-        scaleX: 1, // Change this to the scale you want in the x direction
-        scaleY: 1, // Change this to the scale you want in the y direction
-        duration: 0.5,
-        ease: "Ease In Out",
+      // Initial call to show the first image
+      showImage(currentIndex);
+
+      // Schedule hiding and showing of images in the timeline
+      timeline.to({}, {
+        delay: 4, // Show image for 4 seconds before starting the next transition
+        onComplete: () => {
+          hideImage(currentIndex);
+          currentIndex = (currentIndex + 1) % images.length;
+          showImage(currentIndex);
+        },
       });
-    };
 
-    // Add a hover effect to move the box a little bit
-    box.addEventListener("mouseover", handleMouseOver);
-    box.addEventListener("mouseout", handleMouseOut);
-
-    // Create a timeline for the animations
-    const timeline = gsap.timeline({
-      repeat: -1, // Loop the animation indefinitely
-      repeatDelay: 0, // Delay between each loop
-    });
-
-    timeline
-      .set(box, {
-        x: window.innerWidth,
-        scale: 0.3,
-      })
-      .to(box, {
-        x: 0,
-        scale: 1,
-        duration: 1,
-        ease: "power1.inOut",
-      })
-      .to(box, {
-        opacity: 0, // Fade out the box
-        duration: 2,
-        ease: "linear",
-        delay: 7
-      });
-    
-  
-
-    return () => {
-      // Cleanup when component unmounts
-      box.removeEventListener("mouseover", handleMouseOver);
-      box.removeEventListener("mouseout", handleMouseOut);
-      timeline.kill(); // Stop the timeline
-    };
-  }
-}, []);
+      return () => {
+        box.removeEventListener("mouseover", handleMouseOver);
+        box.removeEventListener("mouseout", handleMouseOut);
+        timeline.kill();
+      };
+    }
+  }, [sliderData]);
 
   return (
-    <>
-      <div ref={boxRef} className="box flex">
-        <HeroSlider
-          height={height}
-          className="top-0 h-full w-full"
-          style={{
-            borderRadius: "10px",
-          }}
-          autoplay
-          controller={{
-            initialSlide: 1,
-            slidingDuration: 500,
-            slidingDelay: 200,
-          }}
-          accessibility={{ shouldDisplayButtons: false }}
-        >
-          <Overlay>
-            <Wrapper>
-              <Title></Title>
-            </Wrapper>
-          </Overlay>
-
-          {sliderData.map((banner, index) => (
-            <div key={index}>
-              <Slide
-                label="Giau Pass - Italy"
-                background={{
-                  backgroundImageSrc: banner.sliderUrl,
-                }}
-              />
-            </div>
-          ))}
-          {/* <MenuNav /> */}
-          {/* <ButtonsNav /> */}
-        </HeroSlider>
-      </div>
-    </>
+    <div ref={boxRef} className="box relative overflow-hidden" style={{ height }}>
+      {sliderData.map((banner, index) => (
+        <Image
+          key={index}
+          src={banner.sliderUrl}
+          width={1920}
+          height={1080}
+          alt="Slides"
+          className="w-full h-full object-cover absolute top-0 left-0"
+          loading="lazy"
+        />
+      ))}
+    </div>
   );
 };
 

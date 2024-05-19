@@ -109,7 +109,7 @@ export const ServicesGrid: FC<ServiceBookingProps & { selectedSubcategory: strin
   useEffect(() => {
     // Scroll to the selected subcategory when it changes
     if (selectedSubcategory && subCategoryRefs.current[selectedSubcategory]) {
-      subCategoryRefs.current[selectedSubcategory]?.scrollIntoView({ behavior: "smooth", block: "end" });
+      subCategoryRefs.current[selectedSubcategory]?.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   }, [selectedSubcategory]);
 

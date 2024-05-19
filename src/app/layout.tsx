@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Work_Sans } from "next/font/google";
+import { Outfit } from 'next/font/google';
 import "./globals.css";
 
-const workSans = Work_Sans({ subsets: ["latin"] });
+const outfit = Outfit({subsets: ['latin']});
+
 
 export const metadata: Metadata = {
   title: "Luna Nanna",
@@ -18,8 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`{workSans.className} bg-white`}>{children}</body>
-
+      <body className={`${outfit.className} bg-white`}>{children}</body>
     </html>
   );
 }

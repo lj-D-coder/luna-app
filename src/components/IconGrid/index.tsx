@@ -29,9 +29,7 @@ const IconGrid: React.FC<CategoryProps> = ({ categories, sliderData }) => {
     setCategoryId(id);
     sessionStorage.setItem("categoryId", id.toString());
     router.push(`/${categoryName}`);
-  };
-
-  
+  };  
 
 
   return (
@@ -39,8 +37,8 @@ const IconGrid: React.FC<CategoryProps> = ({ categories, sliderData }) => {
       <div className="container block h-auto">
         <div className="flex flex-col lg:flex-row items-center lg:justify-between px-2">
           <div className="w-96 md:w-[600px] self-center">
-            <h1 className="text-slate-900 text-center text-5xl mb-4">Hassle-free!</h1>
-            <h1 className="box text-slate-700 text-center text-3xl font-semibold tracking-wider mb-12">
+            <h1 className="text-slate-900 text-center font-sans text-5xl mb-4">Hassle-free!</h1>
+            <h1 className="box text-slate-700 font-sans text-center text-3xl font-bold tracking-wider mb-12">
               Doorstep professional services.
             </h1>
             <div className="grid grid-cols-3 md:grid-cols-3 gap-4 mx-auto align-bottom">
