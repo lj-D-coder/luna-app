@@ -62,40 +62,42 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
 
   return (
     <>
-      <div className="w-full bg-gray-200 cursor-pointer relative card-hover-effects rounded-md">
+      <div className="w-full bg-gray-200/50 cursor-pointer relative card-hover-effects rounded-md">
         <div className="flex h-full">
-          <div className="flex-none w-32 md:w-48 relative m-1">
+          <div className="flex-none w-full relative m-1">
             <Image
               src={service.thumbnail}
-              width={100}
-              height={100}
+              width={500}
+              height={500}
               alt={service.title}
               className="w-full h-full object-cover rounded-md"
               loading="lazy"
             />
           </div>
-
-          <div className="flex-auto flex flex-col justify-between">
-            <div className="p-2">
-              <div className="flex flex-wrap items-baseline">
-                <h1 className="w-full flex-none mb-3 text-lg leading-none text-slate-900">{service.title}</h1>
-                <div className="flex-auto text-lg text-slate-900">₹ {service.price}</div>
-              </div>
-              <div className="flex items-start mt-2 border-b border-slate-200 overflow-auto">
-                <p className="line-clamp-2 text-sm font-sans text-slate-600">{service.serviceDetails}</p>
+          <div className="absolute w-52 h-full bg-white/45 hover:bg-white/90 transition-colors duration-500 ease-in-out -right-1 p-2">
+            <div className="">
+              <div className="">
+                <div className="flex flex-wrap items-baseline">
+                  <h1 className="w-full flex-none mb-3 text-base font-extrabold leading-none text-slate-900">{service.title}</h1>
+                  <div className="flex-auto text-lg text-slate-900">₹ {service.price}</div>
+                </div>
+                <div className="flex items-start mt-2 border-b border-slate-200 overflow-auto">
+                  <p className="line-clamp-3 text-sm font-sans text-slate-900">{service.serviceDetails}</p>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
+          
 
-        <div className="w-full absolute bottom-0 right-10 md:right-8 flex justify-end space-x-4 text-sm font-medium m-1 pb-2">
-          <button
-            onClick={() => instantCheckout(service)}
-            className="w-[40%] md:w-1/3 h-12 uppercase font-medium rounded-full border-2 border-sky-600 tracking-wider bg-transparent hover:bg-sky-200 text-black card-hover-effects"
-            type="submit"
-          >
-            Book now
-          </button>
+          <div className="w-full bottom-0 right-10 flex justify-end space-x-4 text-sm font-medium p-2">
+            <button
+              onClick={() => instantCheckout(service)}
+              className="w-full h-12 uppercase font-medium rounded-full border-2 border-sky-600 tracking-wider bg-transparent hover:bg-sky-200 text-black card-hover-effects"
+              type="submit"
+            >
+              Book now
+              </button>
+              </div>
+          </div>
         </div>
       </div>
       <CheckOutModal
