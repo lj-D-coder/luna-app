@@ -72,7 +72,7 @@ useLayoutEffect(() => {
     // Create a timeline for the animations
     const timeline = gsap.timeline({
       repeat: -1, // Loop the animation indefinitely
-      repeatDelay: 1, // Delay between each loop
+      repeatDelay: 0, // Delay between each loop
     });
 
     timeline
@@ -83,14 +83,14 @@ useLayoutEffect(() => {
       .to(box, {
         x: 0,
         scale: 1,
-        duration: 3,
+        duration: 1,
         ease: "power1.inOut",
       })
       .to(box, {
         opacity: 0, // Fade out the box
         duration: 2,
         ease: "linear",
-        delay: 4
+        delay: 7
       });
     
   

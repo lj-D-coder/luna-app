@@ -43,7 +43,7 @@ const FloatingSocial = () => {
         .to(socialBox, {
           x: 0,
           scale: 1,
-          duration: 2,
+          duration: 3,
           ease: "power1.inOut",
         })
 

@@ -18,7 +18,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={workSans.className}>{children}</body>
+      <body className={`{workSans.className} bg-white`}>{children}</body>
+
     </html>
   );
 }
