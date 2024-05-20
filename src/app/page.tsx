@@ -7,12 +7,11 @@ import IconGrid from "../components/IconGrid";
 import Banner from "../components/Banner";
 import AppLink from "../components/AppLink";
 import HowItWorks from "../components/HowItWorks";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Loader } from "@/components/ServiceBooking/Loader";
 import Offer from "@/components/Offer";
 import Search from "@/components/Search";
 import FloatingSocial from "@/components/FloatingSocial";
-
 
 export default function Home() {
   const API_URL_BANNER = "/api/banner";
@@ -30,7 +29,7 @@ export default function Home() {
   useEffect(() => {
     const fetchAllHomePageData = async () => {
       try {
-        const [bannerResponse, iconGridResponse, heroResponse, testimonyResponse,] = await Promise.all([
+        const [bannerResponse, iconGridResponse, heroResponse, testimonyResponse] = await Promise.all([
           fetch(API_URL_BANNER, { cache: "no-store" }),
           fetch(API_URL_ICON_GRID, { cache: "no-store" }),
           fetch(API_URL_HERO, { cache: "no-store" }),
@@ -74,16 +73,15 @@ export default function Home() {
     <>
       <Navbar />
       <Search propClassName="relative pt-40" placeholder="what services are you looking for ?" />
-      <FloatingSocial/>
+      <FloatingSocial />
       <IconGrid categories={categories} sliderData={heroData} />
-      <Offer/>
+      <Offer />
       <Banner banners={bannerData} />
-      <Testimony testimonyData={testimonyData} />
+      {/* <Testimony testimonyData={testimonyData} /> */}
       <TopServices />
       <AppLink />
       <HowItWorks />
       <Footer />
-      
     </>
   );
 }

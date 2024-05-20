@@ -27,7 +27,7 @@
     "env": "^0.0.2",
     "framer-motion": "^11.1.9",
     "gsap": "^3.12.5",
-    "hero-slider": "^3.2.1",
+    "lenis": "^1.0.45",
     "lightgallery": "^2.7.2",
     "lucide-react": "^0.356.0",
     "mongoose": "^8.2.4",

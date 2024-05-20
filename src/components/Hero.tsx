@@ -1,5 +1,4 @@
 "use client";
-import "hero-slider/dist/index.css";
 import { useEffect, useState, useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import Image from "next/image";
