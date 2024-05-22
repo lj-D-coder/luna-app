@@ -30,7 +30,7 @@ const config = {
 
     extend: {
       fontFamily: {
-        sans: ['var(--font-outfit)', 'sans-serif'],
+        sans: ['var(--font-montserrat)', 'var(--font-outfit)', 'sans-serif'],
       },
       keyframes: {
         "accordion-down": {
@@ -43,7 +43,7 @@ const config = {
         },
         'border': {
           to: { '--border-angle': '360deg' },
-      }
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",

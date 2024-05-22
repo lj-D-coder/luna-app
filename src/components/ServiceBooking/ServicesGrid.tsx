@@ -40,7 +40,7 @@ export const ServicesGrid: FC<ServiceBookingProps> = ({ subCategoryId }) => {
   const [cart, setCart] = useLocalStorageState<CartProps>("cart", {});
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedServiceDetails, setSelectedServiceDetails] = useState<string | undefined>();
-  
+
   const addToCart = (service: Service): void => {
     service.serviceCapacity = 1;
     setCart((prevCart) => ({
@@ -89,7 +89,7 @@ export const ServicesGrid: FC<ServiceBookingProps> = ({ subCategoryId }) => {
     } catch (error) {
       setError(true);
     }
-  } 
+  }
 
   if (isLoading) {
     return <Loader />;
@@ -113,15 +113,22 @@ export const ServicesGrid: FC<ServiceBookingProps> = ({ subCategoryId }) => {
                     <div className="flex justify-center items-center h-40">
                       <Image width={500} height={500} className="object-cover w-full h-full" src={service.thumbnail} alt={service.title} />
                     </div>
-                    <div className="p-2">
+                    <div className="p-3">
                       <h2 className="text-lg font-semibold text-gray-800 mb-2">{service.title}</h2>
-                      <div className="flex justify-between items-center mb-2">
-                        <h3 className="text-md font-bold text-gray-700">Price at {service.price}</h3>
-                      </div>
-                      <div className="mb-2 h-3">
-                        <p className="text-xs text-gray-600">{service.description}</p>
-                      </div>
-                      <div className="flex justify-between items-center mb-2">
+                      <div className="flex items-end justify-between">
+                        <div>
+                          <div className="flex justify-between items-center mb-2">
+                            <h3 className="text-md font-bold text-gray-700">Price at {service.price}</h3>
+                          </div>
+                          <button
+                            onClick={() => addToCart(service)}
+                            className={`bg-black h-10 text-white rounded-md px-4 py-1 ${isInCart(service._id) ? "bg-gray-300 cursor-not-allowed" : ""
+                              }`}
+                            disabled={isInCart(service._id)}
+                          >
+                            {isInCart(service._id) ? "In Cart" : "Add to Cart"}
+                          </button></div>
+
                         <a
                           onClick={() => toggleModal(true, service.serviceDetails)}
                           href="#"
@@ -129,15 +136,8 @@ export const ServicesGrid: FC<ServiceBookingProps> = ({ subCategoryId }) => {
                         >
                           View details
                         </a>
-                        <button
-                          onClick={() => addToCart(service)}
-                          className={`bg-black h-10 text-white rounded-md px-4 py-1 ${isInCart(service._id) ? "bg-gray-300 cursor-not-allowed" : ""
-                            }`}
-                          disabled={isInCart(service._id)}
-                        >
-                          {isInCart(service._id) ? "In Cart" : "Add to Cart"}
-                        </button>
                       </div>
+
                     </div>
                   </div>
                 ))}

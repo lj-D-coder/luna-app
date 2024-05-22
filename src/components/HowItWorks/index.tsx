@@ -1,4 +1,4 @@
-import { doorStepCare, bookSlot, selectService} from "@/assets/images"
+import { doorStepCare, bookSlot, selectService } from "@/assets/images"
 import Image from "next/image";
 
 const HowItWorks = () => {
@@ -28,8 +28,10 @@ const HowItWorks = () => {
             <h3 className="text-gray-800 text-3xl text-center px-4 font-semibold sm:text-4xl">
               How We Works?
             </h3>
-            <p className="mt-2 text-center text-base">
-            Experience hassle-free home maintenance with our seamless process from booking to doorstep care. Let us take care of your home while you focus on what matters most.
+            <p className="mt-2 text-center text-base text">
+              <br></br>
+              Experience hassle-free home maintenance with our seamless process from booking to doorstep care.<br></br>
+              Let us take care of your home while you focus on what matters most.
             </p>
           </div>
 
@@ -38,7 +40,7 @@ const HowItWorks = () => {
               {features.map((item, idx) => (
                 <li key={idx} className="space-y-3">
                   <div className="w-24 h-24 mx-auto bg-slate-800 rounded-full flex items-center justify-center">
-                    <Image src={item.icon} height={50} width={50} alt="icon"/>
+                    <Image src={item.icon} height={50} width={50} alt="icon" />
                   </div>
                   <h4 className="text-lg text-gray-800 font-semibold">{item.title}</h4>
                   <p>{item.desc}</p>
