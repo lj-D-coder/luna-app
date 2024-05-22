@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Outfit } from 'next/font/google';
+import { Montserrat } from 'next/font/google';
 import "./globals.css";
 import SmoothScroll from '@/components/SmoothScroll'
-const outfit = Outfit({subsets: ['latin']});
+const outfit = Montserrat({ subsets: ['latin'] });
 
 
 export const metadata: Metadata = {
@@ -21,8 +21,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${outfit.className} bg-white`}>
         <SmoothScroll>
-        {children}
-      </SmoothScroll>
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   );

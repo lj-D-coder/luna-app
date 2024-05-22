@@ -1,4 +1,3 @@
-"user client";
 import React, { useState, useEffect } from "react";
 import useLocalStorageState from "use-local-storage-state";
 import Image from "next/image";
@@ -74,29 +73,31 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
               loading="lazy"
             />
           </div>
-          <div className="absolute w-52 h-full bg-white/45 hover:bg-white/90 transition-colors duration-500 ease-in-out -right-1 p-2">
-            <div className="">
-              <div className="">
-                <div className="flex flex-wrap items-baseline">
-                  <h1 className="w-full flex-none mb-3 text-base font-extrabold leading-none text-slate-900">{service.title}</h1>
-                  <div className="flex-auto text-lg text-slate-900">₹ {service.price}</div>
-                </div>
-                <div className="flex items-start mt-2 border-b border-slate-200 overflow-auto">
-                  <p className="line-clamp-3 text-sm font-sans text-slate-900">{service.serviceDetails}</p>
-                </div>
-              </div>
-            </div>
-          
 
-          <div className="w-full bottom-0 right-10 flex justify-end space-x-4 text-sm font-medium p-2">
-            <button
-              onClick={() => instantCheckout(service)}
-              className="w-full h-12 uppercase font-medium rounded-full border-2 border-sky-600 tracking-wider bg-transparent hover:bg-sky-200 text-black card-hover-effects"
-              type="submit"
-            >
-              Book now
+          <div className="absolute w-52 h-full bg-white/80 hover:bg-white/90 transition-colors duration-500 ease-in-out -right-1 p-2 flex flex-col justify-center items-center">
+            <div className="flex flex-col items-center text-center">
+              <h1 className="mb-3 text-base font-extrabold leading-none text-slate-900">{service.title}</h1>
+              <div className="text-lg text-slate-900">₹ {service.price}</div>
+            </div>
+            <div className="flex justify-between items-center mb-2">
+              <a
+
+                href="#"
+                className="text-blue-600 text-sm font-semibold"
+              >
+                View details
+              </a>
+
+            </div>
+            <div className="w-full mt-4 flex justify-center">
+              <button
+                onClick={() => instantCheckout(service)}
+                className="w-full h-12 uppercase font-medium rounded-full border-2 border-sky-600 tracking-wider bg-transparent hover:bg-sky-200 text-black card-hover-effects"
+                type="submit"
+              >
+                Book now
               </button>
-              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -107,7 +108,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
         discount={discount}
         onSuccess={handleSuccess}
       />
-
       <BookingComplete openSuccess={success} setOpenSuccess={setSuccess} />
     </>
   );
