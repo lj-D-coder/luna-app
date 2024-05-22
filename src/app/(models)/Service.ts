@@ -12,6 +12,7 @@ interface IService extends Document {
   supportedModel: string[];
   images: string[];
   category: string;
+  categoryId: string;
   subCategory: string;
   subCategoryId: string;
   serviceDetails: string;
@@ -28,6 +29,7 @@ const ServiceSchema: Schema = new Schema({
   supportedModel: { type: [String], required: true },
   images: { type: [String], required: true },
   category: { type: String, required: true },
+  categoryId: { type: String, required: true },
   subCategory: { type: String, required: true },
   subCategoryId: { type: String, required: true },
   serviceDetails: { type: String, required: true },

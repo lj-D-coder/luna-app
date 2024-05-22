@@ -17,7 +17,7 @@ export type SubCategory = {
 };
 
 export const SubCategory: FC<SubCategoryProps> = ({ categoryUrl, onIconClick }) => {
-  console.log(categoryUrl);
+  
   // const API_URL = `api/services/${categoryUrl}`;
   let categoryId = sessionStorage.getItem('categoryId');
 
@@ -69,7 +69,7 @@ export const SubCategory: FC<SubCategoryProps> = ({ categoryUrl, onIconClick }) 
             <div key={index} className="flex flex-col items-center text-center">
               <div
                 style={{ cursor: "pointer" }}
-                onClick={() => onIconClick(subCategory.subCategoryName)}
+                onClick={() => onIconClick(subCategory._id)}
                 className="w-full h-[100px] text-center rounded-lg shadow-md border border-gray-200 hover:border-gray-400 transition duration-300 flex flex-col justify-center items-center"
               >
                 <Image

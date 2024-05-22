@@ -1,18 +1,21 @@
 "use client";
-import { FC, SetStateAction, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import { SubCategory } from "./SubCategoryGrid";
 import { ServicesGrid } from "./ServicesGrid";
+import { AllServices } from "./AllServicesGrid";
 
 interface ServiceBookingProps {
   categoryUrl: string;
 }
 
 export const Services: FC<ServiceBookingProps> = ({ categoryUrl }) => {
-  const [selectedSubcategory, setSelectedSubcategory] = useState("");
 
-  const handleIconClick = (subCategory: string) => {
-    setSelectedSubcategory(subCategory);
-  };
+  const [subCategoryId, setSubCategoryId] = useState<string | null>("");
+
+  const handleIconClick = (newSubCategoryId: string) => {
+  setSubCategoryId(null);
+  setTimeout(() => setSubCategoryId(newSubCategoryId), 0);
+};
 
   return (
     <div className="grid grid-cols-12">
@@ -20,7 +23,7 @@ export const Services: FC<ServiceBookingProps> = ({ categoryUrl }) => {
         <SubCategory onIconClick={handleIconClick} categoryUrl={categoryUrl} />
       </div>
       <div className="col-span-12 md:col-span-8">
-        <ServicesGrid selectedSubcategory={selectedSubcategory} categoryUrl={categoryUrl} />
+      {subCategoryId ? <ServicesGrid subCategoryId={subCategoryId} /> : <AllServices/>}
       </div>
     </div>
   );

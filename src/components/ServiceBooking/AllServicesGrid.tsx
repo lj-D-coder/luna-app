@@ -1,7 +1,6 @@
 import React, { FC, useEffect, useRef, useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
 import Image from "next/image";
-import { Loader } from "./Loader";
 
 export type Service = {
   _id: string;
@@ -26,17 +25,14 @@ export interface CartProps {
   [serviceId: string]: Service;
 }
 
-interface ServiceBookingProps {
-  subCategoryId: string;
-}
-
-export const ServicesGrid: FC<ServiceBookingProps> = ({ subCategoryId }) => {
-  const API_URL = `api/serviceUnderSubCategory/${subCategoryId}`;
+export const AllServices = () => {
+  
+  let categoryId = sessionStorage.getItem('categoryId');
+  var API_URL = `api/servicesUnderCategory/${categoryId}`;
   const subCategoryRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
   const [services, setServices] = useState<ServiceMap[]>([]);
   const [servicesDataMap, setServicesDataMap] = useState<ServiceMap>({});
   const [error, setError] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
   const [cart, setCart] = useLocalStorageState<CartProps>("cart", {});
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedServiceDetails, setSelectedServiceDetails] = useState<string | undefined>();
@@ -60,6 +56,7 @@ export const ServicesGrid: FC<ServiceBookingProps> = ({ subCategoryId }) => {
     setSelectedServiceDetails(serviceDetails);
   };
 
+
   async function fetchData(url: string) {
     try {
       const response = await fetch(url);
@@ -82,7 +79,6 @@ export const ServicesGrid: FC<ServiceBookingProps> = ({ subCategoryId }) => {
         });
         setServices(data.services);
         setServicesDataMap(serviceMap);
-        setIsLoading(false);
       } else {
         setError(true);
       }
@@ -90,10 +86,6 @@ export const ServicesGrid: FC<ServiceBookingProps> = ({ subCategoryId }) => {
       setError(true);
     }
   } 
-
-  if (isLoading) {
-    return <Loader />;
-  }
 
   return (
     <>
