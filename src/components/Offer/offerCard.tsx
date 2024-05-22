@@ -61,14 +61,14 @@ const OfferCard: React.FC<ServiceCardProps> = ({ service }) => {
 
   return (
     <>
-      <div className="w-full rounded-md cursor-pointer card-hover-effects [background:linear-gradient(45deg,#172033,theme(colors.slate.800)_50%,#172033)_padding-box,conic-gradient(from_var(--border-angle),theme(colors.slate.600/.48)_80%,_theme(colors.pink.500)_86%,_theme(colors.indigo.500)_90%,_theme(colors.purple.500)_94%,_theme(colors.slate.600/.48))_border-box] border-2 border-transparent animate-border">
+      <div className="w-full rounded-md cursor-pointer card-hover-effects">
           <Image
             src={service.thumbnail}
-            width={500}
-            height={500}
+            width={1080}
+            height={540}
             alt={service.title}
             loading="lazy"
-            className="w-full h-full  rounded-md object-cover group-hover:opacity-0 transition-opacity duration-500"
+            className="w-full h-full rounded-md object-contain group-hover:opacity-0 transition-opacity duration-500"
           />
       </div>
 

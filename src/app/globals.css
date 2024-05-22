@@ -72,8 +72,7 @@ body {
 
 .embla__slide img {
   width: 100%;
-  height: 200px;
-  object-fit: cover;
+  height: 220px;
 }
 
 /* Responsive design for mobile screens */
