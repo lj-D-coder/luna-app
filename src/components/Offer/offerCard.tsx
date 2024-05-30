@@ -61,14 +61,14 @@ const OfferCard: React.FC<ServiceCardProps> = ({ service }) => {
 
   return (
     <>
-      <div className="w-full rounded-md cursor-pointer card-hover-effects">
+      <div className="w-full rounded-xl cursor-pointer card-hover-effects">
           <Image
             src={service.thumbnail}
             width={1080}
             height={540}
             alt={service.title}
             loading="lazy"
-            className="w-full h-full rounded-md object-contain group-hover:opacity-0 transition-opacity duration-500"
+            className="w-full h-full rounded-xl object-contain group-hover:opacity-0 transition-opacity duration-500"
           />
       </div>
 
