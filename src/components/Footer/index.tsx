@@ -41,7 +41,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between p-10 md:p-6">
           <div className="col-span-3 md:col-span-1 left-2">
             <div className="flex justify-center space-x-4">
-              <a href="#" className="text-neutral-400 hover:text-white text-xs md:text-base">
+              <a href="/contact" className="text-neutral-400 hover:text-white text-xs md:text-base">
                 Contact Us
               </a>
               <a href="/about" className="text-neutral-400 hover:text-white text-xs md:text-base">

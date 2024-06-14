@@ -20,7 +20,7 @@ const Hero: React.FC<HeroProp> = ({ sliderData }) => {
 
   useEffect(() => {
     const updateHeight = () => {
-      setHeight(window.innerWidth >= 768 ? "65vh" : "30vh");
+      setHeight(window.innerWidth >= 768 ? "90vh" : "30vh");
     };
 
     updateHeight();
@@ -62,8 +62,8 @@ const Hero: React.FC<HeroProp> = ({ sliderData }) => {
       const handleMouseOver = () => {
         timeline.pause();
         gsap.to(box, {
-          scaleX: 1.05,
-          scaleY: 1.05,
+          scaleX: 1.001,
+          scaleY: 1.001,
           duration: 0.5,
           ease: "power1.inOut",
         });
@@ -120,8 +120,8 @@ const Hero: React.FC<HeroProp> = ({ sliderData }) => {
         <Image
           key={index}
           src={banner.sliderUrl}
-          width={1920}
-          height={1080}
+          width={1600}
+          height={800}
           alt="Slides"
           className="w-full h-full object-cover absolute top-0 left-0"
           loading="lazy"
