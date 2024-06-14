@@ -34,7 +34,7 @@ const IconGrid: React.FC<CategoryProps> = ({ categories, sliderData }) => {
 
   return (
     <>
-      <div className="w-screen block h-auto mt-20">
+      <div className="w-screen block h-auto my-4 md:mt-20">
         <div className="flex flex-col lg:flex-row items-center lg:justify-between">
           <div className="w-96 md:w-[600px] self-center relative md:absolute z-10 p-4 md:p-0 md:pl-20">
             <h1 className="text-slate-900 text-center text-5xl mb-4">Hassle-free!</h1>
@@ -66,7 +66,7 @@ const IconGrid: React.FC<CategoryProps> = ({ categories, sliderData }) => {
               ))}
             </div>
           </div>
-          <div className="flex flex-col">
+          <div className="hidden md:flex flex-col">
             <div className="w-96 md:w-screen h-auto border-none shadow-none cursor-pointer">
               <Hero sliderData={sliderData} />
             </div>
