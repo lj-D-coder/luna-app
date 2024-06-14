@@ -79,7 +79,7 @@ export default function Home() {
       <Banner banners={bannerData} />
       {/* <Testimony testimonyData={testimonyData} /> */}
       <TopServices />
-      <AppLink />
+      {/* <AppLink /> */}
       <HowItWorks />
       <Footer />
     </>

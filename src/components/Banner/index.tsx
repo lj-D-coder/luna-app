@@ -19,10 +19,10 @@ const Banner: React.FC<BannerProps> = ({ banners }) => {
   }
 
   return (
-    <div className="w-full p-5 lg:p-20 bg-white">
+    <div className="w-screen p-4 md:px-10 bg-white">
       <div className="bg-white w-full rounded-lg overflow-hidden transition duration-300">
         <div className="relative card-hover-effects">
-          <Link href="/your-desired-path">
+          <Link href="#">
             <Image
               src={banners[0].bannerUrl}
               alt="banner image"

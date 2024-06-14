@@ -33,14 +33,14 @@ const Hero: React.FC<HeroProp> = ({ sliderData }) => {
 
   useLayoutEffect(() => {
     const box = boxRef.current;
-
+  
     if (box) {
       let currentIndex = 0;
       const images = box.querySelectorAll("img");
-
+  
       // Initialize all images to be hidden and offscreen to the right
       gsap.set(images, { opacity: 0, x: window.innerWidth });
-
+  
       const showImage = (index: number) => {
         gsap.to(images[index], {
           opacity: 1,
@@ -49,71 +49,43 @@ const Hero: React.FC<HeroProp> = ({ sliderData }) => {
           ease: "power1.inOut",
         });
       };
-
-      const hideImage = (index: number) => {
+  
+      const nextImage = (index: number) => {
         gsap.to(images[index], {
           opacity: 0,
           x: -window.innerWidth,
           duration: 1,
           ease: "power1.inOut",
+          onComplete: () => {
+            // Reset image position to the right after it has gone offscreen to the left
+            gsap.set(images[index], { x: window.innerWidth });
+          },
         });
       };
-
-      const handleMouseOver = () => {
-        timeline.pause();
-        gsap.to(box, {
-          scaleX: 1.001,
-          scaleY: 1.001,
-          duration: 0.5,
-          ease: "power1.inOut",
-        });
-      };
-
-      const handleMouseOut = () => {
-        timeline.resume();
-        gsap.to(box, {
-          scaleX: 1,
-          scaleY: 1,
-          duration: 0.5,
-          ease: "power1.inOut",
-        });
-      };
-
-      box.addEventListener("mouseover", handleMouseOver);
-      box.addEventListener("mouseout", handleMouseOut);
-
+  
       const timeline = gsap.timeline({
         repeat: -1,
         repeatDelay: 0,
-        delay: 5,
-        onComplete: () => {
-          hideImage(currentIndex);
-          currentIndex = (currentIndex + 1) % images.length;
-          showImage(currentIndex);
-        },
+        delay: 0,
       });
-
+  
+      images.forEach((_, i) => {
+        const nextIndex = (i + 1) % images.length;
+        timeline
+          .call(() => showImage(i), [], "+=4") // Show each image for 4 seconds
+          .call(() => nextImage(i), [], "+=3.5") // Start hiding the image after 3.5 seconds
+          .call(() => showImage(nextIndex), [], "+=0.1"); // Show the next image before the current one is fully hidden
+      });
+  
       // Initial call to show the first image
       showImage(currentIndex);
-
-      // Schedule hiding and showing of images in the timeline
-      timeline.to({}, {
-        delay: 4, // Show image for 4 seconds before starting the next transition
-        onComplete: () => {
-          hideImage(currentIndex);
-          currentIndex = (currentIndex + 1) % images.length;
-          showImage(currentIndex);
-        },
-      });
-
+  
       return () => {
-        box.removeEventListener("mouseover", handleMouseOver);
-        box.removeEventListener("mouseout", handleMouseOut);
         timeline.kill();
       };
     }
-  }, [sliderData]);
-
+  }, [sliderData]);  
+  
   return (
     <div ref={boxRef} className="box relative overflow-hidden" style={{ height }}>
       {sliderData.map((banner, index) => (
