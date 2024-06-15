@@ -60,9 +60,9 @@ const FloatingSocial = () => {
     <div ref={socialBoxRef} className="hidden md:block w-8 h-auto fixed left-0 top-1/2 transform translate-y-[-50%] z-50">
       <div
         className="flex flex-col justify-center items-center  border border-black/10"
-        // style={{
-        //   background: "linear-gradient(0deg, rgba(239,197,123.5) 0%, rgba(115,131,191,0.7) 100%)",
-        // }}
+      // style={{
+      //   background: "linear-gradient(0deg, rgba(239,197,123.5) 0%, rgba(115,131,191,0.7) 100%)",
+      // }}
       >
         <a href="https://www.facebook.com/luna.naanna/" className="my-4 text-neutral-900">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="#1877F2" viewBox="0 0 24 24">

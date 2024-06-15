@@ -84,29 +84,29 @@ export const Cart: FunctionComponent = () => {
 
   return (
     <>
-      <div className= {`${totalPrice > 0 ? 'block' : 'hidden'} md:block fixed bottom-0 md:fixed md:top-24 w-full md:w-3/12 p-4 bg-white`}>
+      <div className={`${totalPrice > 0 ? 'block' : 'hidden'} md:block fixed bottom-0 md:fixed md:top-24 w-full md:w-3/12 p-4 bg-white`}>
         <div className="bg-white shadow-lg rounded-lg overflow-y-auto max-h-[180px] md:max-h-[400px]">
           <div className="flex justify-between">
             <h2 className="text-lg font-semibold px-2">Cart</h2>
             <CartWidget productsCount={productsCount} />
           </div>
-            {getServices().map((service) => (
-              <div key={service._id} className="border-t mt-4 p-4">
-                <h3 className="font-medium text-gray-700">{service.title}</h3>
-                <div className="flex items-center justify-between mt-3">
-                  <div className="flex items-center border rounded-md">
-                    <Quantifier
-                      removeProductCallback={() => handleRemoveProduct(service._id)}
-                      serviceId={service._id}
-                      handleUpdateQuantity={handleUpdateQuantity}
-                    />
-                  </div>
-                  <span className="text-gray-900 font-semibold px-2">
-                    ₹{(service.price * service.serviceCapacity).toFixed(2)}
-                  </span>
+          {getServices().map((service) => (
+            <div key={service._id} className="border-t mt-4 p-4">
+              <h3 className="font-medium text-gray-700">{service.title}</h3>
+              <div className="flex items-center justify-between mt-3">
+                <div className="flex items-center border rounded-md">
+                  <Quantifier
+                    removeProductCallback={() => handleRemoveProduct(service._id)}
+                    serviceId={service._id}
+                    handleUpdateQuantity={handleUpdateQuantity}
+                  />
                 </div>
+                <span className="text-gray-900 font-semibold px-2">
+                  ₹{(service.price * service.serviceCapacity).toFixed(2)}
+                </span>
               </div>
-            ))}
+            </div>
+          ))}
         </div>
         <div className="flex border-2 mt-1 rounded">
           {discount <= 0 && (
@@ -147,19 +147,19 @@ export const Cart: FunctionComponent = () => {
             </span>
             <button
               onClick={handleCheckout}
-              className="bg-purple-600 text-white rounded-md px-6 py-2 hover:purple-900 focus:outline-none focus:bg-purple-900"
+              className="bg-black text-white rounded-md px-6 py-2 card-hover-effects hover:bg-black"
             >
               Checkout
             </button>
           </div>
         )}
       </div>
-      <CheckOutModal 
-        isOpen={isOpen} 
-        setOpen={setIsOpen} 
-        totalPrice={totalPrice} 
-        discount={discount} 
-        onSuccess={handleSuccess} 
+      <CheckOutModal
+        isOpen={isOpen}
+        setOpen={setIsOpen}
+        totalPrice={totalPrice}
+        discount={discount}
+        onSuccess={handleSuccess}
       />
       <BookingComplete openSuccess={success} setOpenSuccess={setSuccess} />
     </>
