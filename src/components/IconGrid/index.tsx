@@ -49,7 +49,7 @@ const IconGrid: React.FC<CategoryProps> = ({ categories, sliderData }) => {
                 >
                   <div
                     className={cn(
-                      "w-[120px] h-[120px] card-hover-effects border-none shadow-none",
+                      "w-[100px] h-[100px] md:w-[120px] md:h-[120px] card-hover-effects border-none shadow-none",
                       specialIndices.includes(index)
                     )}
                   >
