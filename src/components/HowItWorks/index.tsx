@@ -28,7 +28,7 @@ const HowItWorks = () => {
             <h3 className="text-gray-800 text-3xl text-center px-4 font-semibold sm:text-4xl">
               How We Works?
             </h3>
-            <p className="mt-2 pl-10 pr-10 text-center text-base text">
+            <p className="mt-2 pl-10 pr-10 text-center text-sm text-gray-600">
               <br></br>
               Experience hassle-free home maintenance with our seamless process from booking to doorstep care.<br></br>
               Let us take care of your home while you focus on what matters most.
@@ -39,11 +39,11 @@ const HowItWorks = () => {
             <ul className="grid gap-y-8 gap-x-12 sm:grid-cols-2 lg:grid-cols-3">
               {features.map((item, idx) => (
                 <li key={idx} className="space-y-3">
-                  <div className="w-24 h-24 mx-auto bg-slate-800 rounded-full flex items-center justify-center">
+                  <div className="w-24 h-24 mx-auto bg-black rounded-full flex items-center justify-center">
                     <Image src={item.icon} height={50} width={50} alt="icon" />
                   </div>
-                  <h4 className="text-lg text-gray-800 font-semibold">{item.title}</h4>
-                  <p>{item.desc}</p>
+                  <h4 className="text-lg text-gray-900 font-semibold">{item.title}</h4>
+                  <p className="text-sm text-gray-600" >{item.desc}</p>
                 </li>
               ))}
             </ul>

@@ -23,13 +23,15 @@ const Banner: React.FC<BannerProps> = ({ banners }) => {
       <div className="bg-white w-full rounded-lg overflow-hidden transition duration-300">
         <div className="relative card-hover-effects">
           <Link href="#">
-            <Image
-              src={banners[0].bannerUrl}
-              alt="banner image"
-              width={1232}
-              height={692}
-              style={{ objectFit: "cover", width: '100%', height: 'auto' }}
-            />
+            <div className="w-full">
+              <Image
+                src={banners[0].bannerUrl}
+                alt="banner image"
+                width={1232}
+                height={350}
+                className="object-cover w-full h-auto md:h-[350px]"
+              />
+            </div>
           </Link>
         </div>
       </div>
