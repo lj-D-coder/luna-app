@@ -36,7 +36,7 @@ const IconGrid: React.FC<CategoryProps> = ({ categories, sliderData }) => {
     <>
       <div className="w-screen block h-auto my-4 md:mt-20">
         <div className="flex flex-col lg:flex-row items-center lg:justify-between">
-          <div className="w-96 md:w-[600px] self-center relative md:absolute z-10 p-4 md:p-0 md:pl-20">
+          <div className="w-96 md:w-[600px] self-center relative z-20 md:absolute p-4 md:p-0 md:pl-20">
             <h1 className="text-slate-900 text-center text-5xl mb-4">Hassle-free!</h1>
             <h1 className="box text-slate-700 text-center text-3xl mb-12">
               Doorstep professional services.

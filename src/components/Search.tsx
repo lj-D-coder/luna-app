@@ -58,14 +58,14 @@ export default function Search({ placeholder, propClassName }: { placeholder: st
 
   return (
     <div className={`${propClassName}`}>
-      <div className="w-full relative md:w-5/6  px-5 z-10 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+      <div className="w-full relative md:w-5/6 px-5 z-10 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <div className="relative flex flex-col md:flex-row flex-1 flex-shrink-0 justify-center items-center">
           <label htmlFor="search" className="sr-only">
             Search
           </label>
           <div className="relative w-full md:w-3/6">
             <input
-              className="block w-full h-[50px] rounded-full pl-10 border-2 border-sky-500 text-base outline-2 placeholder:text-gray-300 bg-white bg-opacity-80  focus:outline-none"
+              className="block w-full h-[50px] rounded-full pl-10 border-2 border-sky-500 text-base outline-2 placeholder:text-gray-300 bg-white  focus:outline-none"
               placeholder={placeholder}
               value={term}
               onChange={(e) => {
@@ -76,15 +76,14 @@ export default function Search({ placeholder, propClassName }: { placeholder: st
             {term ? (
               results.length > 0 ? (
                 <div
-                  className="absolute w-full mt-2 bg-gray-200 rounded-md shadow-lg max-h-60 overflow-auto"
+                  className="absolute w-full mt-2 bg-white rounded-md shadow-lg max-h-60 overflow-auto"
                   onMouseLeave={() => setResults([])} // Reset results when mouse leaves
                 >
                   {results.map((result, index) => (
                     <div
                       key={index}
-                      className={`cursor-pointer hover:bg-gray-100 py-1 px-4 ${
-                        activeIndex === index ? "bg-gray-200" : ""
-                      }`}
+                      className={`cursor-pointer hover:bg-gray-100 py-1 px-4 ${activeIndex === index ? "bg-gray-200" : ""
+                        }`}
                       onClick={() => handleSelectResult(result)}
                     >
                       {result.keyword}

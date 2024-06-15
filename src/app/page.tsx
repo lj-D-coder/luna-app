@@ -76,9 +76,9 @@ export default function Home() {
       <FloatingSocial />
       <IconGrid categories={categories} sliderData={heroData} />
       <Offer />
-      <Banner banners={bannerData} />
       {/* <Testimony testimonyData={testimonyData} /> */}
       <TopServices />
+      <Banner banners={bannerData} />
       {/* <AppLink /> */}
       <HowItWorks />
       <Footer />

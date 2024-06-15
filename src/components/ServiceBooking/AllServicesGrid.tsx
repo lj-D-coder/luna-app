@@ -89,7 +89,7 @@ export const AllServices = () => {
 
   return (
     <>
-      <div className="block p-4 bg-white">
+      {/* <div className="block p-4 bg-white">
         <div className="bg-white overflow-hidden">
           {Object.keys(servicesDataMap).map((subCategory) => (
             <div key={subCategory} className="mb-4" ref={(el) => { subCategoryRefs.current[subCategory] = el; }}>
@@ -132,6 +132,57 @@ export const AllServices = () => {
 
                     </div>
 
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div> */}
+      <div className="block p-6 bg-white">
+        <div className="bg-white overflow-hidden">
+          {Object.keys(servicesDataMap).map((subCategory) => (
+            <div key={subCategory} className="mb-6">
+              <h2 className="text-2xl font-bold mb-4">
+                {subCategory
+                  .split("-")
+                  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                  .join(" ")}
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {servicesDataMap[subCategory].map((service) => (
+                  <div key={service._id} className="bg-white border-2 border-neutral-200 shadow-lg rounded-lg overflow-hidden">
+                    <div className="relative flex justify-center items-center h-56 bg-white p-3">
+                      <Image width={500} height={500} className="object-cover w-full h-full rounded-sm" src={service.thumbnail} alt={service.title} />
+                    </div>
+                    <div className="p-4">
+                      <h2 className="text-xl font-semibold text-gray-800 mb-2">{service.title}</h2>
+                      <p className="text-sm text-gray-600 mb-4">
+                        {service.description || 'No description available'}
+                      </p>
+                      <div className="flex items-end justify-between">
+                        <div>
+                          <div className="mb-4">
+                            <h3 className="text-lg font-bold text-gray-700">Price at ₹ {service.price}</h3>
+                          </div>
+                          <button
+                            onClick={() => addToCart(service)}
+                            className={`bg-black h-10 text-white rounded-full px-6 py-2 ${isInCart(service._id) ? "bg-gray-300 cursor-not-allowed" : ""
+                              }`}
+                            disabled={isInCart(service._id)}
+                          >
+                            {isInCart(service._id) ? "In Cart" : "Add to Cart"}
+                          </button>
+                        </div>
+                        <a
+                          onClick={() => toggleModal(true, service.serviceDetails)}
+                          href="#"
+                          className="text-blue-600 text-sm font-semibold"
+                        >
+                          View details
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
