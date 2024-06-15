@@ -1,7 +1,8 @@
+"use client"
 import Image from "next/image";
 import { logoblacktransparent } from "../assets/images/index";
 import Link from "next/link";
-import { PhoneIcon } from "@heroicons/react/24/solid";
+//import { PhoneIcon } from "@heroicons/react/24/solid";
 import hamburger from "../assets/images/hamburger.svg";
 import Search from "@/components/Search";
 
