@@ -15,12 +15,7 @@ const Navbar = () => {
               <Image src={logoblacktransparent} alt="Logo" width={140} height={100} className="mr-2 -mt-4 md:mt-0" />
             </Link>
           </div>
-{/* 
-          <div className="items-center">
-          <Search propClassName="hidden md:block w-[300px]" placeholder="what services are you looking for ?" />
-          </div> */}
-
-          
+          <Search propClassName="hidden md:block w-5/6 absolute mt-20 left-1/2 transform -translate-x-1/2 -translate-y-1/2" placeholder="what services are you looking for ?" />
 
           <div className="hidden md:flex space-x-6">
             <a href="https://blog.lunanaanna.com/" className="text-lg font-semibold text-black hover:text-gray-900">Blog</a>

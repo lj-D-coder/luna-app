@@ -65,7 +65,7 @@ export default function Search({ placeholder, propClassName }: { placeholder: st
           </label>
           <div className="relative w-full md:w-3/6">
             <input
-              className="block w-full h-[50px] rounded-full pl-10 border-2 border-sky-500 text-base outline-2 placeholder:text-gray-300 bg-white bg-opacity-80  focus:outline-none"
+              className="block w-full h-[50px] md:h-[40px] rounded-full pl-10 border-2 border-sky-500 text-base outline-2 placeholder:text-gray-300 bg-white bg-opacity-80  focus:outline-none"
               placeholder={placeholder}
               value={term}
               onChange={(e) => {
