@@ -15,7 +15,7 @@ import curve from "./LunaNanna.svg";
 import lunnaLogo from "./Luna_Naanna_logo.png";
 import lunnaLogo2 from "./Luna_Naanna_logo2.png";
 import logoblack from "./logoblack.jpeg";
-import logoblacktransparent from "./logobgblacktr.png";
+import logoNavbar from "./logoNavbar.png";
 import doorStepCare from "./door-step-care.png";
 import bookSlot from "./book-slot.png";
 import selectService from "./select-service.png";
@@ -38,7 +38,7 @@ export {
   lunnaLogo,
   lunnaLogo2,
   logoblack,
-  logoblacktransparent,
+  logoNavbar,
   doorStepCare,
   bookSlot,
   selectService,

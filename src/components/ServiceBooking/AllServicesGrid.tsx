@@ -21,14 +21,19 @@ interface ServiceMap {
   [subcategory: string]: Service[];
 }
 
+interface SubCategoryProps {
+  categoryUrl: string;
+}
+
 export interface CartProps {
   [serviceId: string]: Service;
 }
 
-export const AllServices = () => {
+export const AllServices: FC<SubCategoryProps> = ({ categoryUrl }) => {
 
-  let categoryId = sessionStorage.getItem('categoryId');
-  var API_URL = `api/servicesUnderCategory/${categoryId}`;
+  // let categoryId = sessionStorage.getItem('categoryId');
+  // var API_URL = `api/servicesUnderCategory/${categoryId}`;
+  var API_URL = `api/servicesUnderCategory/${categoryUrl}`;
   const subCategoryRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
   const [services, setServices] = useState<ServiceMap[]>([]);
   const [servicesDataMap, setServicesDataMap] = useState<ServiceMap>({});

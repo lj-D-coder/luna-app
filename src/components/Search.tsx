@@ -58,7 +58,7 @@ export default function Search({ placeholder, propClassName }: { placeholder: st
 
   return (
     <div className={`${propClassName}`}>
-      <div className="w-full relative md:w-5/6 px-5 z-10 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+      <div className="relative px-5 md:px-0 z-10 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <div className="relative flex flex-col md:flex-row flex-1 flex-shrink-0 justify-center items-center">
           <label htmlFor="search" className="sr-only">
             Search

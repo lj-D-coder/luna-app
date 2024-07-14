@@ -72,7 +72,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <Search propClassName="relative pt-40 md:hidden" placeholder="what services are you looking for ?" />
+      <Search propClassName="relative pt-20 md:hidden" placeholder="what services are you looking for ?" />
       <FloatingSocial />
       <IconGrid categories={categories} sliderData={heroData} />
       <Offer />

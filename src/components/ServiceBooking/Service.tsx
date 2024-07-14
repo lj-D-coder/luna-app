@@ -23,7 +23,7 @@ export const Services: FC<ServiceBookingProps> = ({ categoryUrl }) => {
         <SubCategory onIconClick={handleIconClick} categoryUrl={categoryUrl} />
       </div>
       <div className="col-span-12 md:col-span-8">
-      {subCategoryId ? <ServicesGrid subCategoryId={subCategoryId} /> : <AllServices/>}
+      {subCategoryId ? <ServicesGrid subCategoryId={subCategoryId} /> : <AllServices categoryUrl={categoryUrl}/>}
       </div>
     </div>
   );

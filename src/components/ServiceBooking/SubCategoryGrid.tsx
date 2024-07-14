@@ -18,10 +18,9 @@ export type SubCategory = {
 
 export const SubCategory: FC<SubCategoryProps> = ({ categoryUrl, onIconClick }) => {
   
-  // const API_URL = `api/services/${categoryUrl}`;
-  let categoryId = sessionStorage.getItem('categoryId');
-
-  const API_URL = `api/services/${categoryId}`;
+  const API_URL = `api/services/${categoryUrl}`;
+  //let categoryId = sessionStorage.getItem('categoryId');
+  // const API_URL = `api/services/${categoryId}`;
   const [isLoading, setIsLoading] = useState(true);
   const [subCategoryList, setSubCategory] = useState<SubCategory[]>([]);
   const [error, setError] = useState(false);
