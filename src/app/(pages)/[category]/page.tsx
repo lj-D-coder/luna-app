@@ -13,7 +13,11 @@ const page: FC<categoryProps> = async ({ params }) => {
   const categoryUrl = params.category;
   const validation = await validateCategorySlug(categoryUrl);
   if (validation.data.message != "success") {
-    return notFound();
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <h1 className="text-4xl">404 - Page Not Found</h1>
+      </div>
+    );
   }
 
   return (

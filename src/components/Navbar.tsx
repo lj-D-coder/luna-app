@@ -47,10 +47,7 @@ export default () => {
           </div>
         </div>
 
-        <Search
-            propClassName="w-auto lg:w-[850px] hidden md:block mt-10"
-            placeholder="what services are you looking for ?"
-          />
+        
 
         <div className={`flex-1 justify-end pb-3 mt-8 md:block md:pb-0 md:mt-0 ${state ? "block" : "hidden"}`}>
           <ul className="justify-end items-center space-y-8 md:flex md:space-x-6 md:space-y-0 whitespace-nowrap">
@@ -61,6 +58,12 @@ export default () => {
                 </li>
               );
             })}
+            <li>
+            <Search
+            propClassName="hidden md:block"
+            placeholder="what services are you looking for ?"
+              />
+              </li>
             <li>
               <a
                 href="/contact"

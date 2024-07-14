@@ -58,12 +58,12 @@ export default function Search({ placeholder, propClassName }: { placeholder: st
 
   return (
     <div className={`${propClassName}`}>
-      <div className="relative px-5 md:px-0 z-10 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-        <div className="relative flex flex-col md:flex-row flex-1 flex-shrink-0 justify-center items-center">
+      <div className="w-full px-8 md:px-0 md:w-80">
+        <div className="relative justify-center items-center">
           <label htmlFor="search" className="sr-only">
             Search
           </label>
-          <div className="relative w-full md:w-3/6">
+          <div className="relative">
             <input
               className="block w-full h-[50px] md:h-[40px] rounded-full pl-10 border-2 border-sky-500 text-base outline-2 placeholder:text-gray-300 bg-white bg-opacity-80  focus:outline-none"
               placeholder={placeholder}
@@ -76,7 +76,7 @@ export default function Search({ placeholder, propClassName }: { placeholder: st
             {term ? (
               results.length > 0 ? (
                 <div
-                  className="absolute w-full mt-2 bg-white rounded-md shadow-lg max-h-60 overflow-auto"
+                  className="absolute w-full mt-2 bg-white rounded-md shadow-lg max-h-60 overflow-auto z-50"
                   onMouseLeave={() => setResults([])} // Reset results when mouse leaves
                 >
                   {results.map((result, index) => (
@@ -91,7 +91,7 @@ export default function Search({ placeholder, propClassName }: { placeholder: st
                   ))}
                 </div>
               ) : (
-                <div className="absolute w-full mt-2 rounded-md shadow-lg max-h-60 overflow-auto py-1">Not found!</div>
+                <div className="absolute w-full mt-2 rounded-md shadow-lg max-h-60 overflow-auto py-1 z-50">Not found!</div>
               )
             ) : null}
           </div>
