@@ -70,7 +70,7 @@ const contactUs = () => {
 
   return (
     <>
-    <div className="bg-white text-gray-100 px-8 py-12">
+    <div className="bg-white text-gray-100 px-8 py-4 md:py-12">
       <div
         className="max-w-screen-xl mt-24 px-8 grid gap-8 grid-cols-1 md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 py-16 mx-auto bg-gray-100 text-gray-900 rounded-lg shadow-lg">
         <div className="flex flex-col justify-between">
@@ -656,7 +656,7 @@ const contactUs = () => {
         </div>
   </div>
 
-  <div className="flex justify-center items-center h-full px-20">
+  <div className="flex justify-center items-center h-full px-8 md:px-20">
         <MapLink latitude={24.791755375433542} longitude={93.94196482148998} />
     </div>
 

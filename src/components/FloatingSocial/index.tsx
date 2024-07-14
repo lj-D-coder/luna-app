@@ -69,7 +69,7 @@ const FloatingSocial = () => {
             <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
           </svg>
         </a>
-        <a href="#!" className="my-4 text-neutral-900">
+        <a href="https://x.com/luna_naanna" className="my-4 text-neutral-900">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="#000000" viewBox="0 0 512 512">
             <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" />
           </svg>
