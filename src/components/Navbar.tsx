@@ -3,7 +3,7 @@ import { useState } from "react";
 import Search from "@/components/Search";
 import { logoNavbar } from "../assets/images/index";
 
-export default () => {
+const Navbar = () => {
   const [state, setState] = useState(false);
 
   // Replace javascript:void(0) path with your path
@@ -78,3 +78,6 @@ export default () => {
     </nav>
   );
 };
+
+
+export default Navbar;
