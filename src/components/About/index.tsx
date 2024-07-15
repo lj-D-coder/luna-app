@@ -2,7 +2,7 @@ import React from "react";
 
 const AboutUs = () => {
   return (
-    <div className="container w-2/3 bg-gray-100 p-4 rounded-lg my-20">
+    <div className="container w-full md:w-2/3 bg-gray-100 p-6  rounded-lg my-20">
       <h1 className="text-4xl font-bold mb-4">ABOUT US</h1>
       <p className="mb-4">
         Luna Naanna, derived from Manipuri for &quot;neat and tidy,&quot; is a pioneering venture by Imphal Tasker Private Limited. Our mission is simple yet profound: to empower Northeast India&apos;s youth by creating abundant employment opportunities.
