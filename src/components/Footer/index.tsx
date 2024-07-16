@@ -41,17 +41,20 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between p-10 md:p-6">
           <div className="col-span-3 md:col-span-1 left-2">
             <div className="flex justify-center space-x-4">
+            <a href="/" className="text-neutral-400 hover:text-white text-xs md:text-base">
+                Home
+              </a>
               <a href="/contact" className="text-neutral-400 hover:text-white text-xs md:text-base">
                 Contact Us
               </a>
               <a href="/about" className="text-neutral-400 hover:text-white text-xs md:text-base">
                 About Us
               </a>
-              <a href="#" className="text-neutral-400 hover:text-white text-xs md:text-base">
+              <a href="terms-conditions" className="text-neutral-400 hover:text-white text-xs md:text-base">
                 Terms and Conditions
               </a>
-              <a href="#" className="text-neutral-400 hover:text-white text-xs md:text-base">
-                Refund Policy
+              <a href="privacy-policy" className="text-neutral-400 hover:text-white text-xs md:text-base">
+                Privacy Policy
               </a>
             </div>
           </div>

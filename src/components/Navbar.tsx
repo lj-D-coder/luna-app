@@ -8,6 +8,7 @@ const Navbar = () => {
 
   // Replace javascript:void(0) path with your path
   const navigation = [
+    { title: "Home", path: "/" },
     { title: "About Us", path: "/about" },
     { title: "Blog", path: "https://blog.lunanaanna.com/" },
   ];
