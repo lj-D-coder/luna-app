@@ -67,9 +67,9 @@ const Contact = () => {
 
   return (
     <>
-    <div className="bg-white text-gray-100 px-8 py-4 md:py-12">
+    <div className="bg-white text-gray-100 p-4">
       <div
-        className="max-w-screen-xl mt-24 px-8 grid gap-8 grid-cols-1 md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 py-16 mx-auto bg-gray-100 text-gray-900 rounded-lg shadow-lg">
+        className="max-w-screen-xl px-8 grid gap-8 grid-cols-1 md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 py-16 mx-auto bg-gray-100 text-gray-900 rounded-lg shadow-lg">
         <div className="flex flex-col justify-between">
           <div>
             <h2 className="text-xl lg:text-3xl font-bold leading-tight">Lets talk about everything! Request a Call back</h2>
@@ -90,7 +90,7 @@ const Contact = () => {
               </div>
 
           </div>
-          <div className="mt-8 text-center">
+          <div className="text-center">
             <svg className="w-full" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
               id="ae37f038-3a9e-4b82-ad68-fc94ba16af2a" data-name="Layer 1"
               viewBox="0 0 1096 574.74">
